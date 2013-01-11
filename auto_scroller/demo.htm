@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0063)mhtml:file://C:\Documents and Settings\Srinivas\Desktop\Sun.mht -->
+<HTML><HEAD><TITLE>Headlines Scroller</TITLE>
+
+<style type="text/css">
+body{
+color:#000000;
+font-family:"Tahoma",Arial, Helvetica, sans-serif;
+background:#dedede;
+font-size:11px;
+
+}
+a
+{
+color:#285694;
+text-decoration:none;
+}
+#placeholder
+{
+background:#fff;
+
+width:380px;
+}
+</style>
+</HEAD>
+<BODY>
+<div><h2>Headlines Auto Scrolling</h2>
+</div>
+
+                        <DIV align=center style="background:#fff">
+                        <DIV id="tempholder"></DIV>
+						
+						
+                        <SCRIPT language=JavaScript 
+                        src="js/dhtmllib.js"></SCRIPT>
+
+                        <SCRIPT language=JavaScript 
+                        src="js/scroller.js"></SCRIPT>
+
+                        <SCRIPT language=JavaScript 
+                        src="js/mydata.js"></SCRIPT>
+
+                        <SCRIPT language=JavaScript>
+//SET SCROLLER APPEARANCE AND MESSAGES
+function runmikescroll() {
+
+  var layer;
+  var mikex, mikey;
+
+  // Locate placeholder layer so we can use it to position the scrollers.
+
+  layer = getLayer("placeholder");
+  mikex = getPageLeft(layer);
+  mikey = getPageTop(layer);
+
+  // Create the first scroller and position it.
+
+  myScroller1.create();
+  myScroller1.hide();
+  myScroller1.moveTo(mikex, mikey);
+  myScroller1.setzIndex(100);
+  myScroller1.show();
+}
+
+window.onload=runmikescroll
+                        </SCRIPT>
+
+  <div style="background:#FFFFFF; height:160px"> <DIV id='placeholder'></DIV></div></DIV>      
+  <div align="center"><div style="float:left"><h4>More tutorials <a href="http://9lessons.blogspot.com">9lessons.blogspot.com</a></h4></div>Best view Firefox and Safari<div style="float:right"><a href="http://feeds2.feedburner.com/9lesson"><h5>Subscribe to my feeds</h5></a></div></div>              
+</BODY></HTML>
