@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="module" version="1.0.5">
+	<name>mfReferral</name>
+	<version>1.0</version>
+	<creationDate>2008</creationDate>
+	<author>Marcofolio.net</author>
+	<authorEmail>contact@marcofolio.net</authorEmail>
+	<authorUrl>http://www.marcofolio.net/</authorUrl>
+	<copyright>(C) Marcofolio.net</copyright>
+	<license>CC Attribution-Share Alike 3.0 Unported</license>
+	<description><![CDATA[<div style="font-size:12px ;width:600px; font-weight:none">
+	<h2>What is it?</h2>
+	<p><strong>mfReferral</strong> allows you to display a custom message by checking from which referral website the visitor came. This way, you'll have a more interactive & personal site. Visitors that navigate through your own website or direct link visitors will not see the message.</p>
+	<h2>Examples</h2>
+	<p style="background: #EEF0EF url(http://img233.imageshack.us/img233/2432/diggse2.png) center no-repeat; background-position: 15px 50%; text-align: left;color: #CC3300;font-style: italic;font-size: 10px;padding: 5px 20px 5px 60px;border-top: 2px solid #666666;border-bottom: 2px solid #666666;"><script type="text/javascript">digg_skin = 'compact'; digg_window = 'new';</script><script src="http://digg.com/tools/diggthis.js" type="text/javascript"></script>Welcome <strong>Digg</strong> user! If you like this article, please consider a digg.</p>
+	<p style="background: #92A4AE url(http://img219.imageshack.us/img219/2641/googlecd2.png) center no-repeat; background-position: 15px 50%; text-align: left;color: #FFFFFF;font-weight: bold;font-style: italic;font-size: 16px;padding: 5px 20px 5px 60px;border-top: 2px dotted #666666;border-bottom: 2px dotted #666666;">Welcome <strong>Google</strong> user! Did you find what you were looking for? Have a nice stay.</p>
+	<p style="background: #000000 url(http://img291.imageshack.us/img291/201/stumbleuponof1.png) center no-repeat; background-position: 15px 50%; text-align: right;color: #CCCCCC;text-decoration: underline;font-size: 10px;padding: 5px 20px 5px 60px;border-top: 3px outset #1A1A1A;border-right: 3px outset #1A1A1A;border-bottom: 3px outset #1A1A1A;border-left: 3px outset #1A1A1A;">Welcome <strong>Stumbleupon</strong> user! If you like this article, simply give it a thumbs up.</p>
+	<p><strong>!TIP!</strong> Place this module right above your content, so users will see the message before they'll read the article. To make it even more fancy-looking, set the "Show title" to "No" in the module details.</p>
+	<h2>Support</h2>
+	<p>Please visit <a href="http://www.marcofolio.net/" title="Marcofolio.net" target="_blank">Marcofolio.net</a> and leave me a message.</p>
+	<p><em>Version 1.0, 2008</em></p>
+	<p><strong>Don't forget to publish this module!</strong></p>
+	</div>]]></description>
+    <files>
+		<filename module="mod_mfreferral">mod_mfreferral.php</filename>
+		<filename>mod_mfreferral/index.html</filename>
+		<filename>mod_mfreferral/blinklist.png</filename>
+		<filename>mod_mfreferral/blogmarks.png</filename>
+		<filename>mod_mfreferral/blogrush.png</filename>
+		<filename>mod_mfreferral/delicious.png</filename>
+		<filename>mod_mfreferral/designfloat.png</filename>
+		<filename>mod_mfreferral/digg.png</filename>
+		<filename>mod_mfreferral/dzone.png</filename>
+		<filename>mod_mfreferral/facebook.png</filename>
+		<filename>mod_mfreferral/fark.png</filename>
+		<filename>mod_mfreferral/furl.png</filename>
+		<filename>mod_mfreferral/google.png</filename>
+		<filename>mod_mfreferral/joomla.png</filename>
+		<filename>mod_mfreferral/live.png</filename>
+		<filename>mod_mfreferral/magnolia.png</filename>
+		<filename>mod_mfreferral/marcofolio.png</filename>
+		<filename>mod_mfreferral/mybloglog.png</filename>
+		<filename>mod_mfreferral/netvouz.png</filename>
+		<filename>mod_mfreferral/newsvine.png</filename>
+		<filename>mod_mfreferral/propeller.png</filename>
+		<filename>mod_mfreferral/reddit.png</filename>
+		<filename>mod_mfreferral/rss.png</filename>
+		<filename>mod_mfreferral/shoutwire.png</filename>
+		<filename>mod_mfreferral/simpy.png</filename>
+		<filename>mod_mfreferral/slashdot.png</filename>
+		<filename>mod_mfreferral/sphinn.png</filename>
+		<filename>mod_mfreferral/squidoo.png</filename>
+		<filename>mod_mfreferral/stumbleupon.png</filename>
+		<filename>mod_mfreferral/tailrank.png</filename>
+		<filename>mod_mfreferral/technorati.png</filename>
+		<filename>mod_mfreferral/yahoo.png</filename>
+	</files>
+	<params>
+		<param name="box_bgcolor" type="text" default="EEF0EF" label="Background color" description="Set the background color of the text box as a HEX value." />
+		<param name="box_useImage" type="list" default="1" label="Use images" description="Display the logo of the referring website.">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="box_txtStyle" type="list" default="2" label="Text style" description="Set the text style.">
+			<option value="0">None</option>
+			<option value="1">Bold</option>
+			<option value="2">Italic</option>
+			<option value="3">Underline</option>
+			<option value="4">Bold + Italic</option>
+			<option value="5">Bold + Underline</option>
+			<option value="6">Italic + Underline</option>
+			<option value="7">Bold + Italic + Underline</option>
+		</param>
+		<param name="box_txtAlign" type="list" default="left" label="Text alignment" description="Set the alignment of the text.">
+			<option value="left">Left</option>
+			<option value="right">Right</option>
+		</param>
+		<param name="box_txtColor" type="text" default="CC3300" label="Text color" description="Set the color of the text as a HEX value." />
+		<param name="box_txtSize" type="text" default="10" label="Text size" description="Set the size of the text in PX value." />
+		<param name="box_paddingTop" type="text" default="5" label="Padding Top" description="Set the top-padding of the text PX value." />
+		<param name="box_paddingRight" type="text" default="20" label="Padding Right" description="Set the right-padding of the text PX value." />
+		<param name="box_paddingBottom" type="text" default="5" label="Padding Bottom" description="Set the bottom-padding of the text PX value." />
+		<param name="box_paddingLeft" type="text" default="60" label="Padding Left" description="Set the left-padding of the text PX value." />
+		<param name="box_useBorderTop" type="list" default="1" label="Show Top border" description="Show the top border of the text box.">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="box_useBorderRight" type="list" default="0" label="Show Right border" description="Show the right border of the text box.">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="box_useBorderBottom" type="list" default="1" label="Show Bottom border" description="Show the bottom border of the text box.">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="box_useBorderLeft" type="list" default="0" label="Show Left border" description="Show the left border of the text box.">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="box_borderSize" type="text" default="2" label="Border size" description="Set the border size of the text box in PX value." />
+		<param name="box_borderColor" type="text" default="666666" label="Border color" description="Set the border color of the text box as a HEX value." />
+		<param name="box_borderStyle" type="list" default="solid" label="Border style" description="Set the border style of the text box.">
+			<option value="solid">Solid</option>
+			<option value="double">Double</option>
+			<option value="groove">Grooved</option>
+			<option value="dotted">Dotted</option>
+			<option value="dashed">Dashed</option>
+			<option value="inset">Inset</option>
+			<option value="outset">Outset</option>
+			<option value="ridge">Ridged</option>
+		</param>
+		<param name="box_button" type="list" default="small" label="Button size" description="If the site has a button, show the small or the big version.">
+			<option value="small">Small</option>
+			<option value="big">Big</option>
+		</param>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="ref_new" type="list" default="1" label="New referrals" description="Show the message box to visitors that came from another site, that are not defined below.">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_new_msg" type="text" default="You are new! If you like it here, please subscribe to my feed." label="New visitors message" description="Set the message displayed to new visitors (They came from anoter site, not listed below)." />
+		<param name="ref_new_icon" type="text" default="rss.png" label="New visitors icons" description="Set the icon displayed to new visitors." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="ref_digg" type="list" default="1" label="Digg referrals" description="Show the message box to visitors that came from Digg.com.">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_digg_msg" type="text" default="Welcome &lt;strong&gt;Digg&lt;/strong&gt; user! If you like this article, please consider a digg." label="Digg message" description="Set the message displayed to Digg visitors." />
+		<param name="ref_digg_button" type="list" default="1" label="Enable Digg button" description="Show the Digg button to visitors from Digg.com">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_reddit" type="list" default="1" label="Reddit referrals" description="Show the message box to visitors that came from Reddit.com.">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_reddit_msg" type="text" default="Welcome &lt;strong&gt;Reddit&lt;/strong&gt; user! If you like this article, please give me some points." label="Reddit message" description="Set the message displayed to Reddit visitors." />
+		<param name="ref_reddit_button" type="list" default="1" label="Enable Reddit button" description="Show the Reddit button to visitors from Reddit.com">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_delicious" type="list" default="1" label="del.icio.us referrals" description="Show the message box to visitors that came from del.icio.us.">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_delicious_msg" type="text" default="Welcome &lt;strong&gt;del.icio.us&lt;/strong&gt; user! Do not forget to save this page to your bookmarks." label="del.icio.us message" description="Set the message displayed to del.icio.us visitors." />
+		<param name="ref_facebook" type="list" default="1" label="Facebook referrals" description="Show the message box to visitors that came from Facebook.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_facebook_msg" type="text" default="Welcome &lt;strong&gt;Facebook&lt;/strong&gt; user!" label="Facebook message" description="Set the message displayed to Facebook visitors." />
+		<param name="ref_slashdot" type="list" default="1" label="Slashdot referrals" description="Show the message box to visitors that came from Slashdot.org .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_slashdot_msg" type="text" default="Welcome &lt;strong&gt;Slashdot&lt;/strong&gt; user!" label="Slashdot message" description="Set the message displayed to Slashdot visitors." />
+		<param name="ref_technorati" type="list" default="1" label="Technorati referrals" description="Show the message box to visitors that came from Technorati.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_technorati_msg" type="text" default="Welcome &lt;strong&gt;Technorati&lt;/strong&gt; user!" label="Technorati message" description="Set the message displayed to Technorati visitors." />
+		<param name="ref_stumbleupon" type="list" default="1" label="Stumbleupon referrals" description="Show the message box to visitors that came from Stumbleupon.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_stumbleupon_msg" type="text" default="Welcome &lt;strong&gt;Stumbleupon&lt;/strong&gt; user! If you like this article, simply give it a thumbs up." label="StumbleUpon message" description="Set the message displayed to StumbleUpon visitors." />
+		<param name="ref_fark" type="list" default="1" label="Fark referrals" description="Show the message box to visitors that came from Fark.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_fark_msg" type="text" default="Welcome &lt;strong&gt;Fark&lt;/strong&gt; user!" label="Fark message" description="Set the message displayed to Fark visitors." />
+		<param name="ref_newsvine" type="list" default="1" label="Newsvine referrals" description="Show the message box to visitors that came from Newsvine.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_newsvine_msg" type="text" default="Welcome &lt;strong&gt;Newsvine&lt;/strong&gt; user!" label="Newsvine message" description="Set the message displayed to Newsvine visitors." />
+		<param name="ref_blinklist" type="list" default="1" label="Blinklist referrals" description="Show the message box to visitors that came from Blinklist.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_blinklist_msg" type="text" default="Welcome &lt;strong&gt;Blinklist&lt;/strong&gt; user!" label="Blinklist message" description="Set the message displayed to Blinklist visitors." />
+		<param name="ref_propeller" type="list" default="1" label="Propeller referrals" description="Show the message box to visitors that came from Propeller.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_propeller_msg" type="text" default="Welcome &lt;strong&gt;Propeller&lt;/strong&gt; user!" label="Propeller message" description="Set the message displayed to Propeller visitors." />
+		<param name="ref_mybloglog" type="list" default="1" label="MyBlogLog referrals" description="Show the message box to visitors that came from MyBlogLog.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_mybloglog_msg" type="text" default="Welcome &lt;strong&gt;MyBlogLog&lt;/strong&gt; user!" label="MyBlogLog message" description="Set the message displayed to MyBlogLog visitors." />
+		<param name="ref_magnolia" type="list" default="1" label="Ma.gnolia referrals" description="Show the message box to visitors that came from Ma.gnolia.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_magnolia_msg" type="text" default="Welcome &lt;strong&gt;Ma.gnolia&lt;/strong&gt; user!" label="Ma.gnolia message" description="Set the message displayed to Ma.gnolia visitors." />
+		<param name="ref_squidoo" type="list" default="1" label="Squidoo referrals" description="Show the message box to visitors that came from Squidoo.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_squidoo_msg" type="text" default="Welcome &lt;strong&gt;Squidoo&lt;/strong&gt; user!" label="Squidoo message" description="Set the message displayed to Squidoo visitors." />
+		<param name="ref_blogmarks" type="list" default="1" label="Blogmarks referrals" description="Show the message box to visitors that came from Blogmarks.net .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_blogmarks_msg" type="text" default="Welcome &lt;strong&gt;Blogmarks&lt;/strong&gt; user!" label="Blogmarks message" description="Set the message displayed to Blogmarks visitors." />
+		<param name="ref_simpy" type="list" default="1" label="Simpy referrals" description="Show the message box to visitors that came from Simpy.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_simpy_msg" type="text" default="Welcome &lt;strong&gt;Simpy&lt;/strong&gt; user!" label="Simpy message" description="Set the message displayed to Simpy visitors." />
+		<param name="ref_shoutwire" type="list" default="1" label="Shoutwire referrals" description="Show the message box to visitors that came from Shoutwire.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_shoutwire_msg" type="text" default="Welcome &lt;strong&gt;Shoutwire&lt;/strong&gt; user!" label="Shoutwire message" description="Set the message displayed to Shoutwire visitors." />
+		<param name="ref_tailrank" type="list" default="1" label="Tailrank referrals" description="Show the message box to visitors that came from Tailrank.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_tailrank_msg" type="text" default="Welcome &lt;strong&gt;Tailrank&lt;/strong&gt; user!" label="Tailrank message" description="Set the message displayed to Tailrank visitors." />
+		<param name="ref_dzone" type="list" default="1" label="DZone referrals" description="Show the message box to visitors that came from DZone.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_dzone_msg" type="text" default="Welcome &lt;strong&gt;DZone&lt;/strong&gt; user!" label="DZone message" description="Set the message displayed to DZone visitors." />
+		<param name="ref_furl" type="list" default="1" label="Furl referrals" description="Show the message box to visitors that came from Furl.net .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_furl_msg" type="text" default="Welcome &lt;strong&gt;Furl&lt;/strong&gt; user!" label="Furl message" description="Set the message displayed to Furl visitors." />
+		<param name="ref_sphinn" type="list" default="1" label="Sphinn referrals" description="Show the message box to visitors that came from Sphinn.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_sphinn_msg" type="text" default="Welcome &lt;strong&gt;Sphinn&lt;/strong&gt; user! Please sphinn this article." label="Sphinn message" description="Set the message displayed to Sphinn visitors." />
+		<param name="ref_sphinn_button" type="list" default="1" label="Enable Sphinn button" description="Show the Sphinn button to visitors from Sphinn.com">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_designfloat" type="list" default="1" label="Designfloat referrals" description="Show the message box to visitors that came from Designfloat.com .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_designfloat_msg" type="text" default="Welcome &lt;strong&gt;Designfloat&lt;/strong&gt; user! Do not forget to float this article if you like it."  label="Designfloat message" description="Set the message displayed to Designfloat visitors." />
+		<param name="ref_designfloat_button" type="list" default="1" label="Enable Designfloat button" description="Show the Designfloat button to visitors from Designfloat.com">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="ref_google" type="list" default="1" label="Google referrals" description="Show the message box to visitors that came from Google .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_google_msg" type="text" default="Welcome &lt;strong&gt;Google&lt;/strong&gt; user! Did you find what you were looking for? Have a nice stay." label="Google message" description="Set the message displayed to Google visitors." />
+		<param name="ref_live" type="list" default="1" label="Live referrals" description="Show the message box to visitors that came from Live .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_live_msg" type="text" default="Welcome &lt;strong&gt;Live&lt;/strong&gt; user! Did you find what you were looking for? Have a nice stay." label="Live message" description="Set the message displayed to Live visitors." />
+		<param name="ref_yahoo" type="list" default="1" label="Yahoo referrals" description="Show the message box to visitors that came from Yahoo .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_yahoo_msg" type="text" default="Welcome &lt;strong&gt;Yahoo&lt;/strong&gt; user! Did you find what you were looking for? Have a nice stay." label="Yahoo message" description="Set the message displayed to Yahoo visitors." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="ref_custom1" type="list" default="1" label="1. Enable custom referral" description="Show the message box to visitors that came from the custom website .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_custom1_url" type="text" default="marcofolio.net" label="1. Custom website URL" description="Set the URL of the custom website." />
+		<param name="ref_custom1_msg" type="text" default="Welcome &lt;strong&gt;Marcofolio.net&lt;/strong&gt; user! You are using the &lt;strong&gt;mfReferral&lt;/strong&gt; module." label="1. Custom website message" description="Set the message displayed to visitors from the custom website." />
+		<param name="ref_custom1_icon" type="text" default="marcofolio.png" label="1. Custom website icon" description="Set the icon of the custom website." />
+		<param name="ref_custom2" type="list" default="1" label="2. Enable custom referral" description="Show the message box to visitors that came from the custom website .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_custom2_url" type="text" default="feedburner.com" label="2. Custom website URL" description="Set the URL of the custom website." />
+		<param name="ref_custom2_msg" type="text" default="Welcome back RSS feed reader! I am sure you will like this new article." label="2. Custom website message" description="Set the message displayed to visitors from the custom website." />
+		<param name="ref_custom2_icon" type="text" default="rss.png" label="2. Custom website icon" description="Set the icon of the custom website." />
+		<param name="ref_custom3" type="list" default="1" label="3. Enable custom referral" description="Show the message box to visitors that came from the custom website .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_custom3_url" type="text" default="joomla.org" label="3. Custom website URL" description="Set the URL of the custom website." />
+		<param name="ref_custom3_msg" type="text" default="Welcome &lt;strong&gt;Joomla!.org&lt;/strong&gt; visitor. This is the &lt;strong&gt;mfReferral&lt;/strong&gt; module by Marcofolio.net." label="3. Custom website message" description="Set the message displayed to visitors from the custom website." />
+		<param name="ref_custom3_icon" type="text" default="joomla.png" label="3. Custom website icon" description="Set the icon of the custom website." />
+		<param name="ref_custom4" type="list" default="0" label="4. Enable custom referral" description="Show the message box to visitors that came from the custom website .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_custom4_url" type="text" default="" label="4. Custom website URL" description="Set the URL of the custom website." />
+		<param name="ref_custom4_msg" type="text" default="" label="3. Custom website message" description="Set the message displayed to visitors from the custom website." />
+		<param name="ref_custom4_icon" type="text" default="" label="4. Custom website icon" description="Set the icon of the custom website." />
+		<param name="ref_custom5" type="list" default="0" label="5. Enable custom referral" description="Show the message box to visitors that came from the custom website .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_custom5_url" type="text" default="" label="5. Custom website URL" description="Set the URL of the custom website." />
+		<param name="ref_custom5_msg" type="text" default="" label="3. Custom website message" description="Set the message displayed to visitors from the custom website." />
+		<param name="ref_custom5_icon" type="text" default="" label="5. Custom website icon" description="Set the icon of the custom website." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="ref_blogrush" type="list" default="1" label="Blogrush referrals" description="Show the message box to visitors that came from Blogrush .">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ref_blogrush_msg" type="text" default="Welcome &lt;strong&gt;Blogrush&lt;/strong&gt; user! Feel free to subscribe to my RSS feed if you liked this article." label="Blogrush message" description="Set the message displayed to Blogrush visitors." />
+	</params>
+</mosinstall>

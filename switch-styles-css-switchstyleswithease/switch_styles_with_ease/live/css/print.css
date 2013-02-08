@@ -1,0 +1,14 @@
+/* Print Styles */
+
+body, #related, #content-wrapper, #content a {padding:0; margin:0; background: none; color:#000}
+#switcher, #navigation, #related span, #footer {display: none;}
+#related {float:none; position:static; width:100%}
+#header img {position:static}
+#outer-wrap, #header, #content, #related, #dot-net-logo, #nomensa-logo {
+    background:none;
+    color: #000;
+    border:none;
+    float: none;
+    margin: 0;
+    padding: 0;
+    }

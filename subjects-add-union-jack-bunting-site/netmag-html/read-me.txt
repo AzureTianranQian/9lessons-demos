@@ -1,0 +1,218 @@
+===========================================
+HTML FOR THE BUNTING
+===========================================
+
+<!-- BEGIN UNION JACK BUNTING -->
+	<div id="union-jack-bunting">
+	<h1>
+	<span>C</span>
+	<span>e</span>
+	<span>l</span>
+	<span>e</span>
+	<span>b</span>
+	<span>r</span>
+	<span>a</span>
+	<span>t</span>
+	<span>i</span>
+	<span>n</span>
+	<span>g</span> 
+	<span>The Royal Wedding</span>
+	</h1>
+	</div>
+<!-- END UNION JACK BUNTING -->
+
+CSS FOR THE BUNTING
+===========================================
+#union-jack-bunting {
+	background: url("img/string.png") no-repeat scroll left top transparent;
+	height: 12px;
+	margin: 0;
+	padding: 0;
+	top: -3px;
+	width: 995px;
+	position:relative
+}
+
+#union-jack-bunting h1 {
+	position: absolute;
+	text-indent: -9999px;
+}
+
+#union-jack-bunting h1 span {
+	background: url("img/union-jack.png") no-repeat scroll left top transparent;
+	display: block;
+	height: 30px;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	width: 30px;
+	-moz-transform-origin :50% 0;
+	-webkit-transform-origin :50% 0;
+}
+
+
+#union-jack-bunting h1 span:nth-child(1) { 
+	-moz-transform: rotate(5deg);
+	-webkit-transform: rotate(5deg);
+	top: 3px;
+	left: 0;
+	}
+	
+#union-jack-bunting h1 span:nth-child(2) { 
+	-moz-transform: rotate(2deg);
+	-webkit-transform: rotate(2deg);
+    left: 80px;
+    top: 6px;
+	}
+	
+#union-jack-bunting h1 span:nth-child(3) { 	
+	-moz-transform: rotate(2deg);
+	-webkit-transform: rotate(2deg);
+	 left: 160px;
+	 top: 8px
+	}
+	
+#union-jack-bunting h1 span:nth-child(4) { 
+	-moz-transform: rotate(-2deg);
+	-webkit-transform: rotate(-2deg);
+    left: 240px;
+    top: 9px;
+	}
+	
+#union-jack-bunting h1 span:nth-child(5) { 	
+	-moz-transform: rotate(-2deg);
+	-webkit-transform: rotate(-2deg);
+    left: 320px;
+    top: 8px; 
+	}
+	
+#union-jack-bunting h1 span:nth-child(6) { 	
+	-moz-transform: rotate(-3deg);
+	-webkit-transform: rotate(-3deg);
+	left: 400px;
+	top: 6px;
+	}
+	
+#union-jack-bunting h1 span:nth-child(7) { 	
+	-moz-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+	top: 3px;left:480px; }
+	
+	
+#union-jack-bunting h1 span:nth-child(8) { 		
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	    left: 560px;
+	    top: 6px; }
+	
+#union-jack-bunting h1 span:nth-child(9) { 	
+	-moz-transform: rotate(1deg);
+	-webkit-transform: rotate(1deg);
+    left: 640px;
+    top: 8px;
+	}
+	
+#union-jack-bunting h1 span:nth-child(10) { 	
+	-moz-transform: rotate(-1deg);
+	-webkit-transform: rotate(-1deg);
+    left: 720px;
+    top: 9px; 
+	}
+	
+#union-jack-bunting h1 span:nth-child(11) { 	  
+	-moz-transform: rotate(-2deg);
+	-webkit-transform: rotate(-2deg);
+    left: 800px;
+    top: 8px; }
+
+#union-jack-bunting h1 span:nth-child(12),
+#union-jack-bunting h1 span:nth-child(13),
+#union-jack-bunting h1 span:nth-child(14),
+#union-jack-bunting h1 span:nth-child(15),
+#union-jack-bunting h1 span:nth-child(16),
+#union-jack-bunting h1 span:nth-child(17),
+#union-jack-bunting h1 span:nth-child(18),
+#union-jack-bunting h1 span:nth-child(19),
+#union-jack-bunting h1 span:nth-child(20) { display:none; }
+
+
+/**/
+
+#union-jack-bunting h1 span:nth-child(odd) {
+-webkit-animation : breeze-01 7s infinite; 	
+-webkit-animation-fill-mode : both; 
+-moz-animation : breeze-01 7s infinite; 	
+-moz-animation-fill-mode : both; 
+}
+
+#union-jack-bunting h1 span:nth-child(even) {
+-webkit-animation : breeze-02 7s infinite; 	
+-webkit-animation-fill-mode : both; 
+-moz-animation : breeze-02 7s infinite; 	
+-moz-animation-fill-mode : both; 
+}
+
+@-webkit-keyframes breeze-01 {
+ 0% {
+-webkit-transform : skew(0deg,0deg);
+-webkit-animation-timing-function : ease-out; }
+ 30% {
+-webkit-transform : skew(10deg,0deg);
+-webkit-animation-timing-function : ease-in; }
+ 60% {
+-webkit-transform : skew(-5deg,0deg);
+-webkit-animation-timing-function : ease-out; }
+ 100% {
+-webkit-transform : skew(0deg,0deg);
+-webkit-animation-timing-function : ease-in; }
+ }
+
+@-webkit-keyframes breeze-02 {
+ 0% {
+-webkit-transform : skew(0deg,0deg); }
+ 10% {
+-webkit-transform : skew(0deg,0deg);
+-webkit-animation-timing-function : ease-out; }
+ 40% {
+-webkit-transform : skew(15deg,0deg);
+-webkit-animation-timing-function : ease-in; }
+ 70% {
+-webkit-transform : skew(-4deg,0deg);
+-webkit-animation-timing-function : ease-out; }
+ 100% {
+-webkit-transform : skew(0deg,0deg);
+-webkit-animation-timing-function : ease-in; }
+ }
+
+@-moz-keyframes breeze-01 {
+ 0% {
+-moz-transform : skew(0deg,0deg);
+-moz-animation-timing-function : ease-out; }
+ 30% {
+-moz-transform : skew(10deg,0deg);
+-moz-animation-timing-function : ease-in; }
+ 60% {
+-moz-transform : skew(-5deg,0deg);
+-moz-animation-timing-function : ease-out; }
+ 100% {
+-moz-transform : skew(0deg,0deg);
+-moz-animation-timing-function : ease-in; }
+ }
+
+@-moz-keyframes breeze-02 {
+ 0% {
+-moz-transform : skew(0deg,0deg); }
+ 10% {
+-moz-transform : skew(0deg,0deg);
+-moz-animation-timing-function : ease-out; }
+ 40% {
+-moz-transform : skew(15deg,0deg);
+-moz-animation-timing-function : ease-in; }
+ 70% {
+-moz-transform : skew(-4deg,0deg);
+-moz-animation-timing-function : ease-out; }
+ 100% {
+-moz-transform : skew(0deg,0deg);
+-moz-animation-timing-function : ease-in; }
+ }

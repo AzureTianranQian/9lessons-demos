@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>ZUI Site Riot</title>
+
+  <style media="screen">
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6em;
+      color: #333;
+    }
+  
+    #wrap {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 8px;
+    }
+  
+    hr {
+      border: none;
+      border-bottom: 1px solid #BBB;
+    }
+    
+    pre, code {
+      background: #F8F8F8;
+      font-family: Monaco, 'Courier New', Courier, monospace;
+      font-size: 12px;
+    }
+    
+    pre {
+      padding: 1.0em;
+      border: 1px solid #DDD;
+      white-space: pre-wrap;
+    }
+    
+    p code {
+      padding: 1px 2px;
+      border: 1px solid #DDD;
+    }
+    
+    .aside {
+      position: relative;
+    }
+    
+    .aside div {
+      font-size: 13px;
+      color: #666;
+    }
+    
+    .article {
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #DDD;
+    }
+    
+    img {
+      border: 1px solid #DDD;
+      display: block;
+      width: 100%;
+      max-width: 578px;
+    }
+    
+    a { color: blue; }
+    a:hover { color: red; }
+    
+    @media screen and (min-width: 970px) {
+      #wrap {
+        padding-right: 370px;
+      }
+      
+      .aside div {
+        position: absolute;
+        right: -340px;
+        width: 300px;
+      }
+      
+    }
+  </style>
+
+</head>
+<body>
+
+  <div id="wrap">
+    
+
+
+
+  <div id="content">
+    
+    <div class="article">
+    
+      <h1>Vanilla, my favorite flavor of JavaScript</h1>
+
+      <p>If you have been glancing over the code snippets for this tutorial, you may have noticed that jQuery old familiar&#8217;s <code>$</code> is nowhere to be found. Like most front-end developers, I came to learn JavaScript from first being introduced to jQuery. The jQuery framework was especially welcoming with its CSS familiarity and approachable syntax that enabled novices like myself to start playing around with the DOM.</p>
+
+<p>As I have come to learn more about jQuery, and therein JavaScript, I have tried to ween myself off of using JavaScript frameworks. There&#8217;s nothing inherently wrong with them. But leaving them for vanilla JavaScript has its advantages.</p>
+
+<ul>
+<li>
+<p><strong>Size</strong>: jQuery minified comes in at 30kb. Compare that to the 8kb of the tutorial script, uncompressed. That&#8217;s dead weight that can be easily lost.</p>
+</li>
+
+<li>
+<p><strong>Clarity</strong>: When you cut out using a framework, you can rely on other developers being better versed in reading your code. Frameworks, no matter how efficient their API, will always obfuscate the original functionality of JavaScript.</p>
+</li>
+
+<li>
+<p><strong>Progressive enhancement</strong>: The scripts employed in this tutorial are designed only for modern browsers that support CSS transforms. So we don&#8217;t have to worry about building in support for older browsers.</p>
+</li>
+
+<li>
+<p><strong>Modern browser capabilities</strong>: Prior to the rise of frameworks like jQuery, trying to hook in to any element on the page was tedious, messy, and especially frustrating. jQuery made a huge leap forward with its selector engine. Since then, browser vendors have clued and built this functionality straight into their own browsers. <code>querySelectorAll</code> gives you the easy selection without having to go through a browser.</p>
+</li>
+</ul>
+
+<p>If you are targeting modern browsers and your project is a smaller one, consider using plain ol&#8217; vanilla JavaScript. You&#8217;ll learn more about the language and also come to appreciate what the frameworks have to offer.</p>
+    </div>
+
+
+    </div> <!-- #content -->
+    
+  </div> <!-- #wrap -->
+
+
+</body>
+</html>

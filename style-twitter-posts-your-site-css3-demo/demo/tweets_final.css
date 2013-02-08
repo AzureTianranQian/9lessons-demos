@@ -1,0 +1,81 @@
+/* CSS developed by Zoe Mickley Gillenwater, zomigi.com, twitter.com/zomigi */
+
+body {
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+a {
+	color: #3B6F5A;
+}
+.date {
+	display: block;
+	margin-top: .3em;
+	color: #0C5087;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 80%;
+}
+#tweets {
+	width: 280px;
+	margin: 0 auto;
+	padding: 0 0 1px 0;
+	-moz-border-radius: 0 20px 0 0;
+	-webkit-border-top-right-radius: 20px;
+	border-radius: 0 20px 0 0;
+	background: #D8F7E5;
+	background-image: -moz-linear-gradient(#D8F7E5,#FFFFFF); /* Mozilla */
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#D8F7E5), to(#FFFFFF)); /* Current Webkit */
+	background-image: -webkit-linear-gradient(#D8F7E5,#FFFFFF); /* Future Webkit */
+	background-image: linear-gradient(#D8F7E5,#FFFFFF); /* W3C standard for future browsers */
+}
+h2 {
+	position: relative; /* to fix cut off content due to negative margin in IE 6, and to form reference point for positioning of generated content */
+	zoom: 1; /* to fix cut off content due to negative margin in IE 6 */
+	margin: 0 0 0 -50px;
+	padding: 10px 20px 12px 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	background: #048753;
+	color: #fff;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 140%;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+h2:after { /* triangle tail */
+	content: "";
+	position: absolute;
+	bottom: -20px;
+	left: 30px;
+	width: 0;
+	height: 0;
+	border-width: 10px;
+	border-style: solid;
+	border-color: #048753 #048753 transparent transparent;
+}
+ol {
+	margin: 20px;
+	padding: 0;
+	list-style: none;
+}
+li {
+	margin: 0 0 1em 0;
+}
+li:nth-child(n) { /* all */
+	font-size: 88%;
+	color: #666;
+}
+li:nth-child(-n+5) { /* top 5 */
+	font-size: 110%;
+	color: #4F4F4F;
+}
+li:nth-child(-n+3) { /* top 3 */
+	font-size: 125%;
+	color: #333;
+}
+li:nth-child(1) { /* first */
+	font-size: 150%;
+	color: #000;
+}

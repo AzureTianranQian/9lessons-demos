@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+
+    <!-- This is our default style-sheet, it is Persistent and always enabled, it holds default values and the default layout styles -->
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+
+    <!-- This is our Preferred style-sheet, it is enabled when the page is loaded -->
+    <link rel="stylesheet" title="default" type="text/css" href="css/light.css"/>
+
+    <!-- This is our Alternate style-sheets for the relaxed/light layout, they overided the Preferred style-sheets.
+         Note: They are grouped using the title attribute -->
+    <link rel="alternate stylesheet" title="relaxed light" type="text/css" href="css/light.css"/>
+    <link rel="alternate stylesheet" title="relaxed light" type="text/css" href="css/relaxed.css"/>
+
+    <!-- This is our dark Alternate style-sheet, only one required as with the default because we only need to apply colour -->
+    <link rel="alternate stylesheet" title="dark" type="text/css" href="css/dark.css"/>
+
+    <!-- And finally, our Alternate style-sheets for the relaxed/dark layout, grouped again using the title attribute. -->
+    <link rel="alternate stylesheet" title="relaxed dark" type="text/css" href="css/dark.css"/>
+    <link rel="alternate stylesheet" title="relaxed dark" type="text/css" href="css/relaxed.css"/>
+
+    <!--[if lte IE 6]>
+     <link rel="stylesheet" type="text/css" href="css/ie.css" />
+    <![endif]-->
+
+    <!-- Sorry about the IE6 style-sheet, the really bad news is that the will need 2, one for each layout variant, it's good practice though as you will quite likely need to do this for your site, maybe even IE7 as well. Look in the live folder to a way to implemente it. -->
+
+    <link rel="stylesheet" media="print" type="text/css" href="css/print.css"/>
+    <title>.net style-switcher - provided by Nomensa</title>
+  </head>
+  <body>
+
+    <div id="outer-wrap">
+
+      <div id="header">
+        <div id="switcher">
+          <p>Display preference:</p>
+          <!-- These are the switcher controls, note that the images are applied as background images and the text is removed off screen by text-indent within the CSS, there are many ways to skin a cat so feel free to experiment with your control and interface. -->
+          <ul>
+            <li class="default"><strong title="Light with default layout">Light colours with the default layout.</strong></li>
+            <li class="relaxed-light"><a href="#" title="Light with relaxed layout">Light colours with a relaxed layout.</a></li>
+            <li class="dark"><a href="#" title="Dark with default layout">Dark colours with the default layout</a></li>
+            <li class="relaxed-dark"><a href="#" title="Dark with relaxed layout">Dark colours with a relaxed layout</a></li>
+          </ul>
+        </div>
+
+        <a href="http://www.netmag.co.uk/" id="dot-net-logo">
+          <img src="images/common/dot-net_logo.gif" alt=".net magazine" /> 
+        </a>
+
+        <a href="http://www.nomensa.com/" id="nomensa-logo">
+          <img src="images/common/nomensa_logo.gif" alt="Nomensa" /><!-- Print logo, the switcher uses the nomensa-logo link to display the different versions of the nomensa logo. -->
+        </a>
+      </div><!-- end header -->
+
+
+      <div id="navigation">
+      <h2 class="rm">Main Menu</h2>
+       <ul>
+         <li><strong>home</strong></li>
+         <li><a href="http://www.nomensa.com/contact.html">contact nomensa</a></li>
+       </ul>
+      </div><!-- end navigation -->
+
+        <div id="content-wrapper">
+          <div id="content">
+
+            <h1><span class="dot">.</span>net style switcher <span class="text-small">provided by <a href="http://www.nomensa.com/">Nomensa</a></span></h1>
+
+            <p>.net has commissioned Nomensa to provide expert opinion about creating a style-switcher for a website, in the form of a tutorial for its readers. In issue 177 of <a href="http://www.netmag.co.uk/">.net magazine</a> you will find the expert opinion from one of Nomensa's web accessibility experts, Mark Napthine. Mark provides you with the reasons and benefits of having a style-switcher implemented onto your website, and the knowledge on how to create a simple style-switcher yourself (this working example has even provided for you!)</p>
+
+            <h2>About Nomensa</h2>
+
+            <p>Nomensa are the digital design consultancy specialising in <a href="http://www.nomensa.com/usability.html">web usability</a> and <a href="http://www.nomensa.com/accessibility.html">web accessibility</a>. We dramatically increase our clients' performance in digital channels through customer-focused research and design. And the results?.....Our recommendations have helped our clients more than double website page impressions, triple website registrations, double sales conversions and triple website revenue.</p>
+
+            <h2>How Nomensa can help</h2>
+            <p>Although simple code snippets have been provided as part of the .net tutorial, we understand that creating a bespoke style-switcher can still be a daunting task, or simply a task that your web team does not have time to execute. Therefore, if you would like to discuss Nomensa helping you to implement a style-switcher onto your website, contact Caroline Risk today at <a href="mailto:crisk@nomensa.com">crisk@nomensa.com</a> or 0117 929 7333.</p>
+
+          </div><!-- end content -->
+
+          <div id="related">
+            <h2 class="rm">Related Information</h2>
+            <img src="images/common/net-mag.jpg" alt="The latest cover of .net magazine" />
+            <span><a href="http://www.netmag.co.uk/">.net magazine</a> | <a href="http://www.netmag.co.uk/zine/latest-issue/issue-177">latest issue</a></span>
+            <h3>Issue 177</h3>
+            <p>.net issue 177 is now on sale! Discover how to build a style switcher.</p>
+            <br class="cl"/>
+          </div><!-- end related -->
+
+        </div><!-- end content-wrapper -->
+
+      <br class="cl"/>
+
+      <div id="footer">
+        <ul>
+          <li>Tel. +44 (0)117 929 7333 |</li>
+          <li><a href="mailto:contact@nomensa.com">contact@nomensa.com</a> |</li>
+          <li>&copy; <a href="http://www.nomensa.com/">Nomensa</a> 2008</li>
+        </ul>
+      </div><!-- end footer -->
+
+    </div><!-- end outer-wrap -->
+  </body>
+</html>

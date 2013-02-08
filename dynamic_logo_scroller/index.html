@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Dynamic Flash Logo Scroller with Links</title>
+<script type="text/javascript" src="swfobject.js"></script>
+<style type="text/css">
+	
+	body {
+		background-color: #eeeeee;
+		font: .8em/1.3em verdana,arial,helvetica,sans-serif;
+	}
+
+	#flashcontent {
+		border: solid 1px #000;
+		width: 173px;
+		height: 265px;
+		margin: 15px 20px;
+	}
+
+</style>
+</head>
+<body>
+<p><strong>Hi!</strong> This is a demo page from <a href="http://www.marcofolio.net/" title="Marcofolio.net" target="_blank">Marcofolio.net</a>.</p>
+<p>This demo belongs to <a href="http://www.marcofolio.net/actionscript/dynamic_flash_logo_scroller_with_links.html" title="Dynamic Flash Logo Scroller with Links">Dynamic Flash Logo Scroller with Links</a>.</p>
+<hr />
+	<div id="flashcontent">
+		<strong>You need to upgrade your Flash Player</strong>
+		This is replaced by the Flash content.	</div>
+
+	<script type="text/javascript">
+		// <![CDATA[
+		
+		var so = new SWFObject("logoReelDynamic.swf", "Dynamic Logo Reel", "173", "265", "8", "#FFFFFF");
+		so.addVariable("target", "_self"); 
+		so.write("flashcontent");
+		
+		// ]]>
+	</script>
+<hr />
+<p><em>Using this techinque, you can easily add logo's to the scroller. With the right configuration (read the article), you can link the logo to a site. This technique combines the power of XML, PHP and ActionScript.</em></p>
+<p>Go to <a href="http://www.marcofolio.net/actionscript/dynamic_flash_logo_scroller_with_links.html" title="Dynamic Flash Logo Scroller with Links">the article</a> and download the source to implement it on your website.</p>
+</body>
+</html>

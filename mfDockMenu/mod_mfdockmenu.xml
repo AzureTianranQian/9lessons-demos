@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="module" version="1.0.5">
+	<name>mfDockMenu</name>
+	<version>1.0</version>
+	<creationDate>2008</creationDate>
+	<author>Marcofolio.net</author>
+	<authorEmail>contact@marcofolio.net</authorEmail>
+	<authorUrl>http://www.marcofolio.net/</authorUrl>
+	<copyright>(C) Marcofolio.net</copyright>
+	<license>CC Attribution-Share Alike 3.0 Unported</license>
+	<description><![CDATA[<div style="font-size:12px ;width:500px; font-weight:none">
+	<p>With <strong>mfDockMenu</strong>, you can create a beautiful fish eye menu just like on Mac computers.</p>
+	<h2>Change template</h2>
+	<p>Before you try out mfDockMenu, make sure you've added the following lines in the <code>&lt;head&gt;</code> section of your template. To do so, connect with your FTP and browse to your templates folder. Select your current template and edit the "index.php" file. Search for <code>&lt;head&gt;</code> and add the following lines direct after it:</p>
+	<p><code>&lt;script type=&quot;text/javascript&quot; src=&quot;modules/mod_mfdockmenu/js/jquery.js&quot;&gt;&lt;/script&gt;<br/>
+	&lt;script type=&quot;text/javascript&quot; src=&quot;modules/mod_mfdockmenu/js/interface.js&quot;&gt;&lt;/script&gt;<br/>
+	&lt;link href=&quot;modules/mod_mfdockmenu/style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;<br/>
+	 &lt;!--[if lt IE 7]&gt;<br/>
+	&lt;style type=&quot;text/css&quot;&gt;<br/>
+	.dock img { behavior: url(modules/mod_mfdockmenu/iepngfix.htc) }<br/>
+	&lt;/style&gt;<br/>
+	&lt;![endif]–-&gt;</code>
+	<p>Now you're all ready to use your fisheye menu!</p>
+	<h2>Configuration</h2>
+	<p>You can change all parameters in the module configuration.</p>
+	<p>Take note that the base URL of the images always is: <code>modules/mod_mfdockmenu/images</code></p>
+	<h2>Support</h2>
+	<p>Please visit <a href="http://www.marcofolio.net/" title="Marcofolio.net" target="_blank">Marcofolio.net</a> and leave me a message.</p>
+	<p><em>Version 1.0, 2008</em></p>
+	<p><strong>Don't forget to publish this module!</strong></p>
+	<p>This module uses the great <a href="http://www.ndesign-studio.com/blog/design/css-dock-menu/"" title="CSS Dock Menu" target="_blank">CSS Dock Menu</a> from Ndesign-studio. It also uses jQuery that can conflict with other extensions.</p>
+	</div>]]></description>
+	<files>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu.php</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/index.html</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/images/index.html</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/images/blank.gif</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/images/calendar.png</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/images/dock-bg.gif</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/images/dock-bg2.gif</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/images/email.png</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/images/history.png</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/images/home.png</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/images/link.png</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/images/music.png</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/images/portfolio.png</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/images/rss2.png</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/images/rss.png</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/images/video.png</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/js/index.html</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/js/interface.js</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/js/jquery.js</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/iepngfix.htc</filename>
+	<filename module="mod_mfdockmenu">mod_mfdockmenu/style.css</filename>
+	</files>
+	<params>
+		<param name="nritems" type="text" default="10" label="Number of items" description="Set the number of items to display. Choose from 1 till 10." />
+		<param name="maxwidth" type="text" default="50" label="Maximum width (px)" description="Set the maximum width of the icons in pixels." />
+		<param name="itemwidth" type="text" default="40" label="Item width (px)" description="Set the item width of the icons in pixels." />
+		<param name="proximity" type="text" default="90" label="Proximity (px)" description="Set the proximity of the icons in pixels." />
+		<param name="menutype" type="radio" default="0" label="Menu type" description="Set the menu type. Stick to the top or the bottom.">
+			<option value="0">Top</option>
+			<option value="1">Bottom</option>
+		</param>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="item1name" type="text" default="Calendar" label="1st Name" description="Set the name of the 1st image icon." />
+		<param name="item1img" type="text" default="calendar.png" label="1st Image" description="Set the 1st image icon." />
+		<param name="item1url" type="text" default="http://calendar.google.com" label="1st URL" description="Set the 1st URL." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="item2name" type="text" default="Email" label="2nd Name" description="Set the name of the 2nd image icon." />
+		<param name="item2img" type="text" default="email.png" label="2nd Image" description="Set the 2nd image icon." />
+		<param name="item2url" type="text" default="http://mail.google.com" label="2nd URL" description="Set the 2nd URL." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="item3name" type="text" default="History" label="3rd Name" description="Set the name of the 3rd image icon." />
+		<param name="item3img" type="text" default="history.png" label="3rd Image" description="Set the 3rd image icon." />
+		<param name="item3url" type="text" default="http://archive.org/web/web.php" label="3rd URL" description="Set the 3rd URL." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="item4name" type="text" default="Home" label="4th Name" description="Set the name of the 4th image icon." />
+		<param name="item4img" type="text" default="home.png" label="4th Image" description="Set the 4th image icon." />
+		<param name="item4url" type="text" default="http://www.marcofolio.net" label="4th URL" description="Set the 4th URL." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="item5name" type="text" default="Link" label="5th Name" description="Set the name of the 5th image icon." />
+		<param name="item5img" type="text" default="link.png" label="5th Image" description="Set the 5th image icon." />
+		<param name="item5url" type="text" default="http://www.ndesign-studio.com/blog/design/css-dock-menu/" label="5th URL" description="Set the 5th URL." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="item6name" type="text" default="Music" label="6th Name" description="Set the name of the 6th image icon." />
+		<param name="item6img" type="text" default="music.png" label="6th Image" description="Set the 6th image icon." />
+		<param name="item6url" type="text" default="http://www.apple.com/itunes/" label="6th URL" description="Set the 6th URL." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="item7name" type="text" default="Portfolio" label="7th Name" description="Set the name of the 7th image icon." />
+		<param name="item7img" type="text" default="portfolio.png" label="7th Image" description="Set the 7th image icon." />
+		<param name="item7url" type="text" default="http://www.marcofolio.net/portfolio.html" label="7th URL" description="Set the 7th URL." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="item8name" type="text" default="RSS" label="8th Name" description="Set the name of the 8th image icon." />
+		<param name="item8img" type="text" default="rss2.png" label="8th Image" description="Set the 8th image icon." />
+		<param name="item8url" type="text" default="http://feeds.feedburner.com/marcofolio" label="8th URL" description="Set the 8th URL." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="item9name" type="text" default="RSS" label="9th Name" description="Set the name of the 9th image icon." />
+		<param name="item9img" type="text" default="rss.png" label="9th Image" description="Set the 9th image icon." />
+		<param name="item9url" type="text" default="http://feeds.feedburner.com/ndesign-studio" label="9th URL" description="Set the 9th URL." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="item10name" type="text" default="Video" label="10th Name" description="Set the name of the 10th image icon." />
+		<param name="item10img" type="text" default="video.png" label="10th Image" description="Set the 10th image icon." />
+		<param name="item10url" type="text" default="http://youtube.com/" label="10th URL" description="Set the 10th URL." />
+	</params>
+</mosinstall>

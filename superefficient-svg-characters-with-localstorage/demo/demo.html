@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>twiDAQ - localStorage + SVG Demo</title>
+    <meta name="description" content="twiDAQ - localStorage + SVG Demo">
+    <meta name="author" content="Jim Morrison; twiDAQ Ltd">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <script type="text/javascript" src="jquery.js"></script>
+    <style type="text/css">
+      body {
+        padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <script type="text/javascript">
+    
+    	/**
+    	 *	Our character description;
+    	 */
+    	var character 	= '';
+    
+    	/**
+    	 *	Make the opening request to gather the character info
+    	 *	---> Fired by the SVG object
+    	 */
+    	function load_character(){
+    		
+    		// Grab the trader from the form..
+    		var trader = $('#trader')[0].value;
+	    	// An AJAX request will grab the trader's data
+	    	$.ajax({
+				url: 'http://api.twidaq.com/1/trader/' + trader + '/show.json',
+				dataType: 'json',
+				success: function(data) {
+					if ( data && data.jim ){
+						character = data.jim;
+						build_character();
+					} else {
+						alert("The twitter user '" + trader + "' doesn't seem to be playing twiDAQ yet.\n\nTry: jimbomorrison, get_dave, henryeverett, zachdowd or tethra");
+					}
+				}
+			});
+    	};
+    	
+    	
+    	/**
+    	 *	Check localStorage for character details, load what's missing and then paint.
+    	 */
+    	function build_character(){
+    		
+    		// Stack for missing elements
+    		var missing = [];
+    		
+    		// Run through each sprite and establish whether it's missing.. 
+    		$.each(character.split(' '), function(i, sprite_id ){
+    			if ( !localStorage.getItem( sprite_id ) ){
+					// Record the missing sprite..
+					missing.push( sprite_id );
+				}
+    		});
+    		
+    		// If there are missing items fetch them, otherwise just paint.
+			if ( !missing.length ) {
+				
+				$('#debug').prepend('<li>All elements cached.');
+				// Great!
+				paint();
+				
+			} else {
+			
+				$('#debug').prepend('<li>Loading ' + missing.length + ' elements from API');
+				
+				// Fetch missing sprites..
+				$.ajax({
+					url: 'http://api.twidaq.com/1/jim/about/elements.json',
+					dataType: 'json',
+					data: {
+						parts: missing.join(','),
+					},
+					// Callback the build_character() method when we're done
+					success: function(data) {
+						$.each(data, function( sprite_id, sprite ){
+							// Store each sprite separately in local storage
+							localStorage.setItem( sprite_id, JSON.stringify( sprite ));
+						});
+						// and try again.
+						build_character();
+					}
+				});
+			}
+    		
+    	}
+    	
+    	/**
+    	 *	Paint the character..
+    	 */
+    	function paint(){
+    		
+    		svg = $('#mySVG')[0].contentDocument;
+    		
+       		// Iterate through our sprites and paint the character
+			$.each(character.split(' '), function( i, sprite_id ){
+			
+				if ( sprite = JSON.parse( localStorage.getItem( sprite_id ) ) ) {
+				
+					// Create our SVG object
+					var sprite_object	= xml_parser(
+						'<svg xmlns="http://www.w3.org/2000/svg"><g id="g-wrap">' 
+						+ sprite.svg + 
+						'</g></svg>'
+					);
+					
+					// Add it to the SVG DOM 'svg' we created earlier.
+					svg.getElementById('svg_root').appendChild( sprite_object.childNodes[0] );
+					
+					
+					/**
+					 *	Extra / Advanced
+					 *	----------------
+					 *	Fill the character to the size of the <object>
+					 */
+					 
+					bounding 	= svg.getElementById('svg_root').getBBox();
+					viewbox		= bounding.x + ' ' + (bounding.y - 5) + ' ' + bounding.width + ' ' + (bounding.height + 5);
+					svg.documentElement.setAttribute('viewBox', viewbox);
+					
+					
+				}
+				
+			});
+    		
+    	}
+    	
+    	
+    	/**
+    	 *	A Consistent XML Parser
+    	 */
+		xml_parser = (window['parseXML']) ? window.parseXML : function (s,doc) {
+			doc = doc || document;
+			if (window.DOMParser) {
+				parser=new DOMParser();
+				xmlDoc=parser.parseFromString(s,"text/xml");
+				return doc.adoptNode(xmlDoc.documentElement);
+			} else {
+				xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+				xmlDoc.async="false";
+				xmlDoc.loadXML(s);
+				return xmlDoc.documentElement;
+			}
+		};
+    	
+    </script>
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="content">
+        <div class="page-header">
+          <h1>localStorage + SVG <small>A twiDAQ Character Example</small></h1>
+        </div>
+        <div class="row">
+          <div class="span10">
+          	<p>SVG is scalable: <a href="#" onclick="$('#mySVG')[0].style.height = '500px';">Small Character</a> | <a href="#" onclick="$('#mySVG')[0].style.height = '1000px';">Big Character</a></p>
+            <!-- Our SVG Placeholder -->
+            <object id="mySVG" data="blank.svg" type="image/svg+xml" width="500" height="500"></object>
+          </div>
+          <div class="span4">
+            <h3>Controls</h3>
+            <div class="input">
+              <div class="input-prepend">
+                <span class="add-on">@</span>
+                <input class="medium" id="trader" name="prependedInput" size="16" type="text" value="jimbomorrison">
+              </div>
+              <span class="help-block">Enter a twiDAQ Trader handle</span>
+            </div>
+			<div class="actions" style="padding: 17px 20px 18px;">
+				<input type="submit" class="btn primary" value="Update" onclick="svg.location.reload();">
+				<button type="reset" class="btn" onclick="localStorage.clear();alert('localStorage Cleared');">Reset</button>
+			</div>
+            <h3>Debug Output</h3>
+            <ul id="debug"></ul>
+            <h3>Download</h3>
+            <a href="demo.zip">Download this Demo</a>
+            <p>Contains 4 files; .html, .css, .js & .svg</p>
+            <h3>What is twiDAQ?</h3>
+            <p>twiDAQ is a game - it's social stock exchange where you can buy &amp; sell shares in anyone on twitter.</p>
+            <p><a class="btn success">Play twiDAQ</a></p>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="pull-right">
+        	<script src="http://cdn.twidaq.com/static/widgets/widget-0.2.min.js"></script>
+			<script>twiDAQ_widget('apiDAQ');</script>
+        </div>
+        <p>
+        	&copy; twiDAQ Ltd 2012 | 
+        	<a href="http://play.twidaq.com/">Play twiDAQ</a> |
+        	<a href="http://twitter.com/apiDAQ">@apiDAQ</a> | 
+        	<a href="http://dev.twidaq.com/">Developers</a> | 
+        	<a href="http://dev.twidaq.com/console">Console</a> | 
+        	<a href="http://dev.twidaq.com/widgets">Widgets</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+  </body>
+</html>

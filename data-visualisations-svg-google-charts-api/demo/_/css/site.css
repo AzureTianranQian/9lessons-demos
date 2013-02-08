@@ -1,0 +1,30 @@
+body {
+	font-family: "Segoe UI", Segoe, Tahoma, Geneva, sans-serif;
+	padding: 40px;
+	background-color: #f9f9f9;
+}
+
+a,
+a:link {
+	color: #08C;
+}
+
+#chart_div,
+#tweet-table {
+	clear: left;
+	overflow: hidden;
+	margin-bottom: 40px;
+	width: 100%;
+}
+
+table {
+  max-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: transparent;
+}
+
+caption {
+	position: absolute;
+	left: -999em;
+}

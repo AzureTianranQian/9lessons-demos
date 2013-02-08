@@ -1,0 +1,2567 @@
+<!DOCTYPE html>
+<html>
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# githubog: http://ogp.me/ns/fb/githubog#">
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Notifications</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub" />
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144.png" />
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+
+    
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" name="csrf-token" />
+
+    <link href="https://a248.e.akamai.net/assets.github.com/assets/github-c651b396d6e3a820a98e60f68e772257db3e78e8.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="https://a248.e.akamai.net/assets.github.com/assets/github2-2c9bef6a2cc6cbce8135f5608a9d03ca084aa230.css" media="screen" rel="stylesheet" type="text/css" />
+    
+
+
+    <script src="https://a248.e.akamai.net/assets.github.com/assets/frameworks-cc4895cbb610429d2ce48e7c2392822c33db2dfe.js" type="text/javascript"></script>
+    <script src="https://a248.e.akamai.net/assets.github.com/assets/github-6999ac929da3ce8df3b286f06dba46d205a07b39.js" type="text/javascript"></script>
+    
+
+      <meta name="description" content="Build software better, together." />
+  </head>
+
+
+  <body class="logged_in  windows  env-production ">
+    <div id="wrapper">
+
+      
+
+      
+
+      
+
+
+        <div class="header header-logged-in true">
+          <div class="container clearfix">
+
+            <a class="header-logo-blacktocat" href="https://github.com/">
+  <span class="mega-icon mega-icon-blacktocat"></span>
+</a>
+
+            <div class="divider-vertical"></div>
+
+            
+  <a href="/notifications" class="notification-indicator tooltipped downwards" title="You have unread notifications">
+    <span class="mail-status unread"></span>
+  </a>
+  <div class="divider-vertical"></div>
+
+
+              
+  <div class="topsearch command-bar-activated">
+    <form accept-charset="UTF-8" action="/search" class="command_bar_form" id="top_search_form" method="get">
+  <a href="/search/advanced" class="advanced-search tooltipped downwards command-bar-search" id="advanced_search" title="Advanced search"><span class="mini-icon mini-icon-advanced-search "></span></a>
+
+  <input type="text" name="q" id="command-bar" placeholder="Search or type a command" tabindex="1" data-username="dineshkummarc" autocapitalize="off">
+
+  <span class="mini-icon help tooltipped downwards" title="Show command bar help">
+    <span class="mini-icon mini-icon-help"></span>
+  </span>
+
+  <input type="hidden" name="ref" value="commandbar">
+
+  <div class="divider-vertical"></div>
+</form>
+
+    <ul class="top-nav">
+        <li class="explore"><a href="https://github.com/explore">Explore</a></li>
+        <li><a href="https://gist.github.com">Gist</a></li>
+        <li><a href="/blog">Blog</a></li>
+      <li><a href="http://help.github.com">Help</a></li>
+    </ul>
+  </div>
+
+
+            
+
+  
+    <ul id="user-links">
+      <li>
+        <a href="https://github.com/dineshkummarc" class="name">
+          <img height="20" src="https://secure.gravatar.com/avatar/354d1583588a5b2efdea1785644ed1fd?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="20" /> dineshkummarc
+        </a>
+      </li>
+      <li>
+        <a href="/new" id="new_repo" class="tooltipped downwards" title="Create a new repo">
+          <span class="mini-icon mini-icon-create"></span>
+        </a>
+      </li>
+      <li>
+        <a href="/settings/profile" id="account_settings"
+          class="tooltipped downwards"
+          title="Account settings ">
+          <span class="mini-icon mini-icon-account-settings"></span>
+        </a>
+      </li>
+      <li>
+          <a href="/logout" data-method="post" id="logout" class="tooltipped downwards" title="Sign out">
+            <span class="mini-icon mini-icon-logout"></span>
+          </a>
+      </li>
+    </ul>
+
+
+
+            
+          </div>
+        </div>
+
+
+      
+
+      
+
+
+        <div class="site clearfix">
+          <div id="site-container" class="context-loader-container" data-pjax-container>
+            
+            
+
+<div class="container">
+  <div id="notification-center">
+    <div class="tabnav">
+      <div class="tabnav-right">
+          <div class="tabnav-widget">
+            <a href="#mark_as_read_confirm_box" class="button minibutton " rel="facebox">Mark everything as read</a>
+          </div>
+
+          <div id="mark_as_read_confirm_box" style="display:none">
+            <h2>Are you sure?</h2>
+            <p>Are you sure you want to mark all unread notifications as read?</p>
+
+            <form accept-charset="UTF-8" action="/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>
+              <input id="mark_by" name="mark_by" type="hidden" value="1357898593" />
+              <div class="full-button">
+                <button type="submit" class="button">Mark all notifications as read</button>
+              </div>
+</form>          </div>
+      </div>
+
+      <ul class="tabnav-tabs">
+        <li>
+          <a href="/notifications" class="selected tabnav-tab">Notifications</a>
+        </li>
+        <li>
+          <a href="/watching" class="tabnav-tab">Watched Repositories</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="listings-layout">
+
+      <div class="columns sidebar">
+        <ul class="filter-list js-pjax-active" data-pjax>
+          <li>
+            <a
+              href="/notifications"
+              class="filter-item selected"
+            >Unread <span class="count">175</span></a>
+          </li>
+          <li>
+            <a
+              href="/notifications/participating"
+              class="filter-item "
+            >Participating <span class="count">0</span></a>
+          </li>
+          <li>
+            <a
+              href="/notifications?all=1"
+              class="filter-item "
+            >All notifications</a>
+          </li>
+        </ul>
+
+          <div class="rule"></div>
+          <ul class="filter-list small">
+            <li>
+              <a href="/adobe/brackets/notifications"
+                 class="filter-item ">
+                <span class="count">38</span>
+                adobe/brackets
+              </a>
+            </li>
+            <li>
+              <a href="/zurb/foundation/notifications"
+                 class="filter-item ">
+                <span class="count">36</span>
+                zurb/foundation
+              </a>
+            </li>
+            <li>
+              <a href="/flowplayer/flowplayer/notifications"
+                 class="filter-item ">
+                <span class="count">22</span>
+                flowplayer/flowplayer
+              </a>
+            </li>
+            <li>
+              <a href="/EllisLab/CodeIgniter/notifications"
+                 class="filter-item ">
+                <span class="count">8</span>
+                EllisLab/CodeIgniter
+              </a>
+            </li>
+            <li>
+              <a href="/marijnh/CodeMirror/notifications"
+                 class="filter-item ">
+                <span class="count">7</span>
+                marijnh/CodeMirror
+              </a>
+            </li>
+            <li>
+              <a href="/openlayers/openlayers/notifications"
+                 class="filter-item ">
+                <span class="count">6</span>
+                openlayers/openlayers
+              </a>
+            </li>
+            <li>
+              <a href="/harvesthq/chosen/notifications"
+                 class="filter-item ">
+                <span class="count">6</span>
+                harvesthq/chosen
+              </a>
+            </li>
+            <li>
+              <a href="/CreateJS/EaselJS/notifications"
+                 class="filter-item ">
+                <span class="count">6</span>
+                CreateJS/EaselJS
+              </a>
+            </li>
+            <li>
+              <a href="/olton/Metro-UI-CSS/notifications"
+                 class="filter-item ">
+                <span class="count">4</span>
+                olton/Metro-UI-CSS
+              </a>
+            </li>
+            <li>
+              <a href="/remy/jsbin/notifications"
+                 class="filter-item ">
+                <span class="count">4</span>
+                remy/jsbin
+              </a>
+            </li>
+            <li>
+              <a href="/documentcloud/underscore/notifications"
+                 class="filter-item ">
+                <span class="count">4</span>
+                documentcloud/underscore
+              </a>
+            </li>
+            <li>
+              <a href="/jquery/jquery-ui/notifications"
+                 class="filter-item ">
+                <span class="count">3</span>
+                jquery/jquery-ui
+              </a>
+            </li>
+            <li>
+              <a href="/adobe/CodeMirror2/notifications"
+                 class="filter-item ">
+                <span class="count">3</span>
+                adobe/CodeMirror2
+              </a>
+            </li>
+            <li>
+              <a href="/BaiduFE/Tangram2/notifications"
+                 class="filter-item ">
+                <span class="count">3</span>
+                BaiduFE/Tangram2
+              </a>
+            </li>
+            <li>
+              <a href="/octocat/Spoon-Knife/notifications"
+                 class="filter-item ">
+                <span class="count">3</span>
+                octocat/Spoon-Knife
+              </a>
+            </li>
+            <li>
+              <a href="/BaiduFE/Magic/notifications"
+                 class="filter-item ">
+                <span class="count">2</span>
+                BaiduFE/Magic
+              </a>
+            </li>
+            <li>
+              <a href="/powmedia/backbone-deep-model/notifications"
+                 class="filter-item ">
+                <span class="count">2</span>
+                powmedia/backbone-deep-model
+              </a>
+            </li>
+            <li>
+              <a href="/facebook/hiphop-php/notifications"
+                 class="filter-item ">
+                <span class="count">2</span>
+                facebook/hiphop-php
+              </a>
+            </li>
+            <li>
+              <a href="/github/swordfish/notifications"
+                 class="filter-item ">
+                <span class="count">2</span>
+                github/swordfish
+              </a>
+            </li>
+            <li>
+              <a href="/twilio/twilio-php/notifications"
+                 class="filter-item ">
+                <span class="count">2</span>
+                twilio/twilio-php
+              </a>
+            </li>
+            <li>
+              <a href="/Craga89/qTip2/notifications"
+                 class="filter-item ">
+                <span class="count">2</span>
+                Craga89/qTip2
+              </a>
+            </li>
+            <li>
+              <a href="/twilio/twilio-csharp/notifications"
+                 class="filter-item ">
+                <span class="count">1</span>
+                twilio/twilio-csharp
+              </a>
+            </li>
+            <li>
+              <a href="/github/github-flavored-markdown/notifications"
+                 class="filter-item ">
+                <span class="count">1</span>
+                github/github-flavored-markdown
+              </a>
+            </li>
+            <li>
+              <a href="/freqdec/slabText/notifications"
+                 class="filter-item ">
+                <span class="count">1</span>
+                freqdec/slabText
+              </a>
+            </li>
+            <li>
+              <a href="/jplarson/PopUpWindow/notifications"
+                 class="filter-item ">
+                <span class="count">1</span>
+                jplarson/PopUpWindow
+              </a>
+            </li>
+            <li>
+              <a href="/github/gollum/notifications"
+                 class="filter-item ">
+                <span class="count">1</span>
+                github/gollum
+              </a>
+            </li>
+            <li>
+              <a href="/etsy/statsd/notifications"
+                 class="filter-item ">
+                <span class="count">1</span>
+                etsy/statsd
+              </a>
+            </li>
+            <li>
+              <a href="/openlayers/ol3/notifications"
+                 class="filter-item ">
+                <span class="count">1</span>
+                openlayers/ol3
+              </a>
+            </li>
+            <li>
+              <a href="/fontforge/fontforge/notifications"
+                 class="filter-item ">
+                <span class="count">1</span>
+                fontforge/fontforge
+              </a>
+            </li>
+            <li>
+              <a href="/lokesh/lightbox2/notifications"
+                 class="filter-item ">
+                <span class="count">1</span>
+                lokesh/lightbox2
+              </a>
+            </li>
+            <li>
+              <a href="/azatoth/twinkle/notifications"
+                 class="filter-item ">
+                <span class="count">1</span>
+                azatoth/twinkle
+              </a>
+            </li>
+          </ul>
+      </div><!-- /.columns.sidebar -->
+
+      <div class="columns main js-navigation-container js-active-navigation-container">
+        
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="backbone-deep-model">backbone-deep-model</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="920600" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">1</span>
+      <h3><a href="/powmedia/backbone-deep-model" class="css-truncate css-truncate-target" title="powmedia/backbone-deep-model">powmedia/backbone-deep-model</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>1</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/powmedia/backbone-deep-model/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 2 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="920600">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/powmedia/backbone-deep-model/notifications/mark?ids=920600" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=920600" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T10:02:37Z" title="2013-01-11 10:02:37">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="boxxxie, isochronous, and raDiesle"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/bfc366066e3c1beee98f3a6666728169?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/7bb7a63203f764eb00a5953137298390?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/9705dbc99a2863e7b9a589c08eb0ca9f?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/powmedia/backbone-deep-model/issues/11">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> structure not supported:can't convert undefined to object   options.unset ? delete result[field] : result[field] = val;
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/powmedia/backbone-deep-model/notifications">1 more notification for powmedia/backbone-deep-model</a></li>
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="foundation">foundation</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5929210" />
+            <input id="ids_" name="ids[]" type="hidden" value="5954996" />
+            <input id="ids_" name="ids[]" type="hidden" value="5940929" />
+            <input id="ids_" name="ids[]" type="hidden" value="5911766" />
+            <input id="ids_" name="ids[]" type="hidden" value="2878136" />
+            <input id="ids_" name="ids[]" type="hidden" value="5844489" />
+            <input id="ids_" name="ids[]" type="hidden" value="4479507" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">7</span>
+      <h3><a href="/zurb/foundation" class="css-truncate css-truncate-target" title="zurb/foundation">zurb/foundation</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>7</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/zurb/foundation/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 36 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="5929210">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/zurb/foundation/notifications/mark?ids=5929210" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5929210" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T02:01:08-08:00" title="2013-01-11 02:01:08">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="awshout, zurbchris, and mildfuzz"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/922ddde6f02dd9ac61b6312df248d2a7?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/2efc6e515cae9349b796b0a29730f63e?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/c534010006da1d80a2f43ba87b8bee40?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/zurb/foundation/pull/1372">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> Fix for the missing captions in Orbit
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5954996">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/zurb/foundation/notifications/mark?ids=5954996" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5954996" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T23:55:03-08:00" title="2013-01-10 23:55:03">January 10, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="stefl"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/0032225a93fc6c3244243689f034107a?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/zurb/foundation/issues/1378">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Suggestion: Documentation should include required javascript calls
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5940929">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/zurb/foundation/notifications/mark?ids=5940929" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5940929" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T07:43:22Z" title="2013-01-11 07:43:22">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="zurbchris and gavsiu"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/2efc6e515cae9349b796b0a29730f63e?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/ce6a12cbc444182b7744113204085b37?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/zurb/foundation/issues/1375">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> horizontal scrollbars appearing at around 778px for no apparent reason
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5911766">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/zurb/foundation/notifications/mark?ids=5911766" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5911766" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-09T23:55:21-08:00" title="2013-01-09 23:55:21">January 09, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="zurbchris and Spreeuw"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/2efc6e515cae9349b796b0a29730f63e?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/3e1c7a93b1a21e64b965c656550d4ccb?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/zurb/foundation/issues/1371">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Orbit showing empty first slide
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="2878136">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/zurb/foundation/notifications/mark?ids=2878136" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=2878136" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T20:03:01-08:00" title="2013-01-10 20:03:01">January 10, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="aemonge, charliegroll, and zurbchris"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/f135b4168014836afb242a1ee6576792?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/39cd96a37eb00654b74fa8161e34ab5b?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/2efc6e515cae9349b796b0a29730f63e?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/zurb/foundation/pull/943">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> Added the functionality to creat non-equilateral
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5844489">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/zurb/foundation/notifications/mark?ids=5844489" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5844489" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T17:21:12-08:00" title="2013-01-10 17:21:12">January 10, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="PressKeyWeb and mhayes"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/2c52b76a28394a72d92690b07aefd5e1?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/7ff6ba0b742c6066f7094de212e9efad?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/zurb/foundation/issues/1364">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Jquery included twice
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="4479507">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/zurb/foundation/notifications/mark?ids=4479507" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=4479507" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T17:21:11-08:00" title="2013-01-10 17:21:11">January 10, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="dmackerman, zurbchris, and jvivs"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/99f531ec83a4be7bd4f3337fcdceb5bf?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/2efc6e515cae9349b796b0a29730f63e?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/c4179ff3326d77af5ad352ebe8c48d37?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/zurb/foundation/pull/1207">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> Allow $fontSmoothing to be overridden
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/zurb/foundation/notifications">29 more notifications for zurb/foundation</a></li>
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="github-flavored-markdown">github-flavored-markdown</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="3917148" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">1</span>
+      <h3><a href="/github/github-flavored-markdown" class="css-truncate css-truncate-target" title="github/github-flavored-markdown">github/github-flavored-markdown</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>1</strong> notifications on this page marked as read.
+      </li>
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="3917148">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/github/github-flavored-markdown/notifications/mark?ids=3917148" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=3917148" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T09:56:51Z" title="2013-01-11 09:56:51">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="rschroll, zigorsalvador, and themiwi"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/be985e107f5024734748ee79caba61b7?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/7d29f84fae08addfc1bbed4052d6acc6?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/github/github-flavored-markdown/issues/69">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Bold  not recognized after | (pipe) symbol
+    </a>
+  </h4>
+</li>
+
+
+      
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="hiphop-php">hiphop-php</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5879855" />
+            <input id="ids_" name="ids[]" type="hidden" value="5954611" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">2</span>
+      <h3><a href="/facebook/hiphop-php" class="css-truncate css-truncate-target" title="facebook/hiphop-php">facebook/hiphop-php</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>2</strong> notifications on this page marked as read.
+      </li>
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5879855">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/facebook/hiphop-php/notifications/mark?ids=5879855" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5879855" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T09:55:59Z" title="2013-01-11 09:55:59">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="jackywei and rbakshi"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/55c2a0ed66a1b053bdbe72a0b287bb5d?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/be6e21da7f51068a99411a89ed613b89?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/facebook/hiphop-php/issues/661">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> cmake is failing [CentOS-6.2]
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5954611">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/facebook/hiphop-php/notifications/mark?ids=5954611" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5954611" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T23:29:27-08:00" title="2013-01-10 23:29:27">January 10, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="jackywei and anthonybishopric"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/55c2a0ed66a1b053bdbe72a0b287bb5d?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/eb86e177e45d86659dd7259ccf4e7f0c?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/facebook/hiphop-php/issues/662">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> CMake/FindTBB.cmake and TBB 4.1 seem incompatible
+    </a>
+  </h4>
+</li>
+
+
+      
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="jsbin">jsbin</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="2933102" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">1</span>
+      <h3><a href="/remy/jsbin" class="css-truncate css-truncate-target" title="remy/jsbin">remy/jsbin</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>1</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/remy/jsbin/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 4 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="2933102">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/remy/jsbin/notifications/mark?ids=2933102" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=2933102" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T09:55:33Z" title="2013-01-11 09:55:33">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="danactive, cetchells, and remy"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/c4bb3d9af2cc8907cbf6f34aaa330a19?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/48ee8333816f5ec801c11e79c9a12c3b?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/c8b387c489181844b3ffc704fadc0f14?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/remy/jsbin/issues/353">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Installing jsbin via NPM on Windows 7 x64
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/remy/jsbin/notifications">3 more notifications for remy/jsbin</a></li>
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="CodeMirror">CodeMirror</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5947309" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">1</span>
+      <h3><a href="/marijnh/CodeMirror" class="css-truncate css-truncate-target" title="marijnh/CodeMirror">marijnh/CodeMirror</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>1</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/marijnh/CodeMirror/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 7 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5947309">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/marijnh/CodeMirror/notifications/mark?ids=5947309" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5947309" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T01:47:06-08:00" title="2013-01-11 01:47:06">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="jasonsanjose and marijnh"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/4544d44dbacf43bf0fec172884bcafe2?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/f6a35c85d26694e26bb92ea4d4262c77?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/marijnh/CodeMirror/issues/1153">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> addLineWidget should synchronously update scrollTop
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/marijnh/CodeMirror/notifications">6 more notifications for marijnh/CodeMirror</a></li>
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="CodeMirror2">CodeMirror2</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5957354" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">1</span>
+      <h3><a href="/adobe/CodeMirror2" class="css-truncate css-truncate-target" title="adobe/CodeMirror2">adobe/CodeMirror2</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>1</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/adobe/CodeMirror2/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 3 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread commit-notification list-browser-item" data-note-id="5957354">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/adobe/CodeMirror2/notifications/mark?ids=5957354" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5957354" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T09:44:46Z" title="2013-01-11 09:44:46">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="jasonsanjose and marijnh"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/4544d44dbacf43bf0fec172884bcafe2?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/f6a35c85d26694e26bb92ea4d4262c77?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/adobe/CodeMirror2/commit/710ce8492c07d073eb48cb5e682cb72e56c43b51">
+      <span class="type-icon mini-icon mini-icon-commit" title="Commit"></span> Change addLineWidget to update scrollTop synchronously
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/adobe/CodeMirror2/notifications">2 more notifications for adobe/CodeMirror2</a></li>
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="openlayers">openlayers</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5956885" />
+            <input id="ids_" name="ids[]" type="hidden" value="5956079" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">2</span>
+      <h3><a href="/openlayers/openlayers" class="css-truncate css-truncate-target" title="openlayers/openlayers">openlayers/openlayers</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>2</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/openlayers/openlayers/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 6 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="5956885">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/openlayers/openlayers/notifications/mark?ids=5956885" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5956885" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T01:24:35-08:00" title="2013-01-11 01:24:35">January 11, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="fmgp"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/0e4b0237c7029114c9b4f249d0d98a75?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/openlayers/openlayers/pull/831">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> Update lib/OpenLayers/Format/SOSGetObservation.js
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="5956079">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/openlayers/openlayers/notifications/mark?ids=5956079" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5956079" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T00:51:16-08:00" title="2013-01-11 00:51:16">January 11, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="fmgp"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/0e4b0237c7029114c9b4f249d0d98a75?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/openlayers/openlayers/pull/830">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> Update lib/OpenLayers/Format/SOSGetObservation.js
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/openlayers/openlayers/notifications">4 more notifications for openlayers/openlayers</a></li>
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="jquery-ui">jquery-ui</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5791970" />
+            <input id="ids_" name="ids[]" type="hidden" value="5949632" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">2</span>
+      <h3><a href="/jquery/jquery-ui" class="css-truncate css-truncate-target" title="jquery/jquery-ui">jquery/jquery-ui</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>2</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/jquery/jquery-ui/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 3 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="5791970">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/jquery/jquery-ui/notifications/mark?ids=5791970" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5791970" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T09:23:44Z" title="2013-01-11 09:23:44">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="jzaefferer and andekande"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/a9d4d2558b560b0ef168ced0f6c5198c?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/2aba2e7c7fa50d750def5f4a70931112?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/jquery/jquery-ui/pull/881">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> Timepicker: input can be emptied
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="5949632">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/jquery/jquery-ui/notifications/mark?ids=5949632" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5949632" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T18:00:52-08:00" title="2013-01-10 18:00:52">January 10, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="mikesherov"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/a123410cfb9ea6510294a295bb548530?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/jquery/jquery-ui/pull/883">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> Tooltip: Avoid errors on mouseover of tooltips with parents that have no title attribute. This fixing a failing test with core 1.6, so no new test is required.
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/jquery/jquery-ui/notifications">1 more notification for jquery/jquery-ui</a></li>
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="Tangram2">Tangram2</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5956548" />
+            <input id="ids_" name="ids[]" type="hidden" value="5953790" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">2</span>
+      <h3><a href="/BaiduFE/Tangram2" class="css-truncate css-truncate-target" title="BaiduFE/Tangram2">BaiduFE/Tangram2</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>2</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/BaiduFE/Tangram2/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 3 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="5956548">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/BaiduFE/Tangram2/notifications/mark?ids=5956548" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5956548" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T01:11:43-08:00" title="2013-01-11 01:11:43">January 11, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="zhanghongyan"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/0c8ca8183f6df934626c598c065a117c?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/BaiduFE/Tangram2/pull/527">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> [Bugfix] 修改 post.js  GET为POST 
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="5953790">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/BaiduFE/Tangram2/notifications/mark?ids=5953790" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5953790" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T22:34:15-08:00" title="2013-01-10 22:34:15">January 10, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="huangfangrong and linlingyu"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/9ba9345936917450d09048103bf93fb8?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/aec4ec5979b53d3e9eaa5b9140fa9e81?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/BaiduFE/Tangram2/pull/526">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> [change]base.Class 暂时去掉ondispose事件，fire的时候加了个被析构的判断
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/BaiduFE/Tangram2/notifications">1 more notification for BaiduFE/Tangram2</a></li>
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="gollum">gollum</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5701704" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">1</span>
+      <h3><a href="/github/gollum" class="css-truncate css-truncate-target" title="github/gollum">github/gollum</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>1</strong> notifications on this page marked as read.
+      </li>
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5701704">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/github/gollum/notifications/mark?ids=5701704" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5701704" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T09:06:36Z" title="2013-01-11 09:06:36">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="Mottie, bootstraponline, and sindresorhus"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/9df80e51701bd6a791383150038d09e1?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/d36a92237c75c5337c17b60d90686bf9?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/github/gollum/issues/619">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Top Header Missing
+    </a>
+  </h4>
+</li>
+
+
+      
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="flowplayer">flowplayer</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5956351" />
+            <input id="ids_" name="ids[]" type="hidden" value="5774388" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">2</span>
+      <h3><a href="/flowplayer/flowplayer" class="css-truncate css-truncate-target" title="flowplayer/flowplayer">flowplayer/flowplayer</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>2</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/flowplayer/flowplayer/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 22 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5956351">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/flowplayer/flowplayer/notifications/mark?ids=5956351" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5956351" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T01:02:55-08:00" title="2013-01-11 01:02:55">January 11, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="artpolikarpov"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/648980a900c0a000dbca2fa1c9232cb9?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/flowplayer/flowplayer/issues/203">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Player overflows its block
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5774388">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/flowplayer/flowplayer/notifications/mark?ids=5774388" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5774388" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T03:47:11Z" title="2013-01-11 03:47:11">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="nnarhinen and jroachkilla"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/d02ebe57c3f95c5b86ece1a63759e43d?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/88429739229f2728bdeb386308c5bdad?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/flowplayer/flowplayer/issues/196">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> iPhone can't view more then one video
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/flowplayer/flowplayer/notifications">20 more notifications for flowplayer/flowplayer</a></li>
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="qTip2">qTip2</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5955921" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">1</span>
+      <h3><a href="/Craga89/qTip2" class="css-truncate css-truncate-target" title="Craga89/qTip2">Craga89/qTip2</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>1</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/Craga89/qTip2/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 2 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5955921">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/Craga89/qTip2/notifications/mark?ids=5955921" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5955921" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T00:43:57-08:00" title="2013-01-11 00:43:57">January 11, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="kirittanna"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/29164aa9d168a3e605d5e4a8d25c8fb4?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/Craga89/qTip2/issues/458">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> qtip2 dom removal
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/Craga89/qTip2/notifications">1 more notification for Craga89/qTip2</a></li>
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="brackets">brackets</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5954174" />
+            <input id="ids_" name="ids[]" type="hidden" value="5953936" />
+            <input id="ids_" name="ids[]" type="hidden" value="5624396" />
+            <input id="ids_" name="ids[]" type="hidden" value="5267389" />
+            <input id="ids_" name="ids[]" type="hidden" value="5811893" />
+            <input id="ids_" name="ids[]" type="hidden" value="1538132" />
+            <input id="ids_" name="ids[]" type="hidden" value="3025795" />
+            <input id="ids_" name="ids[]" type="hidden" value="3742941" />
+            <input id="ids_" name="ids[]" type="hidden" value="5450309" />
+            <input id="ids_" name="ids[]" type="hidden" value="5950677" />
+            <input id="ids_" name="ids[]" type="hidden" value="5908537" />
+            <input id="ids_" name="ids[]" type="hidden" value="5949608" />
+            <input id="ids_" name="ids[]" type="hidden" value="5894904" />
+            <input id="ids_" name="ids[]" type="hidden" value="5050729" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">14</span>
+      <h3><a href="/adobe/brackets" class="css-truncate css-truncate-target" title="adobe/brackets">adobe/brackets</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>14</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/adobe/brackets/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 38 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5954174">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/adobe/brackets/notifications/mark?ids=5954174" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5954174" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T23:00:00-08:00" title="2013-01-10 23:00:00">January 10, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="RaymondLim"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/5e78f1f6398b643b4e5269d2ab5e24c6?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/adobe/brackets/issues/2513">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Undoing &quot;Delete Line&quot; command does not restore the cursor position to the original location.
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5953936">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/adobe/brackets/notifications/mark?ids=5953936" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5953936" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T22:45:15-08:00" title="2013-01-10 22:45:15">January 10, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="RaymondLim"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/5e78f1f6398b643b4e5269d2ab5e24c6?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/adobe/brackets/issues/2512">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> &quot;Select Line&quot; command incorrectly extends selection to the next line if you keep running the command.
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5624396">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/adobe/brackets/notifications/mark?ids=5624396" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5624396" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T05:41:33Z" title="2013-01-11 05:41:33">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="ujjaval, redmunds, and pthiess"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/3749510f38d4bc5c9990db94cfdee68a?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/bc4dc1a1f8e56e53cb59dbe14bfe9649?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/8df24f7bbcd2eac86c533f32766affb4?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/adobe/brackets/issues/2455">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Intellisense issue while using Emmet plugin
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5267389">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/adobe/brackets/notifications/mark?ids=5267389" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5267389" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T05:39:01Z" title="2013-01-11 05:39:01">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="peterflynn, redmunds, and pthiess"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/f8b97ac818aaa02413fe4f96325acdfd?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/bc4dc1a1f8e56e53cb59dbe14bfe9649?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/8df24f7bbcd2eac86c533f32766affb4?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/adobe/brackets/issues/2353">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Brackets does not detect whether key has been handled or not
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5811893">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/adobe/brackets/notifications/mark?ids=5811893" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5811893" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T05:31:40Z" title="2013-01-11 05:31:40">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="peterflynn and pthiess"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/f8b97ac818aaa02413fe4f96325acdfd?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/8df24f7bbcd2eac86c533f32766affb4?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/adobe/brackets/issues/2482">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Need API for sending JS command to client with params
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="1538132">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/adobe/brackets/notifications/mark?ids=1538132" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=1538132" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T05:24:23Z" title="2013-01-11 05:24:23">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="jdiehl, peterflynn, and pthiess"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/f0944be5942239418dcd3743c554ce39?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/f8b97ac818aaa02413fe4f96325acdfd?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/8df24f7bbcd2eac86c533f32766affb4?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/adobe/brackets/issues/1324">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Auto-Identation and Switch Statements
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="3025795">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/adobe/brackets/notifications/mark?ids=3025795" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=3025795" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T05:22:08Z" title="2013-01-11 05:22:08">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="DennisKehrig, gruehle, and pthiess"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/9c3692686bd09f403ab230813d8e6578?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/5e07ebb4d920cc31e2128ed88b49c6cd?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/8df24f7bbcd2eac86c533f32766affb4?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/adobe/brackets/issues/1738">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Developer Tools window doesn't automatically open when an uncaught exception is thrown
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="3742941">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/adobe/brackets/notifications/mark?ids=3742941" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=3742941" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2012-10-27T21:32:22-07:00" title="2012-10-27 21:32:22">October 27, 2012</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="njx, peterflynn, and pthiess"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/6b448f9ed49b9b87ae5f86a97e4c0212?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/f8b97ac818aaa02413fe4f96325acdfd?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/8df24f7bbcd2eac86c533f32766affb4?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/adobe/brackets/issues/1974">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Search result appears at awkward position of the editor
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5450309">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/adobe/brackets/notifications/mark?ids=5450309" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5450309" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T05:19:17Z" title="2013-01-11 05:19:17">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="timburgess, njx, and pthiess"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/25b23a563f431329869ed61df3b5e978?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/6b448f9ed49b9b87ae5f86a97e4c0212?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/8df24f7bbcd2eac86c533f32766affb4?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/adobe/brackets/issues/2413">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Go to Line (Ctrl-L) places line of interest at bottom of window
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="5950677">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/adobe/brackets/notifications/mark?ids=5950677" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5950677" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T19:01:09-08:00" title="2013-01-10 19:01:09">January 10, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="RaymondLim"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/5e78f1f6398b643b4e5269d2ab5e24c6?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/adobe/brackets/pull/2511">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> Make HTML menus and shortcut handling conditional based on inBrowser flag.
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5908537">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/adobe/brackets/notifications/mark?ids=5908537" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5908537" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-09T20:25:01-08:00" title="2013-01-09 20:25:01">January 09, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="jasonsanjose and njx"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/4544d44dbacf43bf0fec172884bcafe2?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/6b448f9ed49b9b87ae5f86a97e4c0212?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/adobe/brackets/issues/2504">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> [cmv3] hscrollbar issues after decoupling from the host editor
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="5949608">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/adobe/brackets/notifications/mark?ids=5949608" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5949608" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T18:47:18-08:00" title="2013-01-10 18:47:18">January 10, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="njx"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/6b448f9ed49b9b87ae5f86a97e4c0212?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/adobe/brackets/pull/2510">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> [cmv3] Fixes for horizontal scrolling in inline editors
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="5894904">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/adobe/brackets/notifications/mark?ids=5894904" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5894904" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T02:17:48Z" title="2013-01-11 02:17:48">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="zoufahl, redmunds, and peterflynn"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/818a2adb699057864374170f277eb96a?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/bc4dc1a1f8e56e53cb59dbe14bfe9649?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/f8b97ac818aaa02413fe4f96325acdfd?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/adobe/brackets/pull/2498">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> CSS Code Hinting as new extension for Brackets
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="5050729">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/adobe/brackets/notifications/mark?ids=5050729" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5050729" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T17:44:05-08:00" title="2013-01-10 17:44:05">January 10, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="njx, pauldhunt, and ryanstewart"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/6b448f9ed49b9b87ae5f86a97e4c0212?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/87ca0781020c5b3b89ef8e8f40107f75?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/d520a16cfb6bfe143da32d08e41e3380?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/adobe/brackets/pull/2303">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> Updated to the latest release of Source Code Pro
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/adobe/brackets/notifications">24 more notifications for adobe/brackets</a></li>
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="Spoon-Knife">Spoon-Knife</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5953586" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">1</span>
+      <h3><a href="/octocat/Spoon-Knife" class="css-truncate css-truncate-target" title="octocat/Spoon-Knife">octocat/Spoon-Knife</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>1</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/octocat/Spoon-Knife/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 3 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="5953586">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/octocat/Spoon-Knife/notifications/mark?ids=5953586" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5953586" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T22:20:38-08:00" title="2013-01-10 22:20:38">January 10, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="kbacalso"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/e8410ffd38fce3e2b14fc2c470ae5ef3?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/octocat/Spoon-Knife/pull/646">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> New File
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/octocat/Spoon-Knife/notifications">2 more notifications for octocat/Spoon-Knife</a></li>
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="chosen">chosen</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5953499" />
+            <input id="ids_" name="ids[]" type="hidden" value="5952806" />
+            <input id="ids_" name="ids[]" type="hidden" value="1747848" />
+            <input id="ids_" name="ids[]" type="hidden" value="5613858" />
+            <input id="ids_" name="ids[]" type="hidden" value="5872387" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">5</span>
+      <h3><a href="/harvesthq/chosen" class="css-truncate css-truncate-target" title="harvesthq/chosen">harvesthq/chosen</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>5</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/harvesthq/chosen/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 6 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="5953499">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/harvesthq/chosen/notifications/mark?ids=5953499" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5953499" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T22:15:09-08:00" title="2013-01-10 22:15:09">January 10, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="noahsark769"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/9aa039c2905e866428760827bb29301e?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/harvesthq/chosen/pull/980">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> #979 - Calculate with with window.getComputedStyle rather than outerWidth
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5952806">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/harvesthq/chosen/notifications/mark?ids=5952806" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5952806" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T21:25:16-08:00" title="2013-01-10 21:25:16">January 10, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="noahsark769"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/9aa039c2905e866428760827bb29301e?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/harvesthq/chosen/issues/979">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Chosen container is marginally too long
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="1747848">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/harvesthq/chosen/notifications/mark?ids=1747848" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=1747848" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T04:30:13Z" title="2013-01-11 04:30:13">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="neokio, sfinch1, and markovuksanovic"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/05755c1e63536dfe8e985588c36ce7af?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/b90274da7c63bc0e67eab8f65d216543?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/9df3da994139c4dc56900b170d8824a6?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/harvesthq/chosen/issues/488">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Handling of disabled options
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5613858">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/harvesthq/chosen/notifications/mark?ids=5613858" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5613858" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T20:10:49-08:00" title="2013-01-10 20:10:49">January 10, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="shijistar1 and maikeldaloo"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/d609d77ed6ab0d7093c48288c7721b06?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/0e5556ba62a80de89a26f95a919f4e38?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/harvesthq/chosen/issues/960">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Not friendly for responsive design
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5872387">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/harvesthq/chosen/notifications/mark?ids=5872387" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5872387" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T17:10:11-08:00" title="2013-01-10 17:10:11">January 10, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="ozgr"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/6417e0cd61d020ff71400a0c362cb353?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/harvesthq/chosen/issues/976">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Help For Multi Language Support
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/harvesthq/chosen/notifications">1 more notification for harvesthq/chosen</a></li>
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="Magic">Magic</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5953120" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">1</span>
+      <h3><a href="/BaiduFE/Magic" class="css-truncate css-truncate-target" title="BaiduFE/Magic">BaiduFE/Magic</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>1</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/BaiduFE/Magic/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 2 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread pull-request-notification list-browser-item" data-note-id="5953120">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/BaiduFE/Magic/notifications/mark?ids=5953120" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5953120" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T21:50:03-08:00" title="2013-01-10 21:50:03">January 10, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="jianling"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/2f83f4e3d0707dd6ab28ecc97adab48c?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/BaiduFE/Magic/pull/234">
+      <span class="type-icon mini-icon mini-icon-pull-request" title="PullRequest"></span> 修复ie6下的bug，修改测试工具
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/BaiduFE/Magic/notifications">1 more notification for BaiduFE/Magic</a></li>
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="twilio-php">twilio-php</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5949939" />
+            <input id="ids_" name="ids[]" type="hidden" value="3173210" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">2</span>
+      <h3><a href="/twilio/twilio-php" class="css-truncate css-truncate-target" title="twilio/twilio-php">twilio/twilio-php</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>2</strong> notifications on this page marked as read.
+      </li>
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5949939">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/twilio/twilio-php/notifications/mark?ids=5949939" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5949939" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T21:00:39-08:00" title="2013-01-10 21:00:39">January 10, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="kevinburke and kyleconroy"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/da41894a3b7f4d5bb5e25aad4944b4be?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/75365de510ccfd8156dcb6a5773c9af1?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/twilio/twilio-php/issues/113">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Camelize parameter names
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="3173210">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/twilio/twilio-php/notifications/mark?ids=3173210" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=3173210" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T02:19:19Z" title="2013-01-11 02:19:19">January 11, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="kevinburke"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/da41894a3b7f4d5bb5e25aad4944b4be?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/twilio/twilio-php/issues/92">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Cannot update ShortCode properties
+    </a>
+  </h4>
+</li>
+
+
+      
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="Metro-UI-CSS">Metro-UI-CSS</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5477553" />
+            <input id="ids_" name="ids[]" type="hidden" value="5917453" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">2</span>
+      <h3><a href="/olton/Metro-UI-CSS" class="css-truncate css-truncate-target" title="olton/Metro-UI-CSS">olton/Metro-UI-CSS</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>2</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/olton/Metro-UI-CSS/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 4 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5477553">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/olton/Metro-UI-CSS/notifications/mark?ids=5477553" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5477553" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T03:58:57Z" title="2013-01-11 03:58:57">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="aydev, luizfernandoro, and samarthagarwal"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/4ba173be4cbe4175519ba8193f593e40?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/6c3e1d1e8c78268c46978a74fd77cf66?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/d513cec6bc7299c27db3cb6b8f9c2590?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/olton/Metro-UI-CSS/issues/71">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> ASP.NET Component
+    </a>
+  </h4>
+</li>
+
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5917453">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/olton/Metro-UI-CSS/notifications/mark?ids=5917453" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5917453" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-11T02:37:30Z" title="2013-01-11 02:37:30">January 11, 2013</time></li>
+    <li class="avatar-stack multiple-avatars commenters tooltipped" title="olton and samarthagarwal"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/75d0f7104baad47ed0e96649b905d9bf?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/d513cec6bc7299c27db3cb6b8f9c2590?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/olton/Metro-UI-CSS/issues/90">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Carousel Not Working
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/olton/Metro-UI-CSS/notifications">2 more notifications for olton/Metro-UI-CSS</a></li>
+    </ul>
+  </div>
+  <div class="js-notifications-browser chromed-list-browser">
+    <div class="list-browser-filterbar">
+
+      <form accept-charset="UTF-8" action="/notifications/mark" class="js-mark-visible-as-read" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>        <div>
+          <button class="minibutton mark-all-as-read css-truncate">
+            Mark <span class="css-truncate-target" title="underscore">underscore</span> notifications as read
+          </button>
+            <input id="ids_" name="ids[]" type="hidden" value="5948494" />
+        </div>
+</form>
+      <span class="unread-count js-notifications-unreadcount">1</span>
+      <h3><a href="/documentcloud/underscore" class="css-truncate css-truncate-target" title="documentcloud/underscore">documentcloud/underscore</a></h3>
+    </div>
+    <ul class="notifications">
+      <li class="confirmation js-mark-as-read-confirmation" style="display:none">
+        <strong>1</strong> notifications on this page marked as read.
+          <br />
+
+          <form accept-charset="UTF-8" action="/documentcloud/underscore/notifications/mark" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="kJgakOdpfMuPNQYShUbTPTrunKOZcAS5j495eAKiU7g=" /></div>            <button class="minibutton">
+              Mark all 4 notifications as read?
+            </button>
+            <input id="mark_by" name="mark_by" type="hidden" value="1357898558" />
+</form>      </li>
+        <li class="js-notification js-navigation-item unread issue-notification list-browser-item" data-note-id="5948494">
+  <ul class="notification-actions">
+    <li class="delete">
+      <form class="js-delete-notification" action="/documentcloud/underscore/notifications/mark?ids=5948494" data-remote method="post">
+        <button class="delete-note mini-icon mini-icon-remove-close" title="Mark as read"></button>
+      </form>
+    </li>
+    <li class="mute">
+      <form class="js-mute-notification" action="/notifications/mute?id=5948494" data-remote method="post">
+        <button class="mute-note mini-icon mini-icon-mute" title="Mute this thread"></button>
+      </form>
+    </li>
+    <li class="age"><time class="js-relative-date" datetime="2013-01-10T17:25:15-08:00" title="2013-01-10 17:25:15">January 10, 2013</time></li>
+    <li class="avatar-stack  commenters tooltipped" title="domenic"><img class="avatar from-avatar" height="39" src="https://secure.gravatar.com/avatar/c6d819207a3010b39d13e1f59f2c0029?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="39" /></li>
+  </ul>
+
+  <h4>
+    <a class="js-notification-target" href="https://github.com/documentcloud/underscore/issues/936">
+      <span class="type-icon mini-icon mini-icon-issue-opened" title="Issue"></span> Proposal: whereFirst
+    </a>
+  </h4>
+</li>
+
+
+      <li class="js-navigation-item view-more clearfix"><a href="/documentcloud/underscore/notifications">3 more notifications for documentcloud/underscore</a></li>
+    </ul>
+  </div>
+
+      </div><!-- /.columns.main -->
+    </div>
+  </div>
+</div>
+
+          </div>
+          <div class="context-overlay"></div>
+        </div>
+      <div id="footer-push"></div><!-- hack for sticky footer -->
+    </div><!-- end of wrapper - hack for sticky footer -->
+
+      <!-- footer -->
+      <div id="footer">
+  <div class="container clearfix">
+
+      <dl class="footer_nav">
+        <dt>GitHub</dt>
+        <dd><a href="https://github.com/about">About us</a></dd>
+        <dd><a href="https://github.com/blog">Blog</a></dd>
+        <dd><a href="https://github.com/contact">Contact &amp; support</a></dd>
+        <dd><a href="http://enterprise.github.com/">GitHub Enterprise</a></dd>
+        <dd><a href="http://status.github.com/">Site status</a></dd>
+      </dl>
+
+      <dl class="footer_nav">
+        <dt>Applications</dt>
+        <dd><a href="http://mac.github.com/">GitHub for Mac</a></dd>
+        <dd><a href="http://windows.github.com/">GitHub for Windows</a></dd>
+        <dd><a href="http://eclipse.github.com/">GitHub for Eclipse</a></dd>
+        <dd><a href="http://mobile.github.com/">GitHub mobile apps</a></dd>
+      </dl>
+
+      <dl class="footer_nav">
+        <dt>Services</dt>
+        <dd><a href="http://get.gaug.es/">Gauges: Web analytics</a></dd>
+        <dd><a href="http://speakerdeck.com">Speaker Deck: Presentations</a></dd>
+        <dd><a href="https://gist.github.com">Gist: Code snippets</a></dd>
+        <dd><a href="http://jobs.github.com/">Job board</a></dd>
+      </dl>
+
+      <dl class="footer_nav">
+        <dt>Documentation</dt>
+        <dd><a href="http://help.github.com/">GitHub Help</a></dd>
+        <dd><a href="http://developer.github.com/">Developer API</a></dd>
+        <dd><a href="http://github.github.com/github-flavored-markdown/">GitHub Flavored Markdown</a></dd>
+        <dd><a href="http://pages.github.com/">GitHub Pages</a></dd>
+      </dl>
+
+      <dl class="footer_nav">
+        <dt>More</dt>
+        <dd><a href="http://training.github.com/">Training</a></dd>
+        <dd><a href="https://github.com/edu">Students &amp; teachers</a></dd>
+        <dd><a href="http://shop.github.com">The Shop</a></dd>
+        <dd><a href="/plans">Plans &amp; pricing</a></dd>
+        <dd><a href="http://octodex.github.com/">The Octodex</a></dd>
+      </dl>
+
+      <hr class="footer-divider">
+
+
+    <p class="right">&copy; 2013 <span title="0.23099s from fe18.rs.github.com">GitHub</span> Inc. All rights reserved.</p>
+    <a class="left" href="https://github.com/">
+      <span class="mega-icon mega-icon-invertocat"></span>
+    </a>
+    <ul id="legal">
+        <li><a href="https://github.com/site/terms">Terms of Service</a></li>
+        <li><a href="https://github.com/site/privacy">Privacy</a></li>
+        <li><a href="https://github.com/security">Security</a></li>
+    </ul>
+
+  </div><!-- /.container -->
+
+</div><!-- /.#footer -->
+
+
+    
+
+    
+
+<div id="keyboard_shortcuts_pane" class="instapaper_ignore readability-extra" style="display:none">
+  <h2>Keyboard Shortcuts <small><a href="#" class="js-see-all-keyboard-shortcuts">(see all)</a></small></h2>
+
+  <div class="columns threecols">
+    <div class="column first">
+      <h3>Site wide shortcuts</h3>
+      <dl class="keyboard-mappings">
+        <dt>s</dt>
+        <dd>Focus command bar</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt>?</dt>
+        <dd>Bring up this help dialog</dd>
+      </dl>
+    </div><!-- /.column.first -->
+
+    <div class="column middle" style='display:none'>
+      <h3>Commit list</h3>
+      <dl class="keyboard-mappings">
+        <dt>j</dt>
+        <dd>Move selection down</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt>k</dt>
+        <dd>Move selection up</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt>c <em>or</em> o <em>or</em> enter</dt>
+        <dd>Open commit</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt>y</dt>
+        <dd>Expand URL to its canonical form</dd>
+      </dl>
+    </div><!-- /.column.first -->
+
+    <div class="column last js-hidden-pane" style='display:none'>
+      <h3>Pull request list</h3>
+      <dl class="keyboard-mappings">
+        <dt>j</dt>
+        <dd>Move selection down</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt>k</dt>
+        <dd>Move selection up</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt>o <em>or</em> enter</dt>
+        <dd>Open issue</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt><span class="platform-mac">⌘</span><span class="platform-other">ctrl</span> <em>+</em> enter</dt>
+        <dd>Submit comment</dd>
+      </dl>
+      <dl class="keyboard-mappings">
+        <dt><span class="platform-mac">⌘</span><span class="platform-other">ctrl</span> <em>+</em> shift p</dt>
+        <dd>Preview comment</dd>
+      </dl>
+    </div><!-- /.columns.last -->
+
+  </div><!-- /.columns.equacols -->
+
+  <div class="js-hidden-pane" style='display:none'>
+    <div class="rule"></div>
+
+    <h3>Issues</h3>
+
+    <div class="columns threecols">
+      <div class="column first">
+        <dl class="keyboard-mappings">
+          <dt>j</dt>
+          <dd>Move selection down</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>k</dt>
+          <dd>Move selection up</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>x</dt>
+          <dd>Toggle selection</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>o <em>or</em> enter</dt>
+          <dd>Open issue</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt><span class="platform-mac">⌘</span><span class="platform-other">ctrl</span> <em>+</em> enter</dt>
+          <dd>Submit comment</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt><span class="platform-mac">⌘</span><span class="platform-other">ctrl</span> <em>+</em> shift p</dt>
+          <dd>Preview comment</dd>
+        </dl>
+      </div><!-- /.column.first -->
+      <div class="column last">
+        <dl class="keyboard-mappings">
+          <dt>c</dt>
+          <dd>Create issue</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>l</dt>
+          <dd>Create label</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>i</dt>
+          <dd>Back to inbox</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>u</dt>
+          <dd>Back to issues</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>/</dt>
+          <dd>Focus issues search</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="js-hidden-pane" style='display:none'>
+    <div class="rule"></div>
+
+    <h3>Issues Dashboard</h3>
+
+    <div class="columns threecols">
+      <div class="column first">
+        <dl class="keyboard-mappings">
+          <dt>j</dt>
+          <dd>Move selection down</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>k</dt>
+          <dd>Move selection up</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>o <em>or</em> enter</dt>
+          <dd>Open issue</dd>
+        </dl>
+      </div><!-- /.column.first -->
+    </div>
+  </div>
+
+  <div class="js-hidden-pane" style='display:none'>
+    <div class="rule"></div>
+
+    <h3>Network Graph</h3>
+    <div class="columns equacols">
+      <div class="column first">
+        <dl class="keyboard-mappings">
+          <dt><span class="badmono">←</span> <em>or</em> h</dt>
+          <dd>Scroll left</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt><span class="badmono">→</span> <em>or</em> l</dt>
+          <dd>Scroll right</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt><span class="badmono">↑</span> <em>or</em> k</dt>
+          <dd>Scroll up</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt><span class="badmono">↓</span> <em>or</em> j</dt>
+          <dd>Scroll down</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>t</dt>
+          <dd>Toggle visibility of head labels</dd>
+        </dl>
+      </div><!-- /.column.first -->
+      <div class="column last">
+        <dl class="keyboard-mappings">
+          <dt>shift <span class="badmono">←</span> <em>or</em> shift h</dt>
+          <dd>Scroll all the way left</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>shift <span class="badmono">→</span> <em>or</em> shift l</dt>
+          <dd>Scroll all the way right</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>shift <span class="badmono">↑</span> <em>or</em> shift k</dt>
+          <dd>Scroll all the way up</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>shift <span class="badmono">↓</span> <em>or</em> shift j</dt>
+          <dd>Scroll all the way down</dd>
+        </dl>
+      </div><!-- /.column.last -->
+    </div>
+  </div>
+
+  <div class="js-hidden-pane" style='display:none'>
+    <div class="rule"></div>
+    <div class="columns threecols">
+      <div class="column first js-hidden-pane" style='display:none'>
+        <h3>Source Code Browsing</h3>
+        <dl class="keyboard-mappings">
+          <dt>t</dt>
+          <dd>Activates the file finder</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>l</dt>
+          <dd>Jump to line</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>w</dt>
+          <dd>Switch branch/tag</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>y</dt>
+          <dd>Expand URL to its canonical form</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="js-hidden-pane" style='display:none'>
+    <div class="rule"></div>
+    <div class="columns threecols">
+      <div class="column first">
+        <h3>Browsing Commits</h3>
+        <dl class="keyboard-mappings">
+          <dt><span class="platform-mac">⌘</span><span class="platform-other">ctrl</span> <em>+</em> enter</dt>
+          <dd>Submit comment</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>escape</dt>
+          <dd>Close form</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>p</dt>
+          <dd>Parent commit</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>o</dt>
+          <dd>Other parent commit</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="js-hidden-pane" >
+    <div class="rule"></div>
+    <h3>Notifications</h3>
+
+    <div class="columns threecols">
+      <div class="column first">
+        <dl class="keyboard-mappings">
+          <dt>j</dt>
+          <dd>Move selection down</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>k</dt>
+          <dd>Move selection up</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>o <em>or</em> enter</dt>
+          <dd>Open notification</dd>
+        </dl>
+      </div><!-- /.column.first -->
+
+      <div class="column second">
+        <dl class="keyboard-mappings">
+          <dt>e <em>or</em> shift i <em>or</em> y</dt>
+          <dd>Mark as read</dd>
+        </dl>
+        <dl class="keyboard-mappings">
+          <dt>shift m</dt>
+          <dd>Mute thread</dd>
+        </dl>
+      </div><!-- /.column.first -->
+    </div>
+  </div>
+
+</div>
+
+    <div id="markdown-help" class="instapaper_ignore readability-extra">
+  <h2>Markdown Cheat Sheet</h2>
+
+  <div class="cheatsheet-content">
+
+  <div class="mod">
+    <div class="col">
+      <h3>Format Text</h3>
+      <p>Headers</p>
+      <pre>
+# This is an &lt;h1&gt; tag
+## This is an &lt;h2&gt; tag
+###### This is an &lt;h6&gt; tag</pre>
+     <p>Text styles</p>
+     <pre>
+*This text will be italic*
+_This will also be italic_
+**This text will be bold**
+__This will also be bold__
+
+*You **can** combine them*
+</pre>
+    </div>
+    <div class="col">
+      <h3>Lists</h3>
+      <p>Unordered</p>
+      <pre>
+* Item 1
+* Item 2
+  * Item 2a
+  * Item 2b</pre>
+     <p>Ordered</p>
+     <pre>
+1. Item 1
+2. Item 2
+3. Item 3
+   * Item 3a
+   * Item 3b</pre>
+    </div>
+    <div class="col">
+      <h3>Miscellaneous</h3>
+      <p>Images</p>
+      <pre>
+![GitHub Logo](/images/logo.png)
+Format: ![Alt Text](url)
+</pre>
+     <p>Links</p>
+     <pre>
+http://github.com - automatic!
+[GitHub](http://github.com)</pre>
+<p>Blockquotes</p>
+     <pre>
+As Kanye West said:
+
+> We're living the future so
+> the present is our past.
+</pre>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <h3>Code Examples in Markdown</h3>
+  <div class="col">
+      <p>Syntax highlighting with <a href="http://github.github.com/github-flavored-markdown/" title="GitHub Flavored Markdown" target="_blank">GFM</a></p>
+      <pre>
+```javascript
+function fancyAlert(arg) {
+  if(arg) {
+    $.facebox({div:'#foo'})
+  }
+}
+```</pre>
+    </div>
+    <div class="col">
+      <p>Or, indent your code 4 spaces</p>
+      <pre>
+Here is a Python code example
+without syntax highlighting:
+
+    def foo:
+      if not bar:
+        return true</pre>
+    </div>
+    <div class="col">
+      <p>Inline code for comments</p>
+      <pre>
+I think you should use an
+`&lt;addr&gt;` element here instead.</pre>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="mini-icon mini-icon-exclamation"></span>
+      Something went wrong with that request. Please try again.
+      <a href="#" class="mini-icon mini-icon-remove-close ajax-error-dismiss"></a>
+    </div>
+
+    
+    
+    <span id='server_response_time' data-time='0.23204' data-host='fe18'></span>
+    
+  </body>
+</html>

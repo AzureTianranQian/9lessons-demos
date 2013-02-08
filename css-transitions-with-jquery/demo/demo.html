@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>CSS transitions triggered with jQuery demo</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+
+<style>
+	/* a few initial styles for our containing elements */
+	body {background:#282828 url(img/texture.jpg);}
+	#wrap {width:300px; height:300px; position:relative; overflow:hidden; margin:3em auto;}
+	#blocks {width:300px; height:300px;  position:absolute; top:0; left:0; overflow:hidden;}
+	
+	/* our "mask" image positions over top of the animated blocks */
+	.mask {position:absolute; top:118px; left:0; z-index:500;}	
+	
+	/*shared styles and animation definitions for all of our animated blocks*/
+	.col {
+		width:72px;
+		height:144px;
+		position:absolute;
+		top:10px;
+		-webkit-transition: all 225ms cubic-bezier(0.545, 0.165, 0.835, 0.425); 
+		   -moz-transition: all 225ms cubic-bezier(0.545, 0.165, 0.835, 0.425); 
+		    -ms-transition: all 225ms cubic-bezier(0.545, 0.165, 0.835, 0.425); 
+		     -o-transition: all 225ms cubic-bezier(0.545, 0.165, 0.835, 0.425); 
+		        transition: all 225ms cubic-bezier(0.545, 0.165, 0.835, 0.425); /* custom */
+	} 
+	
+	/* specific images and top positions for each of our blocks */
+	.col1 {background: url(img/aslider.png); top:22px; left:26px;}
+	.col2 {background:url(img/bslider.png); top:4px; left: 100px;}
+	.col3 {background:url(img/cslider.png); top:30px; left:174px;}
+
+	/* the class we'll toggle with jQuery to trigger our transitions */
+	.col-anim {top:96px;}
+
+</style>
+
+<script>
+
+// assign toggle the col-anim class for each of our columns when they are clicked
+
+$(function() {	
+	$("#blocks div").click(function() {
+		$(this).toggleClass("col-anim");	
+	
+	});
+	
+});
+
+</script>
+
+</head>
+
+<body>
+	<div id="wrap">
+		<img src="img/abcmask.png" class="mask">
+		<div id="blocks">
+			<div class="col col1" ></div>
+			<div class="col col2"></div>
+			<div class="col col3"></div>
+		</div>
+	</div>
+
+</body>
+
+</html>

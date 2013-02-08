@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="module" version="1.0.5">
+	<name>mfTechnoratiChart</name>
+	<version>1.0</version>
+	<creationDate>2008</creationDate>
+	<author>Marcofolio.net</author>
+	<authorEmail>contact@marcofolio.net</authorEmail>
+	<authorUrl>http://www.marcofolio.net/</authorUrl>
+	<copyright>(C) Marcofolio.net</copyright>
+	<license>CC Attribution-Share Alike 3.0 Unported</license>
+	<description><![CDATA[<div style="font-size:12px ;width:500px; font-weight:none">
+	<p>Show off your <a href="http://technorati.com/" title="Technorati" target="_blank">Technorati</a> blog reactions in a beautiful chart.</p>
+	<p>Make sure you enter the correct URL to your blog in the module settings <strong>without</strong> the <code>http://</code> part.</p>
+	<h2>Support</h2>
+	<p>Please visit <a href="http://www.marcofolio.net/" title="Marcofolio.net" target="_blank">Marcofolio.net</a> and leave me a message.</p>
+	<p><em>Version 1.0, 2008</em></p>
+	<p><strong>Don't forget to publish this module!</strong></p>
+	</div>]]></description>
+	<files>
+	<filename module="mod_mftechnoratichart">mod_mftechnoratichart.php</filename>
+	</files>
+	<params>
+		<param name="blogurl" type="text" default="" label="Blog URL" description="URL of your blog WITHOUT http://." />
+		<param name="width" type="text" default="180" label="Width (px)" description="Width of the Technorati Chart in pixels." />
+		<param name="height" type="text" default="150" label="Height (px)" description="Height of the Technorati Chart in pixels." />
+		<param name="nrdays" type="text" default="30" label="Number of Days" description="Set the number of days to be displayed." />
+		<param name="blogreactions" type="radio" default="1" label="Link to blog reactions" description="Link the chart to your Technorati Blog Reactions.">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="link" type="text" default="" label="Link" description="URL to redirect to when chart image is clicked on. Only works when Link to Blog reactions is set to No." />
+	</params>
+</mosinstall>

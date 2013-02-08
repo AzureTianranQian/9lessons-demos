@@ -1,0 +1,79 @@
+/* 
+    Document   : home
+    Created on : Sep 2, 2010, 6:41:53 PM
+    Author     : sgrant
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#homepage-newsflash {
+   margin-bottom:15px;
+}
+#homepage-newsflash .newsflash-featured {
+   float:left;
+   width:315px;
+}
+#homepage-newsflash .newsflash-featured h2 {
+   font-family: ClarendonTextPro;
+   font-size: 18px;
+   font-weight:normal;
+   line-height:18px;
+   margin-bottom:5px;
+   line-height:120%;
+   text-decoration: none;
+   color:#000;
+}
+#homepage-newsflash .newsflash-featured a {
+   text-decoration: none;
+}
+#homepage-newsflash .newsflash-featured a:hover h2 {
+   color:#ED145B;
+}
+#homepage-newsflash .newsflash-featured a:visited h2 {
+  color:#666;
+}
+#homepage-newsflash .newsflash-featured .imagecache-cnt {
+   float:left;
+   margin-right:10px;
+   margin-bottom:10px;
+}
+#homepage-newsflash .newsflash-featured a:hover .imagecache-cnt {
+   background:#ED145B;
+}
+
+#homepage-newsflash .newsflash-featured .content {
+   font-size:13px;
+   float:left;
+   width:210px;
+   margin-bottom:10px;
+   word-wrap:break-word;
+   color:#000;
+}
+#homepage-newsflash .newsflash-latest {
+   float:left;
+   width:300px;
+}
+
+
+
+
+
+
+
+/*union jack
+================================================*/
+#union-jack-bunting {
+	position:relative;
+}
+
+
+#union-jack-bunting h1 {
+	background: url(/html_files/string.png) no-repeat top left transparent;
+}
+
+
+#union-jack-bunting span {
+	background: url(/html_files/union-jack.png) no-repeat top left transparent;
+}
+
+

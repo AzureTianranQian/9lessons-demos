@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="module" version="1.0.5">
+	<name>mfSlideBar</name>
+	<version>1.0</version>
+	<creationDate>2008</creationDate>
+	<author>Marcofolio.net</author>
+	<authorEmail>contact@marcofolio.net</authorEmail>
+	<authorUrl>http://www.marcofolio.net/</authorUrl>
+	<copyright>(C) Marcofolio.net</copyright>
+	<license>CC Attribution-Share Alike 3.0 Unported</license>
+	<description><![CDATA[<div style="font-size:12px ;width:500px; font-weight:none">
+	<p><strong>mfSlideBar</strong> allows you to add a nice sliding sidebar to your Joomla! website.</p>
+	<h2>Setup</h2>
+	<p>Publish this module on any position. Set the module position it should load and other paramaters and you're ready to go.</p>
+	<p><em><strong>Never</strong> use the same module position as it's loaded in.</em> For example, when you placed mfSlideBar in position "left", <strong>do not</strong> load other modules from position "left". Otherwise you'll create an infinate loop & your website will crash.</p>
+	<p>Change the "Image width" to the width of the original image in px when placing mfSlideBar on the right, otherwise it will not show up properly in every web browser.</p>
+	<p>This module is best viewed when "Show title" is set to "No".</p>
+	<h2>Themes</h2>
+	<p>mfSlideBar comes default with three themes: dark, light & simple. To create your own theme, add them in hem in the following directory:</p>
+	<code>modules/mod_mfslidebar/templates/</code>
+	<p>Now create a directory starting with your theme name and if it's placed on the left or right. Seperate those with a "-" symbol. Add your own "slide-button.gif" and "slide-button-active.gif" that fits your template. Place your template in your module parameters and you're done.</p>
+	<p>Example:</p>
+	<code>modules/mod_mfslidebar/templates/newTemplate-right/</code>
+	<h2>Support</h2>
+	<p>Please visit <a href="http://www.marcofolio.net/" title="Marcofolio.net" target="_blank">Marcofolio.net</a> and leave me a message.</p>
+	<p><em>Version 1.0, 2008</em></p>
+	<p><strong>Don't forget to publish this module!</strong></p>
+	</div>]]></description>
+    <files>
+		<filename module="mod_mfslidebar">mod_mfslidebar.php</filename>
+		<filename>mod_mfslidebar/index.html</filename>
+		<filename>mod_mfslidebar/effects.js</filename>
+		<filename>mod_mfslidebar/mfslidebar.js</filename>
+		<filename>mod_mfslidebar/prototype.js</filename>
+		<filename>mod_mfslidebar/templates/index.html</filename>
+		<filename>mod_mfslidebar/templates/dark-left/index.html</filename>
+		<filename>mod_mfslidebar/templates/dark-left/slide-button.gif</filename>
+		<filename>mod_mfslidebar/templates/dark-left/slide-button-active.gif</filename>
+		<filename>mod_mfslidebar/templates/dark-right/index.html</filename>
+		<filename>mod_mfslidebar/templates/dark-right/slide-button.gif</filename>
+		<filename>mod_mfslidebar/templates/dark-right/slide-button-active.gif</filename>
+		<filename>mod_mfslidebar/templates/light-left/index.html</filename>
+		<filename>mod_mfslidebar/templates/light-left/slide-button.gif</filename>
+		<filename>mod_mfslidebar/templates/light-left/slide-button-active.gif</filename>
+		<filename>mod_mfslidebar/templates/light-right/index.html</filename>
+		<filename>mod_mfslidebar/templates/light-right/slide-button.gif</filename>
+		<filename>mod_mfslidebar/templates/light-right/slide-button-active.gif</filename>
+		<filename>mod_mfslidebar/templates/simple-left/index.html</filename>
+		<filename>mod_mfslidebar/templates/simple-left/slide-button.gif</filename>
+		<filename>mod_mfslidebar/templates/simple-left/slide-button-active.gif</filename>
+		<filename>mod_mfslidebar/templates/simple-right/index.html</filename>
+		<filename>mod_mfslidebar/templates/simple-right/slide-button.gif</filename>
+		<filename>mod_mfslidebar/templates/simple-right/slide-button-active.gif</filename>
+	</files>
+	<params>
+		<param name="loadmodule" type="text" default="toolbar" label="Load module position" description="Set the module position to load (left, right, user1 etc.). NEVER use the same position as the position from this module." />
+		<param name="pos" type="list" default="left" label="Position" description="On which side should the sidebar be positioned?">
+			<option value="left">Left</option>
+			<option value="right">Right</option>
+		</param>
+		<param name="toppos" type="text" default="140" label="Margin from top" description="Set how many px the sidebar should be loaded from the top." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="theme" type="text" default="dark" label="Load theme" description="Select which theme to load (Defaults are dark, light & simple). Read the description how to use." />
+		<param name="concolor" type="text" default="0E1C2F" label="Color of the box" description="Set the color of the box in HEX value." />
+		<param name="conwidth" type="text" default="200" label="Width of the box" description="Set the width of the box in pixel value." />
+		<param name="conheight" type="text" default="320" label="Height of the box" description="Set the height of the box in pixel value." />
+		<param name="conpadding" type="text" default="10" label="Padding of the text" description="Set the padding of the text in pixel value." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="imgwidth" type="text" default="0" label="Width of the image" description="Set the width of the image in pixel value." />
+		<param name="imgheight" type="text" default="137" label="Height of the image" description="Set the height of the image in pixel value." />
+		<param name="imgalt" type="text" default="mfSlideBar" label="ALT of the image" description="Set the ALT attribute of the image" />
+		<param name="titleshow" type="radio" default="0" label="Show title of modules" description="Should the module inside the slidebar show their titles.">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+	</params>
+</mosinstall>

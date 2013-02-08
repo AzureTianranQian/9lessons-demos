@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- meta information -->
+	<meta charset="utf-8" />
+
+	<title>Baseline Align</title>
+
+	<!-- Base styles, not relevant to the demo -->
+	<link rel="stylesheet" media="screen" href="baselinealign.css" />
+
+	<!-- Styles for the demo -->
+	<style>
+		html { background-image: url(images/_baseline-22.png); }
+
+		html { /* font-size: 16px, line-height: 22px */
+			font: 100%/1.375 "Helvetica Neue", Helvetica, Arial, sans-serif; }
+		 
+		h1, h2, h3, h4, h5, h6 { /* margin-top and bottom are both 22px */
+			/* em fallback */ margin: 1.375em 0;
+			margin: 1.375rem 0; }	
+		h1 { /* font-size is 32px, line-height is 44px */
+		 	/* em fallback */ font-size: 2em;
+			font-size: 2rem; line-height: 1.375; }
+		h2 { /* font-size is 26px, line-height is 44px */
+			/* em fallback */ font-size: 1.75em;
+			font-size: 1.75rem; line-height: 1.5714285714; }
+		h3, h4, h5, h6 { /* font-size is 22px, line-height is 22px */
+			/* em fallback */ font-size: 1.375em;
+			font-size: 1.375rem; line-height : 1; color: #333; }
+		p, ul, blockquote { /* bottom margin is 22px, line-height is inherited from html (22px) */
+			/* em fallback */ margin-top:0; margin-bottom: 1.375em;
+			margin-top: 0; margin-bottom: 1.375rem; }
+
+		.html5_section { clear: both; }
+		h3 { padding-top: 1em;}
+	</style>
+
+	<!-- Javascript for the demo -->
+	<script src="jquery.js"></script>
+	<script src="jquery.baselinealign-1.0.js"></script>
+
+	<script>
+		$(window).load(function(){
+	  	$("img").baselineAlign();
+	  });
+	</script>
+</head>
+
+<body lang="en-GB" class="home">
+	<div class="container">
+		<div id="site_context" class="html5_header">
+			<h1 class="heading">Baseling Align</h1>
+			<p>These are the demo files to go along with the tutorial.</p>
+		</div><!-- #site_context.html5_header -->
+
+		<div class="html5_section">
+			<img src="images/1.png" class="dc_left" />
+			<h3>1: Normal document with a baseline grid</h3>
+			<p>A plain HTML document with default styling. A 22px baseline grid shows that text has a poor rhythm.</p>
+			<p><a href="example-1.htm">View example 1</a>
+		</div><!-- #demo.html5_section -->
+
+		<div class="html5_section">
+			<img src="images/2.png" class="dc_left" />
+			<h3>2: Text follows a baseline grid</h3>
+			<p>The same document with CSS making text flow with the baseline grid.</p>
+			<p><a href="example-2.htm">View example 2</a>	
+		</div><!-- #demo.html5_section -->
+
+		<div class="html5_section">
+			<img src="images/3.png" class="dc_left" />
+			<h3>3: Disruptive images</h3>
+			<p>The same document with the same CSS, but now with images included. Notice how text starts to become mis-aligned.</p>
+			<p><a href="example-3.htm">View example 3</a>
+		</div><!-- #demo.html5_section -->
+
+		<div class="html5_section">
+			<img src="images/4.png" class="dc_left" />
+			<h3>4: First attempt at a solution</h3>
+			<p>A partial solution which confirms the principle is sound, but has some implementation quirks.</p>
+			<p><a href="example-4.htm">View example 4</a>
+		</div><!-- #demo.html5_section -->
+
+		<div class="html5_section">
+			<img src="images/5.png" class="dc_left" />
+			<h3>5: Complete solution</h3>
+			<p>A document that keeps a clean vertical rhythm throughout and deals with re-scaled images in liquid layouts.</p>
+			<p><a href="example-5.htm">View final solution</a>
+		</div><!-- #demo.html5_section -->
+	</div><!-- .container -->
+</body>
+</html>

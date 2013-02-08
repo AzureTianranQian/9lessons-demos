@@ -1,0 +1,796 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html class="js canvas canvastext hashchange cssanimations cssgradients no-cssreflections csstransforms csstransforms3d csstransitions wf-proximanovaaltcondensed-n1-active wf-proximanovaaltcondensed-n3-active wf-proximanovaaltcondensed-n4-active wf-proximanovaaltcondensed-n6-active wf-proximanovaaltcondensed-n7-active wf-proximanovaaltcondensed-n8-active wf-franklingothicextcompurw-n4-active wf-franklingothicextcompurw-n7-active wf-active"><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<meta property="keyword" content="javascript, jquery, calendar, timeline, events, free">
+<meta property="title" content="Simple Javascript Timeline using jQuery &amp; DateJS - chrisviccaro.com">
+<meta property="og:title" content="Simple Javascript Timeline using jQuery &amp; DateJS - chrisviccaro.com">
+<meta property="description" content="How to create an easy-to-use and flexible calendar in javascript using jQuery and datejs">
+<meta property="og:description" content="How to create an easy-to-use and flexible calendar in javascript using jQuery and datejs">
+<meta property="og:image" content="http://chrisviccaro.com/images/timeline.png">
+<link rel="image_src" href="http://chrisviccaro.com/images/timeline.png">
+<title>Simple Javascript Timeline using jQuery &amp; DateJS | christopher.viccaro - programmer, psychonaut, journeyer</title>
+
+<script async="" src="timeline_files/cbgapi.loaded_0"></script><script gapi_processed="true" src="timeline_files/plusone.js" async="" type="text/javascript"></script><script src="timeline_files/ga.js" async="" type="text/javascript"></script><script src="timeline_files/widgets.htm" id="twitter-wjs"></script><script type="text/javascript" src="timeline_files/modernizr.js"></script>
+<script type="text/javascript" src="timeline_files/kra7cro.js"></script>
+<style type="text/css">.tk-proxima-nova-alt-condensed{font-family:proxima-nova-alt-condensed,sans-serif;}.tk-franklin-gothic-ext-comp-urw{font-family:franklin-gothic-ext-comp-urw,sans-serif;}</style><link href="timeline_files/kra7cro-d.css" rel="stylesheet"><script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<script type="text/javascript" src="timeline_files/jquery.js"></script>
+<script type="text/javascript" src="timeline_files/date.js"></script>
+
+<link rel="stylesheet" type="text/css" href="timeline_files/sons-of-obsidian.css">
+<script type="text/javascript" src="timeline_files/prettify.js"></script>
+
+<link rel="stylesheet" type="text/css" href="timeline_files/reset.css">
+<link rel="stylesheet" type="text/css" href="timeline_files/lab.css">
+<link rel="stylesheet" type="text/css" href="timeline_files/cv.css">
+<style type="text/css">
+/*jqueryui icons */
+span.icon {
+	width:13px;
+	height:13px;
+	display:inline-block;
+	float:left;
+	margin-left:-5px;
+	margin-right:5px;
+	background:url('images/ui-icons_666666_256x240.png') -64px -145px no-repeat; 
+}
+/* small icons inside buttons */
+.icon.back {
+	background-position:-145px -193px;
+}
+.icon.next {
+	background-position:-114px -193px;
+}
+
+/* Timeline */
+.timeline-line {
+	position:relative;
+}
+
+.timeline-line:before {
+	content:" ";
+	position:absolute;
+	top:25px;
+	left:0px;
+	width:100%;
+	height:1px;
+	background:#0090c7;
+	z-index:10;
+}
+
+.timeline-line,.timeline-monthyear {
+	float:left;
+	clear:both;
+}
+.timeline-monthyear {
+	margin-bottom:10px;
+	margin-left:5px;
+	height:24px;
+}
+.timeline-monthyear > span,.timeline-monthyear > button {
+	float:left;
+	height:100%;
+}
+.timeline-monthyear-txt {
+	background:rgba(66,66,66,0.85);
+	color:#fff;
+}
+.timeline-day {
+	background:rgba(66,66,66,0.70);
+	color:#fff;
+}
+.timeline-monthyear-txt {
+	line-height:24px;
+	padding:0px 5px; 
+}
+.timeline-day {
+	width:20px;
+	height:50px;
+	float:left;
+	position:relative; 
+	padding:1px 2px;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	-o-border-radius:3px;
+	-ms-border-radius:3px;
+	margin:0px 3px;
+	z-index:9;
+}
+.timeline-day:hover {
+	background:rgba(5,5,5,0.85);
+}
+.timeline-day > span {
+	cursor:pointer;
+}
+.timeline-day:hover > span {
+	color:#0090c7;
+	cursor:normal;
+}
+.timeline-day .top:after {
+	content:" ";
+	position:absolute;
+	top:22px;
+	left:8px;
+	width:7px;
+	height:7px;
+	background:#0090c7;
+	border-radius:50%;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	-o-border-radius:50%;
+	-ms-border-radius:50%;
+}
+.timeline-day.has-event {
+	background-color:rgba(0,0,0,0.85);
+}
+.timeline-day.has-event .top,.timeline-day.has-event .bottom {
+	color:#fffff!important;
+}
+.timeline-day .top,.timeline-day .bottom {
+	float:left;
+	clear:both;
+	height:50%;
+	width:100%;
+	box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; -o-box-sizing:border-box; -ms-box-sizing:border-box;
+	text-align:center;
+	color:#fff;
+}
+
+.timeline-day .top {
+	vertical-align:top;
+}
+.timeline-day .bottom {
+	position:relative;
+	top:6px;
+	vertical-align:bottom;
+}
+.timeline-nav-icon {
+	background-color:#0090c7;
+	background-repeat:none;
+	appearance:none;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	-ms-appearance:none;
+	-o-appearance:none;
+	width:23px;
+	height:100%;
+	border:none;
+	text-indent:-9999em;
+	text-align:center;
+	padding:2px;
+}
+.timeline-nav-icon .icon {
+	background-image:url('http://common.jpecatalogs.com/css/images/ui-icons_ffffff_256x240.png');
+	position:relative;
+	left:4px;
+}
+
+
+.timeline-hover {
+	display: none;
+	box-shadow:2px 2px 5px 0px rgba(0,0,0,0.25);
+	padding:10px;
+	border-radius:7px;
+	border:1px solid #777;
+	position:absolute;
+	z-index:11;
+	background:#fff;
+}
+ul.day-events-list li {
+	color:#333;
+}
+
+#block-timeline {
+	position:relative;
+	margin-bottom:40px;
+}
+.icon {
+	margin:0;
+}
+
+
+#code h5 {
+	margin:20px 0px;
+	text-align:left;
+	font-size:16px;
+}
+.prettyprint+h5 {
+	border-top:1px solid #0090c7;
+	padding-top:20px;
+	margin-top:40px!important;
+}
+.prettyprint {
+	font-size:11px;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+	prettyPrint();
+	/* Timeline */
+	var timeline = {
+		'current':{
+			'month':'',
+			'year':Date.today().getFullYear()
+		},
+		'dates':{},
+		'goToMonthYear':function(mon,yr) {
+			var direction = (mon+yr) < (this.current.month + this.current.year) ? '100%' : '-100%';
+			var altdirection = direction == '100%' ? '-=100%' : '+=100%';
+			this.current.month = mon;
+			this.current.year = yr;
+			var this_months_days = this.dates[yr][mon];
+			$(".timeline-line").animate({left:direction},250,function() {
+				var $days = [];
+				for (var day in this_months_days) {
+					var display_day = parseInt(day)+1;
+					var day_events = this_months_days[day];
+					var day_classes = 'timeline-day';
+					if (day_events.length) {
+						day_classes += ' has-event';
+					}
+					var day_of_week = Date.today().set({month:mon,day:display_day,year:yr}).toString("ddd");
+					var $day = '<div class="'+day_classes+'" id="timeline-'+mon+'-'+display_day+'"><span class="top">'+ day_of_week.substr(0,1) + '</span><span class="bottom">' + display_day + '</span></div>'; 
+					$days.push($day);
+				}
+				$(".timeline-line").html($days.join("\r\n")).animate({left:altdirection},250,function() {
+					$(".timeline-nav-icon").removeClass('disabled');
+				})
+				$(".timeline-monthyear-txt").text(Date.parse(mon+1 + "/" + yr).toString("MMMM") + " " + yr);						
+			});
+		}
+	};
+	
+	//Build out date arrays
+	//This year & next year
+	var this_year = Date.today().getFullYear();
+	var next_year = this_year + 1;
+	var years_to_process = [this_year,next_year];
+	for (var x = 0, yr; yr = years_to_process[x]; x++) {
+		timeline.dates[yr] = {};
+		var this_month = 0;
+		
+		for (var i = this_month; i < 12; i++) {
+			timeline.dates[yr][i] = [];
+			var days_in_month = Date.getDaysInMonth(yr,i);
+			for (var n = 0; n < days_in_month; n++) {
+				timeline.dates[yr][i].push([]);
+			}
+		}
+		
+	}
+	
+	//place current months days
+	var this_month = Date.today().getMonth();
+	timeline.goToMonthYear(this_month,this_year);
+	window.timeline = timeline;	
+	//set up event handlers
+	$(".timeline-nav-back").click(function() {
+		if (!$(this).hasClass('disabled')) {
+			$(this).addClass('disabled');
+			if (timeline.current.month == 0) {
+				//check if exists
+				if (timeline.dates[timeline.current.year-1] != undefined && timeline.dates[timeline.current.year-1][11] != undefined) {
+					timeline.goToMonthYear(12,timeline.current.year - 1);
+				}
+			}
+			else {
+				timeline.goToMonthYear(timeline.current.month - 1, timeline.current.year);
+			}
+		}
+	});
+	$(".timeline-nav-fwd").click(function() {
+		if (!$(this).hasClass('disabled')) {
+			$(this).addClass('disabled');
+			if (timeline.current.month == 11) {
+				//check if exists
+				if (timeline.dates[timeline.current.year+1] != undefined && timeline.dates[timeline.current.year+1][0] != undefined) {
+					timeline.goToMonthYear(0,timeline.current.year + 1);
+				}
+			}
+			else {
+				timeline.goToMonthYear(timeline.current.month + 1, timeline.current.year);
+			}
+		}
+	});
+	
+	$(document).delegate(".timeline-day",{
+		mouseenter:function() {
+			var day = parseInt($(this).find('.bottom').text()) - 1;
+			var days_events = timeline.dates[timeline.current.year][timeline.current.month][day];
+			if (days_events != undefined && days_events.length) {
+				var events_html = ['<ul class="day-events-list">'];
+				for (var i = 0, evt; evt = days_events[i]; i++) {
+					events_html.push('<li class="event-title">'+evt['name']+'</li>');
+				}
+				events_html.push('</ul>');
+				var day_top = $(this).position().top + $(this).height() + 40;
+				var day_left = $(this).position().left + ($(this).width() / 2);
+				$(".timeline-hover").html(events_html.join("\r\n")).css({top:day_top,left:day_left}).fadeIn(250);
+			}
+		},
+		mouseleave:function() {
+			$(".timeline-hover:visible").fadeOut(250);
+		}
+	});
+		
+		
+			var events = [{
+		'name':"Event 0",
+		date:"05/24/2012"
+	},{
+		"name":"Event 1",
+		date:"05/31/2012"
+	},{
+		"name":"Event 2",
+		date:"06/11/2012"
+	},{
+		"name":"Event 3",
+		date:"06/18/2012"
+	},{
+		"name":"Event 4",
+		date:"06/30/2012"
+	},{
+		"name":"Event 5",
+		date:"07/04/2012"
+	},{
+		"name":"Event 6",
+		date:"07/14/2012"
+	}];
+	for (var i = 0, evt; evt = events[i]; i++) {
+		var split_date = evt.date.split('/');
+		var _mon = parseInt(split_date[0]) - 1;
+		var _day = parseInt(split_date[1]) - 1;
+		var _yr = split_date[2];
+		timeline.dates[_yr][_mon][_day].push(evt);
+		$("#timeline-"+_mon+"-"+(_day+1)).addClass('has-event');
+	}
+		
+});
+
+</script>
+</head>
+
+<body>
+<div id="topbar">
+<h1>chrisviccaro.com</h1><span class="sep"> &gt;&gt; </span><a class="button" href="http://www.chrisviccaro.com/">Return to Lab</a>
+<a href="https://twitter.com/chrisviccaro" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @chrisviccaro</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div id="___plusone_0" style="height: 24px; width: 106px; display: inline-block; text-indent: 0px; margin: 0px; padding: 0px; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline;"><iframe title="+1" data-gapiattached="true" allowtransparency="true" src="timeline_files/fastbutton.htm" name="I0_1357908361710" id="I0_1357908361710" vspace="0" tabindex="0" style="position: static; top: 0px; width: 106px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" marginwidth="0" marginheight="0" hspace="0" frameborder="0" scrolling="no" width="100%"></iframe></div>
+</div>
+<div id="wrapper">
+	<div id="title"><h1>Simple Javascript Timeline using jQuery &amp; DateJS<span class="small">&nbsp;&gt;&gt; how to create an easy-to-use and flexible calendar</span></h1></div>
+	<div id="container">
+		<h5>Only external libraries required for this are jQuery and DateJS (<a href="http://www.datejs.com/" target="_blank">datejs.com</a>).  Demo:</h5>
+		<div class="content">
+			<div id="code">
+				<div id="block-timeline" class="clearfix">
+					<div class="timeline-monthyear">
+						<button class="timeline-nav-back timeline-nav-icon">
+							<span class="icon back"></span>Back
+						</button>
+						<span class="timeline-monthyear-txt">January 2013</span>
+						<button class="timeline-nav-fwd timeline-nav-icon">
+							<span class="icon next"></span>Next
+						</button>
+					</div>
+					<div style="left: 0%;" class="timeline-line"><div class="timeline-day" id="timeline-0-1"><span class="top">T</span><span class="bottom">1</span></div>
+<div class="timeline-day" id="timeline-0-2"><span class="top">W</span><span class="bottom">2</span></div>
+<div class="timeline-day" id="timeline-0-3"><span class="top">T</span><span class="bottom">3</span></div>
+<div class="timeline-day" id="timeline-0-4"><span class="top">F</span><span class="bottom">4</span></div>
+<div class="timeline-day" id="timeline-0-5"><span class="top">S</span><span class="bottom">5</span></div>
+<div class="timeline-day" id="timeline-0-6"><span class="top">S</span><span class="bottom">6</span></div>
+<div class="timeline-day" id="timeline-0-7"><span class="top">M</span><span class="bottom">7</span></div>
+<div class="timeline-day" id="timeline-0-8"><span class="top">T</span><span class="bottom">8</span></div>
+<div class="timeline-day" id="timeline-0-9"><span class="top">W</span><span class="bottom">9</span></div>
+<div class="timeline-day" id="timeline-0-10"><span class="top">T</span><span class="bottom">10</span></div>
+<div class="timeline-day" id="timeline-0-11"><span class="top">F</span><span class="bottom">11</span></div>
+<div class="timeline-day" id="timeline-0-12"><span class="top">S</span><span class="bottom">12</span></div>
+<div class="timeline-day" id="timeline-0-13"><span class="top">S</span><span class="bottom">13</span></div>
+<div class="timeline-day" id="timeline-0-14"><span class="top">M</span><span class="bottom">14</span></div>
+<div class="timeline-day" id="timeline-0-15"><span class="top">T</span><span class="bottom">15</span></div>
+<div class="timeline-day" id="timeline-0-16"><span class="top">W</span><span class="bottom">16</span></div>
+<div class="timeline-day" id="timeline-0-17"><span class="top">T</span><span class="bottom">17</span></div>
+<div class="timeline-day" id="timeline-0-18"><span class="top">F</span><span class="bottom">18</span></div>
+<div class="timeline-day" id="timeline-0-19"><span class="top">S</span><span class="bottom">19</span></div>
+<div class="timeline-day" id="timeline-0-20"><span class="top">S</span><span class="bottom">20</span></div>
+<div class="timeline-day" id="timeline-0-21"><span class="top">M</span><span class="bottom">21</span></div>
+<div class="timeline-day" id="timeline-0-22"><span class="top">T</span><span class="bottom">22</span></div>
+<div class="timeline-day" id="timeline-0-23"><span class="top">W</span><span class="bottom">23</span></div>
+<div class="timeline-day" id="timeline-0-24"><span class="top">T</span><span class="bottom">24</span></div>
+<div class="timeline-day" id="timeline-0-25"><span class="top">F</span><span class="bottom">25</span></div>
+<div class="timeline-day" id="timeline-0-26"><span class="top">S</span><span class="bottom">26</span></div>
+<div class="timeline-day" id="timeline-0-27"><span class="top">S</span><span class="bottom">27</span></div>
+<div class="timeline-day" id="timeline-0-28"><span class="top">M</span><span class="bottom">28</span></div>
+<div class="timeline-day" id="timeline-0-29"><span class="top">T</span><span class="bottom">29</span></div>
+<div class="timeline-day" id="timeline-0-30"><span class="top">W</span><span class="bottom">30</span></div>
+<div class="timeline-day" id="timeline-0-31"><span class="top">T</span><span class="bottom">31</span></div></div>
+					<div class="timeline-hover">
+
+					</div>
+				</div>
+				<h5>First, the core elements.  Copy this snippet of HTML to your document.  Clearfix class is in reset.css from <a href="http://www.htmldoctor.com/" rel="nofollow" target="_blank">htmldoctor.com</a></h5>
+				<pre class="prettyprint lang-html"><span class="pln">					</span><code class="prettyprint language-html"><span class="pln"><span class="pln">
+					</span></span><span class="tag"><span class="tag">&lt;div</span></span><span class="pln"><span class="pln"> </span></span><span class="atn"><span class="atn">id</span></span><span class="pun"><span class="pun">=</span></span><span class="atv"><span class="atv">"block-timeline"</span></span><span class="pln"><span class="pln"> </span></span><span class="atn"><span class="atn">class</span></span><span class="pun"><span class="pun">=</span></span><span class="atv"><span class="atv">"clearfix"</span></span><span class="tag"><span class="tag">&gt;</span></span><span class="pln"><span class="pln">
+						</span></span><span class="tag"><span class="tag">&lt;div</span></span><span class="pln"><span class="pln"> </span></span><span class="atn"><span class="atn">class</span></span><span class="pun"><span class="pun">=</span></span><span class="atv"><span class="atv">"timeline-monthyear"</span></span><span class="tag"><span class="tag">&gt;</span></span><span class="pln"><span class="pln">
+							</span></span><span class="tag"><span class="tag">&lt;button</span></span><span class="pln"><span class="pln"> </span></span><span class="atn"><span class="atn">class</span></span><span class="pun"><span class="pun">=</span></span><span class="atv"><span class="atv">"timeline-nav-back timeline-nav-icon"</span></span><span class="tag"><span class="tag">&gt;</span></span><span class="pln"><span class="pln">
+								</span></span><span class="tag"><span class="tag">&lt;span</span></span><span class="pln"><span class="pln"> </span></span><span class="atn"><span class="atn">class</span></span><span class="pun"><span class="pun">=</span></span><span class="atv"><span class="atv">"icon back"</span></span><span class="tag"><span class="tag">&gt;&lt;/span&gt;</span></span><span class="pln"><span class="pln">Back
+							</span></span><span class="tag"><span class="tag">&lt;/button&gt;</span></span><span class="pln"><span class="pln">
+							</span></span><span class="tag"><span class="tag">&lt;span</span></span><span class="pln"><span class="pln"> </span></span><span class="atn"><span class="atn">class</span></span><span class="pun"><span class="pun">=</span></span><span class="atv"><span class="atv">"timeline-monthyear-txt"</span></span><span class="tag"><span class="tag">&gt;</span></span><span class="pln"><span class="pln">May 2012</span></span><span class="tag"><span class="tag">&lt;/span&gt;</span></span><span class="pln"><span class="pln">
+							</span></span><span class="tag"><span class="tag">&lt;button</span></span><span class="pln"><span class="pln"> </span></span><span class="atn"><span class="atn">class</span></span><span class="pun"><span class="pun">=</span></span><span class="atv"><span class="atv">"timeline-nav-fwd timeline-nav-icon"</span></span><span class="tag"><span class="tag">&gt;</span></span><span class="pln"><span class="pln">
+								</span></span><span class="tag"><span class="tag">&lt;span</span></span><span class="pln"><span class="pln"> </span></span><span class="atn"><span class="atn">class</span></span><span class="pun"><span class="pun">=</span></span><span class="atv"><span class="atv">"icon next"</span></span><span class="tag"><span class="tag">&gt;&lt;/span&gt;</span></span><span class="pln"><span class="pln">Next
+							</span></span><span class="tag"><span class="tag">&lt;/button&gt;</span></span><span class="pln"><span class="pln">
+						</span></span><span class="tag"><span class="tag">&lt;/div&gt;</span></span><span class="pln"><span class="pln">
+						</span></span><span class="tag"><span class="tag">&lt;div</span></span><span class="pln"><span class="pln"> </span></span><span class="atn"><span class="atn">class</span></span><span class="pun"><span class="pun">=</span></span><span class="atv"><span class="atv">"timeline-line"</span></span><span class="tag"><span class="tag">&gt;</span></span><span class="pln"><span class="pln">
+	
+						</span></span><span class="tag"><span class="tag">&lt;/div&gt;</span></span><span class="pln"><span class="pln">
+						</span></span><span class="tag"><span class="tag">&lt;div</span></span><span class="pln"><span class="pln"> </span></span><span class="atn"><span class="atn">class</span></span><span class="pun"><span class="pun">=</span></span><span class="atv"><span class="atv">"timeline-hover"</span></span><span class="tag"><span class="tag">&gt;</span></span><span class="pln"><span class="pln">
+	
+						</span></span><span class="tag"><span class="tag">&lt;/div&gt;</span></span><span class="pln"><span class="pln">
+					</span></span><span class="tag"><span class="tag">&lt;/div&gt;</span></span><span class="pln"><span class="pln">	
+					</span></span></code><span class="pln">
+				</span></pre>
+				<h5>Next, the css styles ...</h5>
+				<pre class="prettyprint lang-css"><span class="pln">					</span><code class="prettyprint language-css"><span class="pln"><span class="pln">
+</span></span><span class="com"><span class="com">/*jqueryui icons */</span></span><span class="pln"><span class="pln">
+span</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">icon </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	width</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">13px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	height</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">13px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	display</span></span><span class="pun"><span class="pun">:</span></span><span class="kwd"><span class="kwd">inline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">block</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="kwd"><span class="kwd">float</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">left</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	margin</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">left</span></span><span class="pun"><span class="pun">:-</span></span><span class="lit"><span class="lit">5px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	margin</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">right</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">5px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="com"><span class="com">// jqueryui icons, get from jqueryui.com</span></span><span class="pln"><span class="pln">
+	background</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">url</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">'images/ui-icons_666666_256x240.png'</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">-</span></span><span class="lit"><span class="lit">64px</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">-</span></span><span class="lit"><span class="lit">145px</span></span><span class="pln"><span class="pln"> </span></span><span class="kwd"><span class="kwd">no</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">repeat</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> 
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="com"><span class="com">/* small icons inside buttons */</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">icon</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">back </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	background</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">position</span></span><span class="pun"><span class="pun">:-</span></span><span class="lit"><span class="lit">145px</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">-</span></span><span class="lit"><span class="lit">193px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">icon</span></span><span class="pun"><span class="pun">.</span></span><span class="kwd"><span class="kwd">next</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	background</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">position</span></span><span class="pun"><span class="pun">:-</span></span><span class="lit"><span class="lit">114px</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">-</span></span><span class="lit"><span class="lit">193px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+
+</span></span><span class="com"><span class="com">/* Timeline */</span></span><span class="pln"><span class="pln">
+</span></span><span class="com"><span class="com">#block-timeline {</span></span><span class="pln"><span class="pln">
+	position</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">relative</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">line </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	position</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">relative</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">line</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">before </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	content</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">" "</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	position</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">absolute</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	top</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">25px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	left</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">0px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	width</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">100</span></span><span class="pun"><span class="pun">%;</span></span><span class="pln"><span class="pln">
+	height</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">1px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	background</span></span><span class="pun"><span class="pun">:</span></span><span class="com"><span class="com">#0090c7;</span></span><span class="pln"><span class="pln">
+	z</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">index</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">10</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">line</span></span><span class="pun"><span class="pun">,.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">monthyear </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	</span></span><span class="kwd"><span class="kwd">float</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">left</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	clear</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">both</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">monthyear </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	margin</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">bottom</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">10px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	margin</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">left</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">5px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	height</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">24px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">monthyear </span></span><span class="pun"><span class="pun">&gt;</span></span><span class="pln"><span class="pln"> span</span></span><span class="pun"><span class="pun">,.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">monthyear </span></span><span class="pun"><span class="pun">&gt;</span></span><span class="pln"><span class="pln"> button </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	</span></span><span class="kwd"><span class="kwd">float</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">left</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	height</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">100</span></span><span class="pun"><span class="pun">%;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">monthyear</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">txt </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	background</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">rgba</span></span><span class="pun"><span class="pun">(</span></span><span class="lit"><span class="lit">66</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">66</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">66</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">0.85</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+	color</span></span><span class="pun"><span class="pun">:</span></span><span class="com"><span class="com">#fff;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">day </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	background</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">rgba</span></span><span class="pun"><span class="pun">(</span></span><span class="lit"><span class="lit">66</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">66</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">66</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">0.70</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+	color</span></span><span class="pun"><span class="pun">:</span></span><span class="com"><span class="com">#fff;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">monthyear</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">txt </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	line</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">height</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">24px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	padding</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">0px</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">5px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> 
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">day </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	width</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">20px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	height</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">50px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="kwd"><span class="kwd">float</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">left</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	position</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">relative</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> 
+	padding</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">1px</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">2px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">radius</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">3px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">moz</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">radius</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">3px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">webkit</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">radius</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">3px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">o</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">radius</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">3px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">ms</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">radius</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">3px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	margin</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">0px</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">3px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	z</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">index</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">9</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">day</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">hover </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	background</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">rgba</span></span><span class="pun"><span class="pun">(</span></span><span class="lit"><span class="lit">5</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">5</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">5</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">0.85</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">day </span></span><span class="pun"><span class="pun">&gt;</span></span><span class="pln"><span class="pln"> span </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	cursor</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">pointer</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">day</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">hover </span></span><span class="pun"><span class="pun">&gt;</span></span><span class="pln"><span class="pln"> span </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	color</span></span><span class="pun"><span class="pun">:</span></span><span class="com"><span class="com">#0090c7;</span></span><span class="pln"><span class="pln">
+	cursor</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">normal</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">day </span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">top</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">after </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	content</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">" "</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	position</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">absolute</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	top</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">22px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	left</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">8px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	width</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">7px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	height</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">7px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	background</span></span><span class="pun"><span class="pun">:</span></span><span class="com"><span class="com">#0090c7;</span></span><span class="pln"><span class="pln">
+	border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">radius</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">50</span></span><span class="pun"><span class="pun">%;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">moz</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">radius</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">50</span></span><span class="pun"><span class="pun">%;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">webkit</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">radius</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">50</span></span><span class="pun"><span class="pun">%;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">o</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">radius</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">50</span></span><span class="pun"><span class="pun">%;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">ms</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">radius</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">50</span></span><span class="pun"><span class="pun">%;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">day</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">has</span></span><span class="pun"><span class="pun">-</span></span><span class="kwd"><span class="kwd">event</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	background</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">color</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">rgba</span></span><span class="pun"><span class="pun">(</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">0.85</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">day</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">has</span></span><span class="pun"><span class="pun">-</span></span><span class="kwd"><span class="kwd">event</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">top</span></span><span class="pun"><span class="pun">,.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">day</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">has</span></span><span class="pun"><span class="pun">-</span></span><span class="kwd"><span class="kwd">event</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">bottom </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	color</span></span><span class="pun"><span class="pun">:</span></span><span class="com"><span class="com">#fffff!important;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">day </span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">top</span></span><span class="pun"><span class="pun">,.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">day </span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">bottom </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	</span></span><span class="kwd"><span class="kwd">float</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">left</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	clear</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">both</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	height</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">50</span></span><span class="pun"><span class="pun">%;</span></span><span class="pln"><span class="pln">
+	width</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">100</span></span><span class="pun"><span class="pun">%;</span></span><span class="pln"><span class="pln">
+	box</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">sizing</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">box</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">moz</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">box</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">sizing</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">box</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">webkit</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">box</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">sizing</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">box</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">o</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">box</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">sizing</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">box</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">ms</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">box</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">sizing</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">box</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	text</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">align</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">center</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	color</span></span><span class="pun"><span class="pun">:</span></span><span class="com"><span class="com">#fff;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">day </span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">top </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	vertical</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">align</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">top</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">day </span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">bottom </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	position</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">relative</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	top</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">6px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	vertical</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">align</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">bottom</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">nav</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">icon </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	background</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">color</span></span><span class="pun"><span class="pun">:</span></span><span class="com"><span class="com">#0090c7;</span></span><span class="pln"><span class="pln">
+	background</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">repeat</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">none</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	appearance</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">none</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">webkit</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">appearance</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">none</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">moz</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">appearance</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">none</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">ms</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">appearance</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">none</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">o</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">appearance</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">none</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	width</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">23px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	height</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">100</span></span><span class="pun"><span class="pun">%;</span></span><span class="pln"><span class="pln">
+	border</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">none</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	text</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">indent</span></span><span class="pun"><span class="pun">:-</span></span><span class="lit"><span class="lit">9999em</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	text</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">align</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">center</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	padding</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">2px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">nav</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">icon </span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">icon </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	position</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">relative</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	left</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">4px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+
+
+</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">hover </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	display</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln"> none</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	box</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">shadow</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">2px</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">2px</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">5px</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">0px</span></span><span class="pln"><span class="pln"> rgba</span></span><span class="pun"><span class="pun">(</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">0.25</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+	padding</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">10px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	border</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">radius</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">7px</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	border</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">1px</span></span><span class="pln"><span class="pln"> solid </span></span><span class="com"><span class="com">#777;</span></span><span class="pln"><span class="pln">
+	position</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">absolute</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	z</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">index</span></span><span class="pun"><span class="pun">:</span></span><span class="lit"><span class="lit">11</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	background</span></span><span class="pun"><span class="pun">:</span></span><span class="com"><span class="com">#fff;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">		
+ul</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">day</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">events</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">list li </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	color</span></span><span class="pun"><span class="pun">:</span></span><span class="com"><span class="com">#333;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">	</span></span></code><span class="pln">
+				</span></pre>
+				<h5>Next, the javascript...</h5>
+				<h5>- timeline javascript object has these properties:<br>
+					
+-current.month (int)<br>
+					
+-current.year (int)<br>
+					
+-dates (key-value-pair object; keys are years in format yyyy, value is an array of arrays representing months<br>
+					
+-goToMonthYear (function)
+				</h5>
+				<h5>A day with an event receives the 'has-event' css class, and if 
+the day on the timeline is hovered over, a list of the events will 
+appear as a tooltip.  Just the name is shown in this demo, but you can 
+see how easily you could expand upon this.</h5>
+				<pre class="prettyprint lang-javascript"><span class="pln">					</span><code class="prettyprint language-javascript"><span class="pln"><span class="pln">
+$</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">document</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">ready</span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">function</span></span><span class="pun"><span class="pun">()</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	</span></span><span class="com"><span class="com">/* Timeline */</span></span><span class="pln"><span class="pln">
+	</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> timeline </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+		</span></span><span class="str"><span class="str">'current'</span></span><span class="pun"><span class="pun">:{</span></span><span class="pln"><span class="pln">
+			</span></span><span class="str"><span class="str">'month'</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">''</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">
+			</span></span><span class="str"><span class="str">'year'</span></span><span class="pun"><span class="pun">:</span></span><span class="typ"><span class="typ">Date</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">today</span></span><span class="pun"><span class="pun">().</span></span><span class="pln"><span class="pln">getFullYear</span></span><span class="pun"><span class="pun">()</span></span><span class="pln"><span class="pln">
+		</span></span><span class="pun"><span class="pun">},</span></span><span class="pln"><span class="pln">
+		</span></span><span class="str"><span class="str">'dates'</span></span><span class="pun"><span class="pun">:{},</span></span><span class="pln"><span class="pln">
+		</span></span><span class="str"><span class="str">'goToMonthYear'</span></span><span class="pun"><span class="pun">:</span></span><span class="kwd"><span class="kwd">function</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">mon</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">yr</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+			</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> direction </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">mon</span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln">yr</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">&lt;</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">this</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">month </span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln"> </span></span><span class="kwd"><span class="kwd">this</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">year</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">?</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">'100%'</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">'-100%'</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+			</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> altdirection </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> direction </span></span><span class="pun"><span class="pun">==</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">'100%'</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">?</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">'-=100%'</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">'+=100%'</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+			</span></span><span class="kwd"><span class="kwd">this</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">month </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> mon</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+			</span></span><span class="kwd"><span class="kwd">this</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">year </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> yr</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+			</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> this_months_days </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="kwd"><span class="kwd">this</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">dates</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">yr</span></span><span class="pun"><span class="pun">][</span></span><span class="pln"><span class="pln">mon</span></span><span class="pun"><span class="pun">];</span></span><span class="pln"><span class="pln">
+			$</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">".timeline-line"</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">animate</span></span><span class="pun"><span class="pun">({</span></span><span class="pln"><span class="pln">left</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">direction</span></span><span class="pun"><span class="pun">},</span></span><span class="lit"><span class="lit">250</span></span><span class="pun"><span class="pun">,</span></span><span class="kwd"><span class="kwd">function</span></span><span class="pun"><span class="pun">()</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+				</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> $days </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">[];</span></span><span class="pln"><span class="pln">
+				</span></span><span class="kwd"><span class="kwd">for</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> day </span></span><span class="kwd"><span class="kwd">in</span></span><span class="pln"><span class="pln"> this_months_days</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+					</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> display_day </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> parseInt</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">day</span></span><span class="pun"><span class="pun">)+</span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+					</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> day_events </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> this_months_days</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">day</span></span><span class="pun"><span class="pun">];</span></span><span class="pln"><span class="pln">
+					</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> day_classes </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">'timeline-day'</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+					</span></span><span class="kwd"><span class="kwd">if</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">day_events</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">length</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+						day_classes </span></span><span class="pun"><span class="pun">+=</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">' has-event'</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+					</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+					</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> day_of_week </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="typ"><span class="typ">Date</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">today</span></span><span class="pun"><span class="pun">().</span></span><span class="kwd"><span class="kwd">set</span></span><span class="pun"><span class="pun">({</span></span><span class="pln"><span class="pln">month</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">mon</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">day</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">display_day</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">year</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">yr</span></span><span class="pun"><span class="pun">}).</span></span><span class="pln"><span class="pln">toString</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">"ddd"</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+					</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> $day </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">'</span></span><div class="'+day_classes+'" id="timeline-'+mon+'-'+display_day+'"><span class="top"><span class="str"><span class="str">'</span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln"> day_of_week</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">substr</span></span><span class="pun"><span class="pun">(</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">,</span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">'</span></span></span><span class="bottom"><span class="str"><span class="str">'</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln"> display_day </span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">'</span></span></span></div><span class="str"><span class="str">'</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> 
+					$days</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">push</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">$day</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+				</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+				$</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">".timeline-line"</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">html</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">$days</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">join</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">"\r\n"</span></span><span class="pun"><span class="pun">)).</span></span><span class="pln"><span class="pln">animate</span></span><span class="pun"><span class="pun">({</span></span><span class="pln"><span class="pln">left</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">altdirection</span></span><span class="pun"><span class="pun">},</span></span><span class="lit"><span class="lit">250</span></span><span class="pun"><span class="pun">,</span></span><span class="kwd"><span class="kwd">function</span></span><span class="pun"><span class="pun">()</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+					$</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">".timeline-nav-icon"</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">removeClass</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">'disabled'</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+				</span></span><span class="pun"><span class="pun">})</span></span><span class="pln"><span class="pln">
+				$</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">".timeline-monthyear-txt"</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">text</span></span><span class="pun"><span class="pun">(</span></span><span class="typ"><span class="typ">Date</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">parse</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">mon</span></span><span class="pun"><span class="pun">+</span></span><span class="lit"><span class="lit">1</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">"/"</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln"> yr</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">toString</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">"MMMM"</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln"> </span></span><span class="str"><span class="str">" "</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln"> yr</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">						
+			</span></span><span class="pun"><span class="pun">});</span></span><span class="pln"><span class="pln">
+		</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">};</span></span><span class="pln"><span class="pln">
+	
+	</span></span><span class="com"><span class="com">//Build out date arrays</span></span><span class="pln"><span class="pln">
+	</span></span><span class="com"><span class="com">//This year &amp; next year</span></span><span class="pln"><span class="pln">
+	</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> this_year </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="typ"><span class="typ">Date</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">today</span></span><span class="pun"><span class="pun">().</span></span><span class="pln"><span class="pln">getFullYear</span></span><span class="pun"><span class="pun">();</span></span><span class="pln"><span class="pln">
+	</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> next_year </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> this_year </span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> years_to_process </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">this_year</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">next_year</span></span><span class="pun"><span class="pun">];</span></span><span class="pln"><span class="pln">
+	</span></span><span class="kwd"><span class="kwd">for</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> x </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> yr</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> yr </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> years_to_process</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">x</span></span><span class="pun"><span class="pun">];</span></span><span class="pln"><span class="pln"> x</span></span><span class="pun"><span class="pun">++)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+		timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">dates</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">yr</span></span><span class="pun"><span class="pun">]</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{};</span></span><span class="pln"><span class="pln">
+		</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> this_month </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+		
+		</span></span><span class="kwd"><span class="kwd">for</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> i </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> this_month</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> i </span></span><span class="pun"><span class="pun">&lt;</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">12</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> i</span></span><span class="pun"><span class="pun">++)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+			timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">dates</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">yr</span></span><span class="pun"><span class="pun">][</span></span><span class="pln"><span class="pln">i</span></span><span class="pun"><span class="pun">]</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">[];</span></span><span class="pln"><span class="pln">
+			</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> days_in_month </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="typ"><span class="typ">Date</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">getDaysInMonth</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">yr</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">i</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+			</span></span><span class="kwd"><span class="kwd">for</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> n </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> n </span></span><span class="pun"><span class="pun">&lt;</span></span><span class="pln"><span class="pln"> days_in_month</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> n</span></span><span class="pun"><span class="pun">++)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+				timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">dates</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">yr</span></span><span class="pun"><span class="pun">][</span></span><span class="pln"><span class="pln">i</span></span><span class="pun"><span class="pun">].</span></span><span class="pln"><span class="pln">push</span></span><span class="pun"><span class="pun">([]);</span></span><span class="pln"><span class="pln">
+			</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+		</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+		
+	</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+	
+	</span></span><span class="com"><span class="com">//place current months days</span></span><span class="pln"><span class="pln">
+	</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> this_month </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="typ"><span class="typ">Date</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">today</span></span><span class="pun"><span class="pun">().</span></span><span class="pln"><span class="pln">getMonth</span></span><span class="pun"><span class="pun">();</span></span><span class="pln"><span class="pln">
+	timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">goToMonthYear</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">this_month</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">this_year</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+	
+	</span></span><span class="com"><span class="com">//set up event handlers</span></span><span class="pln"><span class="pln">
+	$</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">".timeline-nav-back"</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">click</span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">function</span></span><span class="pun"><span class="pun">()</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+		</span></span><span class="kwd"><span class="kwd">if</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(!</span></span><span class="pln"><span class="pln">$</span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">this</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">hasClass</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">'disabled'</span></span><span class="pun"><span class="pun">))</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+			$</span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">this</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">addClass</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">'disabled'</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+			</span></span><span class="kwd"><span class="kwd">if</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">month </span></span><span class="pun"><span class="pun">==</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+				</span></span><span class="com"><span class="com">//check if exists</span></span><span class="pln"><span class="pln">
+				</span></span><span class="kwd"><span class="kwd">if</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">dates</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">year</span></span><span class="pun"><span class="pun">-</span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">]</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">!=</span></span><span class="pln"><span class="pln"> </span></span><span class="kwd"><span class="kwd">undefined</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">&amp;&amp;</span></span><span class="pln"><span class="pln"> timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">dates</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">year</span></span><span class="pun"><span class="pun">-</span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">][</span></span><span class="lit"><span class="lit">11</span></span><span class="pun"><span class="pun">]</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">!=</span></span><span class="pln"><span class="pln"> </span></span><span class="kwd"><span class="kwd">undefined</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+					timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">goToMonthYear</span></span><span class="pun"><span class="pun">(</span></span><span class="lit"><span class="lit">12</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">year </span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+				</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+			</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+			</span></span><span class="kwd"><span class="kwd">else</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+				timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">goToMonthYear</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">month </span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">year</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+			</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+		</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">});</span></span><span class="pln"><span class="pln">
+	$</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">".timeline-nav-fwd"</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">click</span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">function</span></span><span class="pun"><span class="pun">()</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+		</span></span><span class="kwd"><span class="kwd">if</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(!</span></span><span class="pln"><span class="pln">$</span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">this</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">hasClass</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">'disabled'</span></span><span class="pun"><span class="pun">))</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+			$</span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">this</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">addClass</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">'disabled'</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+			</span></span><span class="kwd"><span class="kwd">if</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">month </span></span><span class="pun"><span class="pun">==</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">11</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+				</span></span><span class="com"><span class="com">//check if exists</span></span><span class="pln"><span class="pln">
+				</span></span><span class="kwd"><span class="kwd">if</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">dates</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">year</span></span><span class="pun"><span class="pun">+</span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">]</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">!=</span></span><span class="pln"><span class="pln"> </span></span><span class="kwd"><span class="kwd">undefined</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">&amp;&amp;</span></span><span class="pln"><span class="pln"> timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">dates</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">year</span></span><span class="pun"><span class="pun">+</span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">][</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">]</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">!=</span></span><span class="pln"><span class="pln"> </span></span><span class="kwd"><span class="kwd">undefined</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+					timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">goToMonthYear</span></span><span class="pun"><span class="pun">(</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">year </span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+				</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+			</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+			</span></span><span class="kwd"><span class="kwd">else</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+				timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">goToMonthYear</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">month </span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">year</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+			</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+		</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">});</span></span><span class="pln"><span class="pln">
+	
+	$</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">document</span></span><span class="pun"><span class="pun">).</span></span><span class="kwd"><span class="kwd">delegate</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">".timeline-day"</span></span><span class="pun"><span class="pun">,{</span></span><span class="pln"><span class="pln">
+		mouseenter</span></span><span class="pun"><span class="pun">:</span></span><span class="kwd"><span class="kwd">function</span></span><span class="pun"><span class="pun">()</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+			</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> day </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> parseInt</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">$</span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">this</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">find</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">'.bottom'</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">text</span></span><span class="pun"><span class="pun">())</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+			</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> days_events </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">dates</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">year</span></span><span class="pun"><span class="pun">][</span></span><span class="pln"><span class="pln">timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">current</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">month</span></span><span class="pun"><span class="pun">][</span></span><span class="pln"><span class="pln">day</span></span><span class="pun"><span class="pun">];</span></span><span class="pln"><span class="pln">
+			</span></span><span class="kwd"><span class="kwd">if</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">days_events </span></span><span class="pun"><span class="pun">!=</span></span><span class="pln"><span class="pln"> </span></span><span class="kwd"><span class="kwd">undefined</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">&amp;&amp;</span></span><span class="pln"><span class="pln"> days_events</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">length</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+				</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> events_html </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">[</span></span><span class="str"><span class="str">'</span></span><ul class="day-events-list"><span class="str"><span class="str">'</span></span><span class="pun"><span class="pun">];</span></span><span class="pln"><span class="pln">
+				</span></span><span class="kwd"><span class="kwd">for</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> i </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> evt</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> evt </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> days_events</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">i</span></span><span class="pun"><span class="pun">];</span></span><span class="pln"><span class="pln"> i</span></span><span class="pun"><span class="pun">++)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+					events_html</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">push</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">'</span></span><li class="event-title"><span class="str"><span class="str">'</span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln">evt</span></span><span class="pun"><span class="pun">[</span></span><span class="str"><span class="str">'name'</span></span><span class="pun"><span class="pun">]+</span></span><span class="str"><span class="str">'</span></span></li><span class="str"><span class="str">'</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+				</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+				events_html</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">push</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">'</span></span></ul><span class="str"><span class="str">'</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+				</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> day_top </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> $</span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">this</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">position</span></span><span class="pun"><span class="pun">().</span></span><span class="pln"><span class="pln">top </span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln"> $</span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">this</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">height</span></span><span class="pun"><span class="pun">()</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">40</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+				</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> day_left </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> $</span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">this</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">position</span></span><span class="pun"><span class="pun">().</span></span><span class="pln"><span class="pln">left </span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">$</span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">this</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">width</span></span><span class="pun"><span class="pun">()</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">/</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">2</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+				$</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">".timeline-hover"</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">html</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">events_html</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">join</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">"\r\n"</span></span><span class="pun"><span class="pun">)).</span></span><span class="pln"><span class="pln">css</span></span><span class="pun"><span class="pun">({</span></span><span class="pln"><span class="pln">top</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">day_top</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">left</span></span><span class="pun"><span class="pun">:</span></span><span class="pln"><span class="pln">day_left</span></span><span class="pun"><span class="pun">}).</span></span><span class="pln"><span class="pln">fadeIn</span></span><span class="pun"><span class="pun">(</span></span><span class="lit"><span class="lit">250</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+			</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+		</span></span><span class="pun"><span class="pun">},</span></span><span class="pln"><span class="pln">
+		mouseleave</span></span><span class="pun"><span class="pun">:</span></span><span class="kwd"><span class="kwd">function</span></span><span class="pun"><span class="pun">()</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+			$</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">".timeline-hover:visible"</span></span><span class="pun"><span class="pun">).</span></span><span class="pln"><span class="pln">fadeOut</span></span><span class="pun"><span class="pun">(</span></span><span class="lit"><span class="lit">250</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+		</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">});</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">});</span></span><span class="pln">
+</span></code><span class="pln">
+				</span></pre>
+				
+				<h5>Now, the important part, which is adding items, or events, to 
+the calendar.  The items are properties of an individual day in the 
+timeline.dates object, i.e. to check the number of items on November 6, 
+2012, just check timeline.dates[2012][10][6].length</h5>
+				<h5>Here is an example of how to feed a JSON source into timeline.dates</h5>
+				<pre class="prettyprint lang-javascript"><span class="pln">					</span><code class="prettyprint language-javascript"><span class="pln"><span class="pln">
+$</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">getJSON</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">"events.json"</span></span><span class="pun"><span class="pun">,</span></span><span class="kwd"><span class="kwd">function</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">r</span></span><span class="pun"><span class="pun">)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+	</span></span><span class="com"><span class="com">//Fill in proposals to dates</span></span><span class="pln"><span class="pln">
+	</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> events </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> r</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+	</span></span><span class="kwd"><span class="kwd">for</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> i </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> evt</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> evt </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> events</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">i</span></span><span class="pun"><span class="pun">];</span></span><span class="pln"><span class="pln"> i</span></span><span class="pun"><span class="pun">++)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+		</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> split_date </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> evt</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">date</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">split</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">'/'</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+		</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> _mon </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> parseInt</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">split_date</span></span><span class="pun"><span class="pun">[</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">])</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+		</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> _day </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> parseInt</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">split_date</span></span><span class="pun"><span class="pun">[</span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">])</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+		</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> _yr </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> split_date</span></span><span class="pun"><span class="pun">[</span></span><span class="lit"><span class="lit">2</span></span><span class="pun"><span class="pun">];</span></span><span class="pln"><span class="pln">
+		timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">dates</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">_yr</span></span><span class="pun"><span class="pun">][</span></span><span class="pln"><span class="pln">_mon</span></span><span class="pun"><span class="pun">][</span></span><span class="pln"><span class="pln">_day</span></span><span class="pun"><span class="pun">].</span></span><span class="pln"><span class="pln">push</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">evt</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+		$</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">"#timeline-"</span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln">_mon</span></span><span class="pun"><span class="pun">+</span></span><span class="str"><span class="str">"-"</span></span><span class="pun"><span class="pun">+(</span></span><span class="pln"><span class="pln">_day</span></span><span class="pun"><span class="pun">+</span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">)).</span></span><span class="pln"><span class="pln">addClass</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">'has-event'</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">});</span></span><span class="pln">
+</span></code><span class="pln">
+				</span></pre>
+				<h5>Or, you can just hardcode a list of events like so:</h5>
+				<pre class="prettyprint lang-javascript"><span class="pln">					</span><code class="prettyprint language-javascript"><span class="pln"><span class="pln">
+	</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> events </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">[{</span></span><span class="pln"><span class="pln">
+		name</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">"Event 0"</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">
+		date</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">"05/24/2012"</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">},{</span></span><span class="pln"><span class="pln">
+		name</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">"Event 1"</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">
+		date</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">"05/31/2012"</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">},{</span></span><span class="pln"><span class="pln">
+		name</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">"Event 2"</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">
+		date</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">"06/11/2012"</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">},{</span></span><span class="pln"><span class="pln">
+		name</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">"Event 3"</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">
+		date</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">"06/18/2012"</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">},{</span></span><span class="pln"><span class="pln">
+		name</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">"Event 4"</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">
+		date</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">"06/30/2012"</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">},{</span></span><span class="pln"><span class="pln">
+		name</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">"Event 5"</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">
+		date</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">"07/04/2012"</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">},{</span></span><span class="pln"><span class="pln">
+		name</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">"Event 6"</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln">
+		date</span></span><span class="pun"><span class="pun">:</span></span><span class="str"><span class="str">"07/14/2012"</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">}];</span></span><span class="pln"><span class="pln">
+	</span></span><span class="kwd"><span class="kwd">for</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">(</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> i </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">,</span></span><span class="pln"><span class="pln"> evt</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln"> evt </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> events</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">i</span></span><span class="pun"><span class="pun">];</span></span><span class="pln"><span class="pln"> i</span></span><span class="pun"><span class="pun">++)</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">{</span></span><span class="pln"><span class="pln">
+		</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> split_date </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> evt</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">date</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">split</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">'/'</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+		</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> _mon </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> parseInt</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">split_date</span></span><span class="pun"><span class="pun">[</span></span><span class="lit"><span class="lit">0</span></span><span class="pun"><span class="pun">])</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+		</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> _day </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> parseInt</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">split_date</span></span><span class="pun"><span class="pun">[</span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">])</span></span><span class="pln"><span class="pln"> </span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln"> </span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">;</span></span><span class="pln"><span class="pln">
+		</span></span><span class="kwd"><span class="kwd">var</span></span><span class="pln"><span class="pln"> _yr </span></span><span class="pun"><span class="pun">=</span></span><span class="pln"><span class="pln"> split_date</span></span><span class="pun"><span class="pun">[</span></span><span class="lit"><span class="lit">2</span></span><span class="pun"><span class="pun">];</span></span><span class="pln"><span class="pln">
+		timeline</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">dates</span></span><span class="pun"><span class="pun">[</span></span><span class="pln"><span class="pln">_yr</span></span><span class="pun"><span class="pun">][</span></span><span class="pln"><span class="pln">_mon</span></span><span class="pun"><span class="pun">][</span></span><span class="pln"><span class="pln">_day</span></span><span class="pun"><span class="pun">].</span></span><span class="pln"><span class="pln">push</span></span><span class="pun"><span class="pun">(</span></span><span class="pln"><span class="pln">evt</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+		$</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">"#timeline-"</span></span><span class="pun"><span class="pun">+</span></span><span class="pln"><span class="pln">_mon</span></span><span class="pun"><span class="pun">+</span></span><span class="str"><span class="str">"-"</span></span><span class="pun"><span class="pun">+(</span></span><span class="pln"><span class="pln">_day</span></span><span class="pun"><span class="pun">+</span></span><span class="lit"><span class="lit">1</span></span><span class="pun"><span class="pun">)).</span></span><span class="pln"><span class="pln">addClass</span></span><span class="pun"><span class="pun">(</span></span><span class="str"><span class="str">'has-event'</span></span><span class="pun"><span class="pun">);</span></span><span class="pln"><span class="pln">
+	</span></span><span class="pun"><span class="pun">}</span></span><span class="pln"><span class="pln">
+	</span></span></code><span class="pln">				
+				</span></pre>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27173708-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+
+</body></html>

@@ -1,0 +1,12 @@
+/* ==== RELAXED LAYOUT ===*/
+
+#outer-wrap {font: 100% Arial, Helvetica, Verdana, Arial, sans-serif;}
+#content, #related {float:none;}
+#related {width: 100%; margin-left: 0; margin-top: 15px; position:static; left:0;}
+
+#related img {float:left; margin-right:15px}
+#switcher p {padding-top:0; margin-top:1px}
+
+#navigation {width:25%;}
+#navigation ul {margin-right:13px}
+#content-wrapper {margin: 0 32px 0 25%;}

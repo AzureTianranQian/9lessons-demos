@@ -1,0 +1,44 @@
+/* CSS developed by Zoe Mickley Gillenwater, zomigi.com, twitter.com/zomigi */
+
+body {
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+a {
+	color: #3B6F5A;
+}
+.date {
+	display: block;
+	margin-top: .3em;
+	color: #0C5087;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 80%;
+}
+#tweets {
+	width: 280px;
+	margin: 0 auto;
+	padding: 0 0 1px 0;
+	background: #D8F7E5;
+}
+h2 {
+	position: relative; /* to fix cut off content due to negative margin in IE 6 */
+	zoom: 1; /* to fix cut off content due to negative margin in IE 6 */
+	margin: 0 0 0 -50px;
+	padding: 10px 20px 12px 20px;
+	background: #048753;
+	color: #fff;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 140%;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+ol {
+	margin: 20px;
+	padding: 0;
+	list-style: none;
+}
+li {
+	margin: 0 0 1em 0;
+}

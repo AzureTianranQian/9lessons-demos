@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test</title></head>
+<script>
+var context = null;		// Web Audio API context
+var soundbuffer = null;	// The sound data buffer
+
+// Prepare the Web Audio API and play a sound with it
+function LoadWebAudioAPI()
+{
+	// Note the 'webkit' prefix will be dropped if the Web Audio API is standardised,
+	// so we can future-proof our code by also using just 'AudioContext'
+	if (typeof webkitAudioContext == "undefined" && typeof AudioContext == "undefined")
+	{
+		alert("Web Audio API not supported - try using the latest version of Chrome");
+		return;
+	}
+
+	// Context not yet created (first click of button)
+	if (!context)
+	{
+		// Create a new context which handles audio playback.  You only need one context per
+		// page to handle all playback, even with multiple sounds.
+		if (typeof webkitAudioContext != "undefined")
+			context = new webkitAudioContext();
+		else if (typeof AudioContext != "undefined")
+			context = new AudioContext();
+
+		// AJAX request sound.ogg and load in to a sound buffer.
+		// Since the Web Audio API is only supported in Chrome we
+		// can just play the .ogg file and forget about the .m4a.
+		var request = new XMLHttpRequest();
+		request.open('GET', 'sound.ogg', true);
+		request.responseType = 'arraybuffer';
+
+		// Decode asynchronously
+		request.onload = function() {
+			context.decodeAudioData(request.response, function(buffer) {
+				soundbuffer = buffer;
+				
+				// Play the sound now it's loaded.
+				PlayWebAudioAPI();
+			});
+		}
+		request.send();
+	}
+}
+
+function PlayWebAudioAPI()
+{
+	LoadWebAudioAPI();
+	
+	if (soundbuffer)
+	{
+		// Buffer sources are throwaway objects.
+		// Create a new one for each sound you want to play.
+		var source = context.createBufferSource();
+		source.buffer = soundbuffer;
+		source.connect(context.destination);
+		source.noteOn(0);
+	}
+}
+
+// Test if the browser supports playing Ogg Vorbis
+var canPlayOgg = !!(new Audio().canPlayType('audio/ogg; codecs="vorbis"'));
+
+function PlayHTML5Audio()
+{
+	if (canPlayOgg)
+		new Audio("sound.ogg").play();
+	else
+		new Audio("sound.m4a").play();
+}
+</script>
+<body>
+<button onclick="javascript:PlayHTML5Audio();">Play with HTML5 audio</button>
+<button onclick="javascript:PlayWebAudioAPI();">Play with Web Audio API</button>
+<p>Note that Chrome may block the sound loading for security reasons if you're viewing this page on the file:/// protocol.
+Try uploading the files to a server to test it if the Web Audio API button doesn't work in Chrome.</p>
+<script>
+if (canPlayOgg)
+	document.write("<p>This browser supports playing Ogg Vorbis (.ogg files).</p>");
+else
+	document.write("<p>This browser does not support playing Ogg Vorbis (.ogg files), it will use AAC (.m4a) instead.</p>");
+</script>
+</body>
+</html>

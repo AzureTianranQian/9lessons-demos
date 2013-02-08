@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>ZUI Site Riot</title>
+
+  <style media="screen">
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6em;
+      color: #333;
+    }
+  
+    #wrap {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 8px;
+    }
+  
+    hr {
+      border: none;
+      border-bottom: 1px solid #BBB;
+    }
+    
+    pre, code {
+      background: #F8F8F8;
+      font-family: Monaco, 'Courier New', Courier, monospace;
+      font-size: 12px;
+    }
+    
+    pre {
+      padding: 1.0em;
+      border: 1px solid #DDD;
+      white-space: pre-wrap;
+    }
+    
+    p code {
+      padding: 1px 2px;
+      border: 1px solid #DDD;
+    }
+    
+    .aside {
+      position: relative;
+    }
+    
+    .aside div {
+      font-size: 13px;
+      color: #666;
+    }
+    
+    .article {
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #DDD;
+    }
+    
+    img {
+      border: 1px solid #DDD;
+      display: block;
+      width: 100%;
+      max-width: 578px;
+    }
+    
+    a { color: blue; }
+    a:hover { color: red; }
+    
+    @media screen and (min-width: 970px) {
+      #wrap {
+        padding-right: 370px;
+      }
+      
+      .aside div {
+        position: absolute;
+        right: -340px;
+        width: 300px;
+      }
+      
+    }
+  </style>
+
+</head>
+<body>
+
+  <div id="wrap">
+    
+
+
+
+  <h1>ZUI Site Riot</h1>
+
+  <h2>by <a href="http://desandro.com">David DeSandro</a></h2>
+
+  <p>Written for <a href="http://www.netmagazine.com/">.net magazine</a></p>
+
+  <h3>Demos</h3>
+
+  <ul>
+    <li><a href="demo1.html">Demo 1 - Basic layout</a></li>
+    <li><a href="demo2.html">Demo 2 - Scaled sections</a></li>
+    <li><a href="demo3.html">Demo 3 - Fixed zoom</a></li>
+    <li><a href="demo4.html">Demo 4 - Scroll to zoom</a></li>
+  </ul>
+
+  <hr />
+
+  <div id="content">
+
+  
+    <div class="article">
+      <h1>ZUI Site Riot</h1>
+      <h3 id='tutorial_info'>Tutorial info</h3>
+
+<ul>
+<li><strong>Knowledge needed:</strong> CSS, Intermediate JavaScript</li>
+
+<li><strong>Requires:</strong> text editor, browser that supports CSS3 transforms</li>
+
+<li><strong>Project time:</strong> 3 hours</li>
+</ul>
+<hr />
+<p>With CSS3 transforms now supported in most major browsers, we have the delightful opportunity to experiment creating innovative layouts and interfaces. No longer are we shackled in our one-dimensional prisons, bound to the tyranny of vertically-scrolling sites.</p>
+
+<p>With the site for BeerCamp at SXSW 2011 (<a href='http://2011.beercamp.com'>2011.beercamp.com</a>), we at nclud recognized an ideal opportunity to bend some rules and try something new. I got the idea to leverage CSS transforms for the layout. Instead of the typical vertical scrolling site, where you traversed it downwards, this would could be traversed <em>inwards</em>. This is sort of design pattern has been categorized as a Zoomable User Interface or ZUI.</p>
+<div class='aside'><div>
+<p>The BeerCamp at SXSW 2011 was an experiment in using CSS transforms to create a new interface design pattern.</p>
+<p><a href='http://s3.amazonaws.com/ember/U9Zhuu3Vf2frBxrNrNsoldLp2N55Weq7_o.png'>View hi-res</a></p>
+</div></div>
+<p><a href='http://2011.beercamp.com'><img src='http://s3.amazonaws.com/ember/U9Zhuu3Vf2frBxrNrNsoldLp2N55Weq7_m.jpg' alt='BeerCamp at SXSW 2011' /></a></p>
+
+<p>In this tutorial, let&#8217;s build a Zoomable User Interface into a simple page. You will learn:</p>
+
+<ul>
+<li>How to use CSS transforms to create a zoomable layout</li>
+
+<li>How to use JavaScript to hi-jacking scrolling to manipulate the zoom</li>
+</ul>
+
+<p>Our example page lists the services of a web development shop. The five sections for our page are Web development, Front-end development, CSS, CSS3, and Transforms. The services listed range from the broad to the specific. This content is well suited for a zoomable layout, as the subsequent sections are smaller segments of the previous sections. By placing one visual element inside another, you are visually communicating the relationship between pieces of content.</p>
+
+<h2 id='basic_layout'>Basic layout</h2>
+<div class='aside'><div>
+<p class='caption'>Prior to the ZUI layout, this basic layout is designed for browsers without support CSS transforms or browsers with JavaScript disabled.</p>
+<p><a href='demo1.html'><img src='http://i.imgur.com/53jXt.png' alt='ZUI Site Riot - Demo 1 - Basic Layout screenshot' style='width: 165px' /></a></p>
+<p><a href='http://s3.amazonaws.com/ember/OcgEEVgIZvBP1GVtQ7CaIbeL8u5Nosz9_o.png'>View hi-res</a></p>
+</div></div>
+<p>The basic markup of the site will look like the following:</p>
+
+<pre><code>&lt;div id=&quot;wrap&quot;&gt;
+  &lt;div id=&quot;container&quot;&gt;
+    &lt;ul id=&quot;nav&quot;&gt;...&lt;/ul&gt;
+    &lt;div id=&quot;content&quot;&gt;
+      &lt;section id=&quot;web-dev&quot;&gt;...&lt;/section&gt;
+      &lt;section id=&quot;front-end&quot;&gt;...&lt;/section&gt;
+      &lt;section id=&quot;css&quot;&gt;...&lt;/section&gt;
+      &lt;section id=&quot;css3&quot;&gt;...&lt;/section&gt;
+      &lt;section id=&quot;transforms&quot;&gt;...&lt;/section&gt;
+    &lt;/div&gt; &lt;!-- #content --&gt;
+  &lt;/div&gt; &lt;!-- #container --&gt;
+&lt;/div&gt; &lt;!-- #wrap --&gt;</code></pre>
+
+<p>The first draft of the site has the content laid out in the typical vertical pattern. This version is necessary as this layout will be used by browsers that do not support CSS transforms or have JavaScript disabled. The rest of the effects will be built with progressive enhancement.</p>
+
+<p>For the zoomable layout, we need to consider how each section will fit inside one another. I&#8217;ve chosen to use a ratio of 3:1 for the proportion between the current section and its subsequent section. This is a reasonable ratio for parent/child sizes as the parent will have enough room for content, and the child container will still be visible. The area of each section will be 900px x 540px so it fits within most browser windows. Subsequent sections will appear to be one-third the full size, 300px x 180px. You&#8217;ll notice this space in the center of each section has been reserved for the subsequent sections to fit inside once CSS transforms are put in place.</p>
+
+<p><strong>See Demo 1 - Basic layout</strong> <a href='http://desandro.github.com/zui-site-riot/demo1.html'>desandro.github.com/zui-site-riot/demo1.html</a></p>
+
+<h2 id='adding_transforms'>Adding transforms</h2>
+
+<p>With the basic layout established, we can now start adding CSS transforms. Before we jump in with the CSS, let&#8217;s add Modernizr so we have more control over how browsers will inherit their styles. I opted to use a custom build from the Modernizr 2.0 beta preview, that only tests for CSS 2D transforms and CSS transitions (<a href='http://modernizr.github.com/Modernizr/2.0-beta/#csstransforms-csstransitions-iepp'>modernizr.github.com/Modernizr/2.0-beta/#csstransforms-csstransitions-iepp</a>). After adding the Modernizr code to our scripts, we can target browsers that support transforms with <code>.csstransforms</code> in our CSS.</p>
+
+<p>To scale each section inside one another, they first need to occupy the same space. This can be done with absolute positioning.</p>
+
+<pre><code>.csstransforms #container { position: relative; }
+.csstransforms #content { position: absolute; }
+.csstransforms section { position: absolute; }</code></pre>
+
+<p>Each section needs to have its own scale set. As the proportion we are using is 3:1, essentially each section will be one third the size of the previous. This can be calculated as the inverse ration to the exponent of the level&#8217;s zero-based index:</p>
+
+<pre><code>zoomScale = inverse ratio ^ zero-based-level</code></pre>
+<div class='aside'><div>
+<p><img src='http://desandro.com/work/zui-site-riot/html5css3.png' alt='CSS3 logo' style='width: 330px;' /></p>
+<p>CSS3 is the principal technology that enables the ZUI for this page. We are leveraging scale transforms.</p>
+<p><a href='http://desandro.com/work/zui-site-riot/html5css3.png'>View hi-res</a></p>
+</div></div>
+<p>The scale of first level, <code>#web-dev</code> is <code>(1/3) ^ 0</code> or just 1, so we don&#8217;t need to set that superfluous style. The scale of the second level, <code>#front-end</code> is <code>(1/3) ^ 1</code> or 1/3 or in decimal <code>0.3333</code>. The scale of the third level <code>#css</code> is <code>(1/3) ^ 2</code> or 1/9 or in decimal <code>0.1111</code>. We&#8217;ll apply this value to the various vendor-prefix <code>transform</code> CSS properties for all four of our subsequent sections. For the sake of brevity, the code example below only lists the un-prefixed <code>transform</code> property, but in your actual code, remember to add all the vendor prefixed versions (<code>-webkit-transform</code>, <code>-moz-transform</code>, etc.).</p>
+
+<pre><code>/* level index 1: (1/3) ^ 1 = 1/3 = 0.3333 */
+.csstransforms #front-end {
+  transform: scale(0.3333);
+}
+/* level index 2: (1/3) ^ 2 ) = 1/9 = 0.1111 */
+.csstransforms #css {
+  transform: scale(0.1111);
+}
+/* level index 3: (1/3) ^ 3 = 1/27 = 0.0370 */
+.csstransforms #css3 {
+  transform: scale(0.037);
+}
+/* level index 4: (1/3) ^ 4 = 1/81 = 0.0123456 */
+.csstransforms #transforms {
+  transform: scale(0.0123456);
+}</code></pre>
+
+<p>Awesome! The sections have been transformed to fit inside one another, like Russian nesting dolls.</p>
+
+<p><strong>See Demo 2 - Scaled sections</strong> <a href='http://desandro.github.com/zui-site-riot/demo2.html'>desandro.github.com/zui-site-riot/demo2.html</a></p>
+<div class='aside'><div>
+<p>Each section is positioned inside one another using CSS <code>scale</code> transforms.   You can see the second section within the first, and if you look closely, you'll find the others deeper within.</p>
+<p><a href='http://s3.amazonaws.com/ember/1P7jgub6IklObU0YN3BXXuDXH4GVxAAC_o.png'>View hi-res</a></p>
+</div></div>
+<p><a href='demo2.html'><img src='http://s3.amazonaws.com/ember/1P7jgub6IklObU0YN3BXXuDXH4GVxAAC_o.png' alt='Demo 2 - Scaled sections screenshot' /></a></p>
+
+<p>Now we need to build a mechanism to enable the user the zoom in. To zoom in to a section, we only need to apply its reciprocal scale to the sections&#8217; parent <code>#content</code>. All child sections will be scaled up accordingly. In mathematical terms, the scale is equal to the ratio to the exponent of level&#8217;s zero-base index. The second section <code>#front-end</code> has a scale of 1/3, so it needs to be scaled 3x to bring it to 100% size.</p>
+
+<pre><code>zoomScale = ratio ^ zero-based-level</code></pre>
+
+<p>The scale to view the third level would be <code>3 ^ 2 = 9</code>. For the fourth level, the scale would be <code>3 ^ 3 = 27</code>.</p>
+
+<pre><code>.csstransforms #content {
+  transform: scale(27);
+}</code></pre>
+
+<p><strong>See Demo 3 - Fixed zoom</strong> <a href='http://desandro.github.com/zui-site-riot/demo3.html'>desandro.github.com/zui-site-riot/demo3.html</a></p>
+<div class='aside'><div>
+<p>Applying a scale that increases the size of container will zoom in on its content.</p>
+<p><a href='http://s3.amazonaws.com/ember/zCa4GlWMxTB3BA36GADGIFDGNSm5v2sK_o.png'>View hi-res</a></p>
+</div></div>
+<p><a href='demo3.html'><img src='http://s3.amazonaws.com/ember/zCa4GlWMxTB3BA36GADGIFDGNSm5v2sK_o.png' alt='Demo 3 - Fixed zoom' /></a></p>
+
+<h2 id='scroll'>Scroll</h2>
+
+<p>Leveraging window scrolling is a natural convenient interaction to hook zooming into. Along side clicking and pointing, scrolling is a natural interaction that anyone with a mouse or keyboard uses.</p>
+
+<p>Currently there is not anything to scroll, since the entire page is self contained in that 900 x 540 area. But we can fake it by adding an empty element that has height, which will serve as our proxy. The mark up will be added after <code>#wrap</code>.</p>
+
+<pre><code>&lt;/div&gt; &lt;!-- #wrap --&gt;
+&lt;div id=&quot;scroller&quot;&gt;&lt;/div&gt;</code></pre>
+
+<p>In the CSS, set an arbitrary height on <code>#scroller</code>. <code>4000px</code> works, as an approximate height of the page before we added the scale transforms.</p>
+
+<pre><code>.csstransforms #scroller { height: 4000px; }</code></pre>
+
+<p>But we don&#8217;t want the content to scroll with the rest of the page, so we can use fixed positioning to fix the actual content in its same place.</p>
+
+<pre><code>#wrap { 
+  position: fixed; 
+  width: 100%;
+}</code></pre>
+
+<p>The page scrolls, but the content remains static. Now the fun begins as we jump into scriptin&#8217;.</p>
+
+<h2 id='javascript'>JavaScript</h2>
+
+<p>The basic idea is that we are going to hijack the scroll event and do something with it.</p>
+<div class='aside'><div>
+<p>Hijacking the scroll behavior enables users to zoom in to inner content.</p>
+<p><a href='http://desandro.com/work/zui-site-riot'>Get hi-res 'scroll' screenshots</a></p>
+</div></div>
+<p><a href='demo4.html'><img src='http://desandro.com/work/zui-site-riot/scrolling.png' alt='Demo 4 - Scroll to zoom' /></a></p>
+
+<p>As all this script will only need to run if the browser supports CSS transforms, we can encapsulate our entire script in a self-executing function, which will only proceed if CSS transforms are supported.</p>
+
+<pre><code>(function(){
+  if ( !Modernizr.csstransforms ) { return; }
+  // CSS transforms supported, continue...
+})();</code></pre>
+
+<p>I&#8217;m using a constructor design pattern <code>Zoomer</code> which will do all the work. The <code>Zoomer</code> constructor requires a DOM node, specifically the content container, which will be passed in later. It holds properties like <code>scrolled</code> which will be the vertical scroll position, <code>levels</code> which is the zero-based number of sections, and the height of the page in <code>docHeight</code>. Most importantly, we pass it in as an event listener to the window&#8217;s scroll event.</p>
+
+<pre><code>// the constructor that will do all the work
+function Zoomer( content ) {
+  this.content = content;
+  this.scrolled = 0;
+  this.levels = 4;
+  this.docHeight = document.documentElement.offsetHeight;
+  // bind Zoomer to scroll event
+  window.addEventListener( &#39;scroll&#39;, this, false);
+}</code></pre>
+
+<p>The <code>handleEvent</code> method allows the constructor to be used as an event listener, so we can properly use <code>this</code> in <code>window.addEventListener( &#39;scroll&#39;, this, false)</code>. If a method matches the event&#8217;s type, that method will be called. So we can bind <code>Zoomer.prototype.scroll</code> to the window&#8217;s scroll event.</p>
+
+<pre><code>Zoomer.prototype.handleEvent = function( event ) {
+  if ( this[event.type] ) {
+    this[event.type](event);
+  }
+};</code></pre>
+
+<p><code>Zoomer.prototype.scroll</code> is where the magic will be happening. We first need to calculate the current position of the scroll relative the height of the page. <code>this.scrolled</code> is a normalized decimal value, from 0 to 1, that represents the position of the scrolled page.</p>
+
+<pre><code>Zoomer.prototype.scroll = function( event ) {
+  this.scrolled = window.scrollY / ( this.docHeight - window.innerHeight );
+};</code></pre>
+
+<p>We can take that <code>scrolled</code> value and use it for our scale value to zoom into the content. We can use the same math we applied with the CSS above, except we are now using a percentage. Its value goes from 0 to 1, so we need to multiply it by the zero-based number of sections.</p>
+
+<pre><code>zoomScale = ratio ^ ( percentage * levels )</code></pre>
+
+<p>This value can be applied as a CSS transform. We need to set all the vendor specific CSS properties for <code>transform</code> with the <code>transformValue</code>.</p>
+
+<pre><code>Zoomer.prototype.scroll = function( event ) {
+  this.scrolled = window.scrollY / ( this.docHeight - window.innerHeight );
+  var scale = Math.pow( 3, this.scrolled * this.levels ),
+      transformValue = &#39;scale(&#39;+scale+&#39;)&#39;;
+  this.content.style.WebkitTransform = transformValue;
+  this.content.style.MozTransform = transformValue;
+  this.content.style.OTransform = transformValue;
+  this.content.style.transform = transformValue;
+};</code></pre>
+
+<p>All that&#8217;s left is to initialize a new <code>Zoomer</code> instance, pass in the <code>#content</code> DOM node, and start it up on</p>
+
+<pre><code>function init() {
+  var content = document.getElementById(&#39;content&#39;),
+      // init Zoomer constructor
+      ZUI = new Zoomer( content );
+}
+window.addEventListener( &#39;DOMContentLoaded&#39;, init, false );</code></pre>
+
+<p>Now the content zooms when you scroll. And everybody goes &#8220;Whooaaaaaaaaa.&#8221;</p>
+
+<p><strong>See Demo 4 - Scroll to zoom</strong> <a href='http://desandro.github.com/zui-site-riot/demo4.html'>desandro.github.com/zui-site-riot/demo4.html</a></p>
+<div class='aside'><div>
+<p>If done correctly, when you scroll to the bottom of the page, you'll zoom in perfectly to the last section.</p>
+<p><a href='http://desandro.com/work/zui-site-riot/screenshot-end.png'>View hi-res</a></p>
+</div></div>
+<p><img src='http://desandro.com/work/zui-site-riot/screenshot-end.png' alt='Transform end' /></p>
+
+<h2 id='completion'>Completion</h2>
+
+<p>Behold what you have accomplished! Not only have you produced a pioneer in the realm of web interface development, but you have built it in such a way that it will be fun to use and engaging to interact with. Well done!</p>
+
+<h3 id='about_the_author'>About the author</h3>
+
+<ul>
+<li><strong>Name:</strong> David DeSandro</li>
+
+<li><strong>Site:</strong> <a href='http://desandro.com'>desandro.com</a></li>
+
+<li><strong>Expertise:</strong> Creative programming with CSS and JavaScript</li>
+
+<li><strong>Clients:</strong> Apple, Oracle, Mashable</li>
+
+<li><strong>Photo</strong> <a href='http://www.flickr.com/photos/nemoorange/3819300088/'><img src='http://farm4.static.flickr.com/3570/3819300088_33ec7dcc95_z.jpg' alt='Headshot by Dave DeSandro, on Flickr' /></a> <a href='http://www.flickr.com/photos/nemoorange/3819300088/sizes/o/'>Hi-res available</a></li>
+</ul>
+    </div> <!-- .article -->
+  
+    <div class="article">
+      <h1>Zooming overview</h1>
+      <p>As a web designer, you are already well familiar with the concept of a GUI. But have you ever heard of a ZUI - zoomable user interface? The term might be new, but the zooming design pattern is a popular concept. Zooming is directly related to manipulating scale - how the size of the interface elements compare with one another. ZUIs can be found all across the digital landscape.</p>
+
+<ul>
+<li>
+<p>Its most literal form can be found in vector applications like Illustrator or 3D applications like Google Sketch-up, where zooming translates into getting closer in on smaller objects.</p>
+</li>
+
+<li>
+<p>On the web, the most commonplace example is on map sites like Google Maps or Mapquest. Google Maps was clever enough to integrate the scroll wheel with zoom.</p>
+</li>
+
+<li>
+<p>Plenty of desktop application have zooming capabilities. Microsoft Word and Powerpoint both are able to increase the visible portion of interface. Zooming has been built into all modern web browser, enabling users to adjust websites to a comfortable size that they can read and interact with.</p>
+</li>
+
+<li>
+<p>Mac OS X has zooming built into its interface. Holding Control and scrolling will zoom the entire screen towards the cursor.</p>
+</li>
+
+<li>
+<p>Several flash sites have tried to trailblaze the way for ZUIs: <a href='http://zoomquilt.nikkki.net'>zoomquilt.nikkki.net</a> and <a href='http://zoomism.com/'>zoomism.com</a></p>
+</li>
+</ul>
+
+<p>Now in the age of mobile with iOS and Android browsers, zooming has been leveraged to allow devices with small screens display content designed for desktops. Zooming enables users to navigate within the page. The iPhone introduced several key behaviors related to zoom. Instead of relying on a UI element, it relied on the pinch/spread gesture to control zoom. This behavior is consistent through Maps and Mobile Safari.</p>
+
+<p>Given all these examples, you can rest assure that building zooming into your web app will not be that revolutionary. Users might not expect it at first, but clearly, they have used zooming in some capacity in the past.</p>
+    </div> <!-- .article -->
+  
+    <div class="article">
+      <h1>Vanilla, my favorite flavor of JavaScript</h1>
+      <p>If you have been glancing over the code snippets for this tutorial, you may have noticed that jQuery old familiar&#8217;s <code>$</code> is nowhere to be found. Like most front-end developers, I came to learn JavaScript from first being introduced to jQuery. The jQuery framework was especially welcoming with its CSS familiarity and approachable syntax that enabled novices like myself to start playing around with the DOM.</p>
+
+<p>As I have come to learn more about jQuery, and therein JavaScript, I have tried to ween myself off of using JavaScript frameworks. There&#8217;s nothing inherently wrong with them. But leaving them for vanilla JavaScript has its advantages.</p>
+
+<ul>
+<li>
+<p><strong>Size</strong>: jQuery minified comes in at 30kb. Compare that to the 8kb of the tutorial script, uncompressed. That&#8217;s dead weight that can be easily lost.</p>
+</li>
+
+<li>
+<p><strong>Clarity</strong>: When you cut out using a framework, you can rely on other developers being better versed in reading your code. Frameworks, no matter how efficient their API, will always obfuscate the original functionality of JavaScript.</p>
+</li>
+
+<li>
+<p><strong>Progressive enhancement</strong>: The scripts employed in this tutorial are designed only for modern browsers that support CSS transforms. So we don&#8217;t have to worry about building in support for older browsers.</p>
+</li>
+
+<li>
+<p><strong>Modern browser capabilities</strong>: Prior to the rise of frameworks like jQuery, trying to hook in to any element on the page was tedious, messy, and especially frustrating. jQuery made a huge leap forward with its selector engine. Since then, browser vendors have clued and built this functionality straight into their own browsers. <code>querySelectorAll</code> gives you the easy selection without having to go through a browser.</p>
+</li>
+</ul>
+
+<p>If you are targeting modern browsers and your project is a smaller one, consider using plain ol&#8217; vanilla JavaScript. You&#8217;ll learn more about the language and also come to appreciate what the frameworks have to offer.</p>
+    </div> <!-- .article -->
+  
+
+
+    </div> <!-- #content -->
+    
+  </div> <!-- #wrap -->
+
+
+</body>
+</html>

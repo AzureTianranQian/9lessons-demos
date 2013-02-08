@@ -1,0 +1,6 @@
+function myFunction() {
+	// retrieve the thread (conversations) count from my inbox
+	var inboxcount = GmailApp.getInboxThreads().length;
+	// send inbox size to remote script
+	UrlFetchApp.fetch( "http://yourserver.com/script.php?count=" + inboxcount );
+}

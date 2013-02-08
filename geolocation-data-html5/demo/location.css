@@ -1,0 +1,143 @@
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	background-color: #7e1f17;
+	
+}
+
+body {
+	margin: 0;
+	padding: 10px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 62.5%;
+	background-color: #7e1f17;
+	color: #7e1f17;
+	
+}
+
+header, nav, footer, aside, section {
+	display: block;
+
+}
+
+
+footer {
+	clear: both;
+}
+
+section {
+	-moz-box-shadow: 0 0 2px rgba(0,0,0,.2);
+	-webkit-box-shadow: 0 0 2px rgba(0,0,0,.2);
+}
+
+header, nav, footer {
+	-moz-box-shadow: 0 0 2px rgba(0,0,0,.2);
+	-webkit-box-shadow: 0 0 2px rgba(0,0,0,.2);
+}
+
+h1, h2, h3 {
+	font-family: "Gill Sans", "Trebuchet MS", Calibri, sans-serif;
+	text-transform: uppercase;
+}
+
+h1 {
+
+	
+	background: -moz-linear-gradient(top,rgb(251, 172, 25), rgb(247, 132, 28));
+	background: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgb(251, 172, 25)), to(rgb(247, 132, 28)));
+	background-color: #fbac19;
+	filter:progid:DXImageTransform.Microsoft.Gradient(startColorstr='#333333', endColorstr='#404142', gradientType='0');
+	-ms-filter: "progid:DXImageTransform.Microsoft.Gradient(startColorstr='#333333', endColorstr='#404142', gradientType='0')";
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.4), 0 1px 0 rgba(0,0,0,.4);
+	margin: 0;
+	padding: 0;
+	}
+h1 img { display: block;}
+
+
+h2, h3 {
+	font-size: 2em;
+	background: -moz-linear-gradient(top,rgb(251, 172, 25), rgb(247, 132, 28));
+	background: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgb(251, 172, 25)), to(rgb(247, 132, 28)));
+	background-color: #555555;
+	filter:progid:DXImageTransform.Microsoft.Gradient(startColorstr='#333333', endColorstr='#404142', gradientType='0');
+	-ms-filter: "progid:DXImageTransform.Microsoft.Gradient(startColorstr='#333333', endColorstr='#404142', gradientType='0')";
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.4), 0 1px 0 rgba(0,0,0,.4);
+}
+
+h3 {
+	border-bottom: 1px solid rgba(0,0,0,.4);
+}
+
+ol {
+	background: -moz-linear-gradient(top,rgb(251, 172, 25), rgb(247, 132, 28));
+	background: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgb(251, 172, 25)), to(rgb(247, 132, 28)));
+
+}
+
+ol li {
+	border-bottom: 1px solid rgba(126,31,23,.4);
+	list-style-type: none;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.4), 0 1px 0 rgba(0,0,0,.4);
+	
+}
+
+ol .vcard {
+	padding: 10px;
+	position: relative;
+	text-shadow: 0 0 0 black;	
+	font-size: 1.1em;
+}
+
+ol .n {
+	display: none;
+}
+
+ol .org {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+ol .street-address {
+	float: left;
+	padding-right: .5em;
+}
+ol .street-address:after {
+	content: ", ";
+}
+
+ol .distance {
+	position: absolute;
+	right: 10px;
+	top: 2.5em;
+	background-color: rgba(255,255,255,.2);
+	padding: 3px 10px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	border-bottom: 1px solid rgba(0,0,0,.4);
+}
+
+
+footer {
+	font-size: 1.2em;
+	background: -moz-linear-gradient(top,rgb(76, 77, 78), rgb(64, 65, 66));
+	background: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgb(76, 77, 78)), to(rgb(64, 65, 66)));
+	background-color: #555555;
+	filter:progid:DXImageTransform.Microsoft.Gradient(startColorstr='#333333', endColorstr='#404142', gradientType='0');
+	-ms-filter: "progid:DXImageTransform.Microsoft.Gradient(startColorstr='#333333', endColorstr='#404142', gradientType='0')";	
+	color: white;
+	padding: 10px;
+	text-align: center;
+	text-shadow: 0 -1px 0 black;
+}
+
+a {
+	color: white;
+	font-weight: bold;
+}
